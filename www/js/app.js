@@ -18,6 +18,12 @@ angular.module('app',['ionic','ui.router','ngCordova'])
             templateUrl:'views/main/main.html'
         });
 
+        $stateProvider.state('insurance',{
+            url:'/insurance',
+            controller: 'insuranceController',
+            templateUrl:'views/insurance/insurance.html'
+        });
+
         $stateProvider.state('life_insurance',{
             url:'/life_insurance',
             controller: 'lifeInsuranceController',
@@ -31,7 +37,7 @@ angular.module('app',['ionic','ui.router','ngCordova'])
         });
 
 
-      $urlRouterProvider.otherwise('/life_insurance');
+      $urlRouterProvider.otherwise('/insurance');
     })
     .factory('Insurances', function () {
         return [

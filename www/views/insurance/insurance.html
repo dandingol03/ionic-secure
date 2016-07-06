@@ -1,0 +1,90 @@
+<ion-view view-title="insurance-view" >
+
+    <ion-content class="padding">
+        <div class="list">
+
+            <div class="item item-input-inset">
+                <label class=" item-input" style="width: 50%">
+                    <span class="input-label">姓名</span>
+                    <input type="text">
+                </label>
+                <label class=" item-input" style="width: 50%">
+                    <span class="input-label">年龄</span>
+                    <input type="text">
+                </label>
+            </div>
+
+            <div class="item item-input-inset">
+                <label class=" item-input">
+                    <span class="input-label">性别</span>
+                    <input type="text">
+                </label>
+            </div>
+
+            <div class="item item-input-inset">
+                <label class=" item-input">
+                    <span class="input-label">需要的保障</span>
+                    <input type="text">
+                </label>
+            </div>
+
+            <div class="item item-input-inset">
+                <div class="row">
+                    <div class="col col-33">重疾</div>
+                    <div class="col col-33">健康</div>
+                    <div class="col col-33">理财</div>
+                </div>
+            </div>
+
+            <div class="item item-input-inset">
+                <div class="row">
+                    <div class="col col-33">...</div>
+                    <div class="col col-33">...</div>
+                    <div class="col col-33">...</div>
+                </div>
+            </div>
+
+            <div class="item item-input-inset">
+                <div class="row">
+                    <div class="col col-33">老人</div>
+                    <div class="col col-33">孩子</div>
+                    <div class="col col-33">自己配偶</div>
+                </div>
+            </div>
+
+            <div class="item item-input-inset">
+                <div class="row">
+                    <div class="col col-33">...</div>
+                    <div class="col col-33">...</div>
+                    <div class="col col-33">...</div>
+                </div>
+            </div>
+
+            <div class="item item-input-inset">
+                <label class=" item-input" style="width: 100%">
+                    <span class="input-label">有无社保</span>
+                    <ion-radio ng-model="security_safe" ng-value="'1'" name="security_safe" style="min-width:50px;margin-left: 20%;">有</ion-radio>
+                    <ion-radio ng-model="security_safe" ng-value="'0'" name="security_safe" style="min-width: 50px;">无</ion-radio>
+                </label>
+            </div>
+
+            <div class="item item-input-inset">
+                <label class=" item-input" style="width: 100%">
+                    <span class="input-label" style="display: block">有无商业保险</span>
+                    <ion-radio ng-model="commercial_safe" name="commercial_safe" ng-value="'1'" style="min-width:50px;margin-left: 20%;">有</ion-radio>
+                    <ion-radio ng-model="commercial_safe" name="commercial_safe" ng-value="'0'" style="min-width: 50px;">无</ion-radio>
+                </label>
+            </div>
+
+            <div class="item item-input-inset">
+                <label class=" item-input" style="width: 100%">
+                    <span class="input-label" style="display: block">计划保费</span>
+                    <ion-radio ng-model="plan" ng-value="'1'" name="plan" style="min-width:50px;margin-left: 20%;">计划</ion-radio>
+                    <ion-radio ng-model="plan" ng-value="'0'" name="plan" style="min-width: 50px;">无计划</ion-radio>
+                </label>
+            </div>
+
+
+        </div>
+    </ion-content>
+</ion-view>
