@@ -16,14 +16,10 @@ angular.module('app')
             console.log($scope.user.username);
         }
         $scope.doClear1 = function(){
-            var username = $scope.user.username;
-            if(username !== null && username !== undefined && username !== "")
-                $scope.user.username="";
+           $scope.user.username='';
         }
         $scope.doClear2 = function(){
-            var password = $scope.user.password;
-            if(password !== null && password !== undefined && password !== "")
-                $scope.user.password="";
+          $scope.user.password='';
         }
         $scope.goQuery1 = function(){
             $state.go("query");

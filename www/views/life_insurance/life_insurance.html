@@ -1,0 +1,31 @@
+<ion-view name="life_insurance-view" hide-back-button="false">
+    <ion-nav-bar>
+        <ion-nav-buttons side="primary">
+
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <span> life insurance panel</span>
+        </ion-nav-title>
+    </ion-nav-bar>
+    <ion-content class="padding">
+        <div class="row">
+            <div class="col col-33">保险公司</div>
+            <div class="col col-33">报价</div>
+            <div class="col col-33">详情</div>
+        </div>
+
+
+        <div  ng-if="insurances!=null">
+            <div ng-repeat="insurance in insurances" ui-sref="insurance_detail({company_name:insurance.company})">
+                <div class="row">
+                    <div class="col col-33">
+                        {{insurance.company}}
+                    </div>
+                    <div class="col col-33">{{insurance.date}}</div>
+                    <div class="col col-33">{{insurance.detail}}</div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
