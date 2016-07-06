@@ -1,9 +1,39 @@
 <ion-view  view-title="detail-view">
     <ion-content>
-        <ion-list>
-            <ion-item>
-                <span>{{company}}</span>
-            </ion-item>
-        </ion-list>
+      <div class="list">
+
+        <label class="item item-input item-select">
+
+          <div>
+            <select>
+              <option>Blue</option>
+              <option selected>Green</option>
+              <option>Red</option>
+            </select>
+          </div>
+          <div class="input-label">
+            保额
+          </div>
+          <div class="input-label">
+            保费
+          </div>
+          <span style="margin-left:-20px">险种</span>
+        </label>
+
+        <div class="item item-input-inset">
+          <label class=" item-input" style="width: 100%;padding-left:0px">
+            <span class="input-label">车损</span>
+            <input type="text">
+          </label>
+        </div>
+
+        <div class="item item-input-inset">
+          <label class=" item-input" style="width: 100%;padding-left:0px">
+            <span class="input-label">三者</span>
+            <input type="text">
+          </label>
+        </div>
+
+      </div>
     </ion-content>
 </ion-view>

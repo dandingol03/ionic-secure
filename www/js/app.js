@@ -37,7 +37,7 @@ angular.module('app',['ionic','ui.router','ngCordova'])
         });
 
 
-      $urlRouterProvider.otherwise('/insurance');
+      $urlRouterProvider.otherwise('/insurance_detail/:company_name');
     })
     .factory('Insurances', function () {
         return [
@@ -47,6 +47,4 @@ angular.module('app',['ionic','ui.router','ngCordova'])
             { company: 'CNY', date: '2015-07-01', detail: 'it is a big deal'}
         ];
     })
-//.constant("rmiPath","http:://211.87.225.207:8080/supnuevo")
-//.constant("rmiPath","http:://211.87.225.195:8080/supnuevo")
 
