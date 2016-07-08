@@ -1,4 +1,4 @@
-angular.module('app',['ionic','ui.router','ngCordova'])
+angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
     .run(function($ionicPlatform) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -36,9 +36,41 @@ angular.module('app',['ionic','ui.router','ngCordova'])
             templateUrl:'views/life_insurance/detail/detail.html'
         });
 
+        $stateProvider.state('map',{
+            url:'/map',
+            controller: 'mapController',
+            templateUrl:'views/map/map.html'
+        });
 
-      $urlRouterProvider.otherwise('/insurance');
+      $urlRouterProvider.otherwise('/map');
     })
+
+    .config(function(baiduMapApiProvider){
+        baiduMapApiProvider.version('2.0').accessKey('2me89doy9NE2HgG7FmTXa0XZsedThXDD');
+    })
+
+    .factory('BaiduMapService', function($q, baiduMapApi) {
+        return {
+            getLocalCity: function() {
+                return baiduMapApi.then(function(BMap) {
+                    var localcity = new BMap.LocalCity();
+                    return $q(function(resolve, reject) {
+                        localcity.get(function(r) {
+                            resolve(r);
+                        });
+                    });
+                });
+            }
+            ,
+            getBMap:function(callback){
+                 baiduMapApi.then(function(BMap) {
+                    callback(BMap);
+                });
+            }
+        };
+    })
+
+
     .factory('Insurances', function () {
         return [
             { company: 'AUD', date: '2015-02-03', detail: 'it is not a big deal' },
