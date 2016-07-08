@@ -45,6 +45,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
       $urlRouterProvider.otherwise('/map');
     })
 
+
     .config(function(baiduMapApiProvider){
         baiduMapApiProvider.version('2.0').accessKey('2me89doy9NE2HgG7FmTXa0XZsedThXDD');
     })
@@ -79,6 +80,4 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
             { company: 'CNY', date: '2015-07-01', detail: 'it is a big deal'}
         ];
     })
-//.constant("rmiPath","http:://211.87.225.207:8080/supnuevo")
-//.constant("rmiPath","http:://211.87.225.195:8080/supnuevo")
 
