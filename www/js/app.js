@@ -36,6 +36,24 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
             templateUrl:'views/life_insurance/detail/detail.html'
         });
 
+        $stateProvider.state('service',{
+            url:'/service',
+            controller:'serviceController',
+            templateUrl:'views/service/service.html'
+        });
+
+        $stateProvider.state('location',{
+            url:'/location',
+            controller:'locationController',
+            templateUrl:'views/location/location.html'
+        });
+
+        $stateProvider.state('coverage',{
+            url:'/coverage',
+            controller:'coverageController',
+            templateUrl:'views/coverage/coverage.html'
+        });
+
         $stateProvider.state('map',{
             url:'/map',
             controller: 'mapController',
@@ -46,9 +64,12 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
     })
 
 
-    .config(function(baiduMapApiProvider){
+    .config(function(baiduMapApiProvider) {
         baiduMapApiProvider.version('2.0').accessKey('2me89doy9NE2HgG7FmTXa0XZsedThXDD');
+
+
     })
+
 
     .factory('BaiduMapService', function($q, baiduMapApi) {
         return {
