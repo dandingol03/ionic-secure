@@ -35,9 +35,22 @@ angular.module('app',['ionic','ui.router','ngCordova'])
             controller: 'lifeInsuranceDetailController',
             templateUrl:'views/life_insurance/detail/detail.html'
         });
-
-
-      $urlRouterProvider.otherwise('/insurance_detail/:company_name');
+        $stateProvider.state('service',{
+          url:'/service',
+          controller:'serviceController',
+          templateUrl:'views/service/service.html'
+        });
+        $stateProvider.state('location',{
+          url:'/location',
+          controller:'locationController',
+          templateUrl:'views/location/location.html'
+        });
+           $stateProvider.state('coverage',{
+            url:'/coverage',
+           controller:'coverageController',
+            templateUrl:'views/coverage/coverage.html'
+        });
+      $urlRouterProvider.otherwise('/coverage');
     })
     .factory('Insurances', function () {
         return [
