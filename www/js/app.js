@@ -1,4 +1,7 @@
 angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
+    .config(function(baiduMapApiProvider) {
+        baiduMapApiProvider.version('2.0').accessKey('2me89doy9NE2HgG7FmTXa0XZsedThXDD');
+    })
     .run(function($ionicPlatform) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -60,15 +63,16 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
             templateUrl:'views/map/map.html'
         });
 
-      $urlRouterProvider.otherwise('/map');
+        $stateProvider.state('car_info',{
+            url:'/car_info',
+            controller: 'carInfoController',
+            templateUrl:'views/car_info/car_info.html'
+        });
+
+
+      $urlRouterProvider.otherwise('/car_info');
     })
 
-
-    .config(function(baiduMapApiProvider) {
-        baiduMapApiProvider.version('2.0').accessKey('2me89doy9NE2HgG7FmTXa0XZsedThXDD');
-
-
-    })
 
 
     .factory('BaiduMapService', function($q, baiduMapApi) {

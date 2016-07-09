@@ -1,5 +1,8 @@
 angular.module('app')
-  .controller('coverageController',function($scope,$state,$ionicLoading,$http){
+  .controller('coverageController',function($scope){
+
+
+
       $scope.coverages=[
         {label:"车辆损失险",selected:true},
         {label:"第三者责任险"},
