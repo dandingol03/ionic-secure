@@ -69,8 +69,13 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
             templateUrl:'views/car_info/car_info.html'
         });
 
+        $stateProvider.state('directive',{
+            url:'/directive',
+            controller: 'directiveController',
+            templateUrl:'views/directive/directive.html'
+        });
 
-      $urlRouterProvider.otherwise('/car_info');
+      $urlRouterProvider.otherwise('/login');
     })
 
 
@@ -106,3 +111,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
         ];
     })
 
+
+    .controller('LeftMenuController',function($scope){
+
+    })

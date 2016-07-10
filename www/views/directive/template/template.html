@@ -1,0 +1,13 @@
+<label class="item item-checkbox ng-not-empty ng-valid" ng-model="coverage.selected" style="border-width: 0px">
+    <div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-square">
+        <input type="checkbox" ng-model="coverage.selected"
+               class="ng-pristine ng-untouched ng-valid ng-not-empty" >
+        <i class="ion-ios-checkmark " style="font-size:1.8em" ng-if="coverage.selected==true"></i>
+        <i class="ion-ios-circle-outline " style="font-size: 1.8em" ng-if="coverage.selected!=true"></i>
+    </div>
+    <div class="item-content disable-pointer-events" style="line-height: 55px;height:55px;margin-top:10px">
+        <span>
+                yes
+        </span>
+    </div>
+</label>
