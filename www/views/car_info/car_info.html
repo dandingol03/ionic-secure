@@ -10,11 +10,11 @@
             <div class="item item-input-inset">
                 <label class=" item-input" style="width: 50%">
                     <span class="input-label">车主姓名</span>
-                    <input type="text">
+                    <input type="text" ng-model="perName">
                 </label>
                 <label class=" item-input" style="width: 50%">
                     <span class="input-label">身份证号码</span>
-                    <input type="text">
+                    <input type="text" ng-model="perIdCard">
                 </label>
             </div>
 
@@ -22,35 +22,44 @@
             <div class="item item-input-inset">
                 <label class=" item-input" style="width: 50%">
                     <span class="input-label">车牌号</span>
-                    <input type="text">
+                    <input type="text" ng-model="car.plateNum">
                 </label>
                 <label class=" item-input" style="width: 50%">
                     <span class="input-label">厂牌型号</span>
-                    <input type="text">
+                    <input type="text" ng-model="car.model">
                 </label>
             </div>
 
             <div class="item item-input-inset">
                 <label class=" item-input">
                     <span class="input-label">车架号</span>
-                    <input type="text">
+                     <input type="text"  ng-model="car.VIN">
                 </label>
             </div>
 
             <div class="item item-input-inset">
                 <label class=" item-input">
                     <span class="input-label">发动机号</span>
-                    <input type="text">
+                    <input type="text" ng-model="car.engineNum">
                 </label>
             </div>
 
             <div class="item item-input-inset">
                 <label class=" item-input">
                     <span class="input-label">初次登记日期</span>
-                    <input type="text">
+                    <input type="text" ng-model="car.registerDate">
                 </label>
             </div>
 
+        <div class="item item-input-inset">
+        <label class=" item-input">
+            <span class="input-label">发证日期</span>
+            <input type="text" ng-model="car.inssueDate">
+        </label>
+        </div>
+        <button class="button button-block button-calm" ng-click="nextStep()">
+            下一步
+        </button>
 
     </ion-content>
 </ion-view>

@@ -6,12 +6,9 @@
 
 angular.module('app')
     .controller('loginController',function($scope,$state,$ionicLoading,$http,$cordovaProgress){
-        $scope.user = [{
-            'username':'',
-            'password':'',
-        }];
-        $scope.username=new Object();
-        $scope.password= new Object();
+
+    $scope.user=new Object();
+
         $scope.change = function(){
             console.log($scope.user.username);
         }
@@ -33,16 +30,16 @@ angular.module('app')
             $http({
                 method:"post",
                 params:{
-                    loginName:user.username,
-                    password:user.password
+                    loginName:$scope.user.username,
+                    password:$scope.user.password
                 },
-                url:"http://localhost:8090/serviceHall"
+                url:"http://202.194.14.106:3000/securityCode"
             }).success(function(response){
                 var errorMsg =  response.errorMsg;
                 if(errorMsg !== null && errorMsg !== undefined && errorMsg !== ""){
                     alert(errorMsg);
                 }else{
-                    var supnuevoMerchantId = response.merchantId;
+                    var result = response.result;
                     $state.go("main");
                 }
             }).error(function(err){
@@ -53,6 +50,5 @@ angular.module('app')
                 });
             })
         }
-
     })
 

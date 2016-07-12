@@ -16,7 +16,7 @@
 
 
         <div  ng-if="insurances!=null">
-            <div ng-repeat="insurance in insurances" ui-sref="insurance_detail({company_name:insurance.company})">
+            <div ng-repeat="insurance in insurances track by $index" ui-sref="insurance_detail({company_name:insurance.company})">
                 <div class="row">
                     <div class="col col-33">
                         {{insurance.company}}

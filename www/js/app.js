@@ -9,7 +9,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
     })
     .config(function($stateProvider,$urlRouterProvider){
 
-        $stateProvider.state('  login',{
+        $stateProvider.state('login',{
             url:'/login',
             controller: 'loginController',
             templateUrl:'views/login/login.html'
@@ -28,7 +28,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
         });
 
         $stateProvider.state('life_insurance',{
-            url:'/life_insurance',
+            url:'/life_insurance/:arr',
             controller: 'lifeInsuranceController',
             templateUrl:'views/life_insurance/life_insurance.html'
         });

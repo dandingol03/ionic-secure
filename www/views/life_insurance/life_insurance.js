@@ -5,10 +5,10 @@
 
 
 angular.module('app')
-    .controller('lifeInsuranceController',function($scope,$state,$ionicLoading,$http,Insurances){
+    .controller('lifeInsuranceController',function($scope,$state,$ionicLoading,$http,Insurances,$stateParams){
 
 
-        $scope.insurances=Insurances;
+        $scope.insurances=$stateParams.arr;
 
 
     })
