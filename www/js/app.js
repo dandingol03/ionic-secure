@@ -111,3 +111,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
         ];
     })
 
+
+    .controller('LeftMenuController',function($scope){
+
+    })
