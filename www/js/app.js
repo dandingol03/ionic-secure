@@ -9,6 +9,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
     })
     .config(function($stateProvider,$urlRouterProvider){
 
+
         $stateProvider.state('login',{
             url:'/login',
             controller: 'loginController',
@@ -51,7 +52,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
             templateUrl:'views/location/location.html'
         });
 
-        $stateProvider.state('coverage',{
+        $stateProvider.state('tab.coverage',{
             url:'/coverage',
             controller:'coverageController',
             templateUrl:'views/coverage/coverage.html'
@@ -115,3 +116,24 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
     .controller('LeftMenuController',function($scope){
 
     })
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('test', {
+        url: '/test',
+        abstract:true,
+        views: {
+          'test-nav': {
+            templateUrl: 'views/side.html',
+
+          }
+        }
+      }).state('test.listAll', {
+        url: '/listAll',
+        views: {
+          'test-item-nav': {
+            templateUrl: 'views/index.html',
+
+          }
+        }
+      });
+  });

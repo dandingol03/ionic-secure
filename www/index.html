@@ -34,106 +34,29 @@
     <script src="views/directive/directive.js"></script>
   </head>
   <body ng-app="app">
+  <ion-tabs class="tabs-icon-top  tabs-stable tabs-color-active-energized"  >
+    <ion-tab title="主页" icon-on="ion-ios-home" icon-off="ion-ios-home-outline" ui-sref="insurance" >
+      <ion-nav-view name="home-nav">
 
-  <ion-side-menus>
-    <!-- 主内容区 -->
-    <ion-side-menu-content>
+      </ion-nav-view>
+    </ion-tab>
 
-      <ion-nav-bar class="bar-positive">
-        <ion-nav-buttons side="left">
-          <button class="button button-clear" menu-toggle="left">
-            <span class="icon ion-navicon"></span>
-          </button>
-        </ion-nav-buttons>
-        <!--back button-->
-        <ion-nav-back-button class="button-clear">
-          <i class="icon ion-ios-arrow-left"></i> Back
-        </ion-nav-back-button>
-      </ion-nav-bar>
+    <ion-tab title="测试" icon-on="ion-ios-people" icon-off="ion-ios-people-outline" ui-sref="login" >
+      <ion-nav-view name="test-nav"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="订单" icon-on="ion-ios-time" icon-off="ion-ios-time-outline" ui-sref="life_insurance" >
+      <ion-nav-view name="order-nav"></ion-nav-view>
+    </ion-tab>
 
 
-      <ion-nav-view></ion-nav-view>
-    </ion-side-menu-content>
-
-    <!-- 侧边栏内容 -->
-    <ion-side-menu>
-      <ion-header-bar class="bar-dark">
-        <h1 class="title">Keep moving</h1>
-
-      </ion-header-bar>
-
-      <ion-content>
+    <ion-tab title="我的" icon-on="ion-ios-person" icon-off="ion-ios-person-outline"  ui-sref="service">
+      <ion-nav-view name="my-nav"></ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
 
 
-        <ion-list>
-          <ion-item class="item-divider">menus</ion-item>
-          <!--car_info-->
-          <ion-item class="item-icon-left" ui-sref="car_info"
-                    menu-close>
-            <span class="icon ion-social-github">
-            </span> 车主与车辆信息
-          </ion-item>
-          <!--login-->
-          <ion-item class="item-icon-left" ui-sref="login"
-                    menu-close>
-          <span class="icon ion-social-github">
-          </span> 登录
-          </ion-item>
 
-          <!--insurance-->
-          <ion-item class="item-icon-left" ui-sref="insurance"
-                    menu-close>
-          <span class="icon ion-social-github">
-          </span> insurance
-          </ion-item>
-
-          <!-- life insurance -->
-          <ion-item class="item-icon-left" ui-sref="life_insurance"
-                    menu-close>
-          <span class="icon ion-social-github">
-          </span> life_insurance
-          </ion-item>
-
-          <!-- life insurance -->
-          <ion-item class="item-icon-left" ui-sref="service"
-                    menu-close>
-          <span class="icon ion-social-github">
-          </span> service
-          </ion-item>
-
-          <!-- life insurance -->
-          <ion-item class="item-icon-left" ui-sref="location"
-                    menu-close>
-          <span class="icon ion-social-github">
-          </span> location
-          </ion-item>
-
-
-          <!-- life insurance -->
-          <ion-item class="item-icon-left" ui-sref="coverage"
-                    menu-close>
-          <span class="icon ion-social-github">
-          </span> coverage
-          </ion-item>
-
-          <!-- map -->
-          <ion-item class="item-icon-left" ui-sref="map"
-                    menu-close>
-          <span class="icon ion-social-github">
-          </span> map
-          </ion-item>
-
-          <!-- directive -->
-          <ion-item class="item-icon-left" ui-sref="directive"
-                    menu-close>
-          <span class="icon ion-social-github">
-          </span> directive
-          </ion-item>
-
-        </ion-list>
-      </ion-content>
-    </ion-side-menu>
-  </ion-side-menus>
 
   </body>
 </html>
