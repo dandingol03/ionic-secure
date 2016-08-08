@@ -9,74 +9,96 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
     })
     .config(function($stateProvider,$urlRouterProvider){
 
+    $stateProvider.state('tabs',{
+      url:'/tabs',
+      abstract:true,
+      templateUrl:'views/tabs/tabs.html'
+    });
 
-        $stateProvider.state('login',{
-            url:'/login',
-            controller: 'loginController',
-            templateUrl:'views/login/login.html'
-        });
+    $stateProvider.state('tabs.price',{
+      url:'/price',
+      views:{
+        'price-tab':{
+          controller:'priceController',
+          templateUrl:'views/price/price.html'
+        }
+      }
+    });
 
-        $stateProvider.state('main',{
-            url:'/main',
-            controller: 'mainController',
-            templateUrl:'views/main/main.html'
-        });
+    $stateProvider.state('login',{
+        url:'/login',
+        controller: 'loginController',
+        templateUrl:'views/login/login.html'
+    });
 
-        $stateProvider.state('insurance',{
-            url:'/insurance',
-            controller: 'insuranceController',
-            templateUrl:'views/insurance/insurance.html'
-        });
+    $stateProvider.state('main',{
+        url:'/main',
+        controller: 'mainController',
+        templateUrl:'views/main/main.html'
+    });
 
-        $stateProvider.state('life_insurance',{
-            url:'/life_insurance/:arr',
-            controller: 'lifeInsuranceController',
-            templateUrl:'views/life_insurance/life_insurance.html'
-        });
+    $stateProvider.state('insurance',{
+        url:'/insurance',
+        controller: 'insuranceController',
+        templateUrl:'views/insurance/insurance.html'
+    });
 
-        $stateProvider.state('insurance_detail',{
-            url:'/insurance_detail/:company_name',
-            controller: 'lifeInsuranceDetailController',
-            templateUrl:'views/life_insurance/detail/detail.html'
-        });
+    /**
+     * 报价列表
+     */
+    $stateProvider.state('life_insurance',{
+        url:'/life_insurance/:arr',
+        controller: 'lifeInsuranceController',
+        templateUrl:'views/life_insurance/life_insurance.html'
+    });
 
-        $stateProvider.state('service',{
-            url:'/service',
-            controller:'serviceController',
-            templateUrl:'views/service/service.html'
-        });
+    $stateProvider.state('insurance_detail',{
+        url:'/insurance_detail/:company_name',
+        controller: 'lifeInsuranceDetailController',
+        templateUrl:'views/life_insurance/detail/detail.html'
+    });
 
-        $stateProvider.state('location',{
-            url:'/location',
-            controller:'locationController',
-            templateUrl:'views/location/location.html'
-        });
+    $stateProvider.state('service',{
+        url:'/service',
+        controller:'serviceController',
+        templateUrl:'views/service/service.html'
+    });
 
-        $stateProvider.state('tab.coverage',{
-            url:'/coverage',
-            controller:'coverageController',
-            templateUrl:'views/coverage/coverage.html'
-        });
+    $stateProvider.state('location',{
+        url:'/location',
+        controller:'locationController',
+        templateUrl:'views/location/location.html'
+    });
 
-        $stateProvider.state('map',{
-            url:'/map',
-            controller: 'mapController',
-            templateUrl:'views/map/map.html'
-        });
+    $stateProvider.state('tabs.coverage',{
+      url:'/coverage',
+      views:{
+        'coverage-tab':{
+          controller:'coverageController',
+          templateUrl:'views/coverage/coverage.html'
+        }
+      }
+    });
 
-        $stateProvider.state('car_info',{
-            url:'/car_info',
-            controller: 'carInfoController',
-            templateUrl:'views/car_info/car_info.html'
-        });
+    $stateProvider.state('map',{
+        url:'/map',
+        controller: 'mapController',
+        templateUrl:'views/map/map.html'
+    });
 
-        $stateProvider.state('directive',{
-            url:'/directive',
-            controller: 'directiveController',
-            templateUrl:'views/directive/directive.html'
-        });
+    $stateProvider.state('car_info',{
+        url:'/car_info',
+        controller: 'carInfoController',
+        templateUrl:'views/car_info/car_info.html'
+    });
 
-      $urlRouterProvider.otherwise('/login');
+    $stateProvider.state('directive',{
+        url:'/directive',
+        controller: 'directiveController',
+        templateUrl:'views/directive/directive.html'
+    });
+
+      $urlRouterProvider.otherwise('/tabs/price');
     })
 
 
@@ -116,24 +138,4 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
     .controller('LeftMenuController',function($scope){
 
     })
-  .config(function ($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state('test', {
-        url: '/test',
-        abstract:true,
-        views: {
-          'test-nav': {
-            templateUrl: 'views/side.html',
 
-          }
-        }
-      }).state('test.listAll', {
-        url: '/listAll',
-        views: {
-          'test-item-nav': {
-            templateUrl: 'views/index.html',
-
-          }
-        }
-      });
-  });
