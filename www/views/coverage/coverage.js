@@ -1,10 +1,10 @@
 angular.module('app')
-  .controller('coverageController',function($scope){
+  .controller('coverageController',function($scope,$state){
 
 
 
       $scope.coverages=[
-        {label:"车辆损失险",selected:true},
+        {label:"车辆损失险"},
         {label:"第三者责任险"},
         {label:"全车盗抢险"},
         {label:"车上人员责任险"},
