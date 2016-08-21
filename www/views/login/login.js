@@ -49,6 +49,8 @@ angular.module('app')
                     duration:'2000'
                 });
             })
+
+
         }
     })
 
