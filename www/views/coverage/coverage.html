@@ -6,32 +6,31 @@
 
   <ion-content class="padding">
     <div class="row">
-      <div class="col col-33" style="text-align:center">保险项目</div>
-      <div class="col col-33" style="text-align:center">保额</div>
-      <div class="col col-33" style="text-align:center">点选</div>
+      <div style="text-align:center;width:50%">保险项目</div>
+      <div style="text-align:center;width:30%">保额</div>
+      <div style="text-align:center;width: 20%">点选</div>
     </div>
     <ion-scroll zooming="true" direction="y" style="width: 100%; height: 370px">
       <div  ng-if="coverages!=null">
         <div ng-repeat="coverage in coverages">
           <div class="row">
-            <div class="col col-33">
+            <div class="col col-50">
               <label class="item" style="border-width: 0px;">
                 {{coverage.name}}
               </label>
             </div>
             <div class="col col-33">
               <label class="item item-input item-select" style="border-width: 0px;height:50px">
-                <select>
+                <select style="max-width:100%">
                   <option>Blue</option>
                   <option selected>Green</option>
                   <option>Red</option>
                 </select>
               </label>
             </div>
-            <div class="col col-33">
-              <ion-checkbox ng-model="coverage.selected" style="border-width: 0px">
-                yes
-              </ion-checkbox>
+            <div class="col col-17" style="position: relative">
+                <ion-checkbox ng-model="coverage.selected" style="border-width: 0px;position: absolute;top:25%">
+                </ion-checkbox>
             </div>
           </div>
         </div>
