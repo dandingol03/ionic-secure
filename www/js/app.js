@@ -25,6 +25,12 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
       }
     });
 
+    $stateProvider.state('price_detail',{
+      url:'/price_detail/:project_list',
+      controller:'priceDetailController',
+      templateUrl:'views/price_detail/price_detail.html'
+    });
+
     $stateProvider.state('login',{
         url:'/login',
         controller: 'loginController',
