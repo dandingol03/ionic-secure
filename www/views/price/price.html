@@ -27,9 +27,7 @@
               {{price.fee}}
             </div>
             <div style="text-align:center;width:40%">
-              <a href="price_detail({project_list:['a','b']})">
                 详细
-              </a>
             </div>
           </div>
 
@@ -39,5 +37,36 @@
     </ion-scroll>
 
   </ion-content>
+
+  <script id="edit.html" type="text/ng-template">
+    <div class = "modal">
+      <ion-header-bar>
+        <h1 class="title" style="font-weight: bolder">确认生成保险订单</h1>
+      </ion-header-bar>
+      <ion-content>
+        <div class="card">
+          <div class="item item-text-wrap">
+            <label class="item item-input">
+              <span class="input-label">保险项目:</span>
+              <span class="input-label">保额:</span>
+              <span class="input-label">保费:</span>
+            </label>
+            <label class="item item-input"  ng-repeat="proj in price.detail.projects">
+              <span>{{proj}}</span>
+            </label>
+            <label class="item item-input">
+              <button class="button button-block button-positive" ng-click="generate_order()">
+                生成
+              </button>
+              <span style="width:20%"></span>
+              <button class="button button-block button-positive">
+                取消
+              </button>
+            </label>
+          </div>
+        </div>
+      </ion-content>
+    </div>
+  </script>
 
 </ion-view>
