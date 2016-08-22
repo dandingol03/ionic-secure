@@ -20,12 +20,15 @@
               </label>
             </div>
             <div class="col col-33">
-              <label class="item item-input item-select" style="border-width: 0px;height:50px">
-                <select style="max-width:100%">
-                  <option>Blue</option>
-                  <option selected>Green</option>
-                  <option>Red</option>
+              <label class="item item-input item-select" style="border-width: 0px;height:50px;"
+                     ng-if="coverage.selectable">
+                <select style="max-width:100%;padding-left:0px;right:auto" ng-model="coverage.selected" ng-options="fee for fee in coverage.fee"
+                        ng-change="coverage_change(coverage)">
                 </select>
+              </label>
+              <label class="item item-input" style="border-width: 0px;height:50px"
+                     ng-if="!coverage.selectable">
+                {{coverage.fee}}
               </label>
             </div>
             <div class="col col-17" style="position: relative">
