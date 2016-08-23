@@ -43,6 +43,8 @@ angular.module('app')
             var ipObj1 = {
               callback: function (val) {  //Mandatory
                 console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+                var t1 = document.getElementById('date');//根据id获取input节点
+                t1.value = new Date(val).toDateString();//把a的值在input中直接显示
               },
               disabledDates: [            //Optional
                 new Date(2016, 2, 16),
@@ -53,17 +55,19 @@ angular.module('app')
                 new Date("08-16-2016"),
                 new Date(1439676000000)
               ],
-              from: new Date(2012, 1, 1), //Optional
-              to: new Date(2016, 10, 30), //Optional
+              from: new Date(1949, 10, 1), //Optional
+              to: new Date(2040, 10, 30), //Optional
               inputDate: new Date(),      //Optional
-              mondayFirst: true,          //Optional
+              mondayFirst: false,          //Optional
               disableWeekdays: [0],       //Optional
               closeOnSelect: false,       //Optional
-              templateType: 'popup'       //Optional
+              templateType: 'popup'     //Optional
             };
 
 
               ionicDatePicker.openDatePicker(ipObj1);
+
+
 
           };
     })

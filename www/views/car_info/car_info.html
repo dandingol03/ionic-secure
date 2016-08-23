@@ -65,7 +65,7 @@
       <div class="item item-input-inset">
         <label class=" item-input">
           <span class="input-label">发证日期</span>
-          <button ng-click="datepick()" class="button button-balanced">设置日期</button>
+          <input id="date" ng-click= "datepick()"  type="text" style="width: 400px" placeholder="点击设置日期！" >
 
         </label>
       </div>
@@ -73,7 +73,7 @@
             <div class="item item-input-inset">
                 <label class=" item-input">
                     <span class="input-label">初次登记日期</span>
-                    <input type="text"  class="time_picker_box_text"  ng-model="car.registerDate">
+                    <input type="text"  class="time_picker_box_text"  ng-model="car.registerDate" >
                 </label>
             </div>
 
