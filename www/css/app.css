@@ -1,3 +1,8 @@
 .radio-content .radio-icon.disable-pointer-events.icon.ion-checkmark{
     right: 5%;
 }
+
+.center .action-sheet-wrapper .action-sheet .action-sheet-group div,
+.center .action-sheet-wrapper .action-sheet .action-sheet-group button{
+  text-align: center;
+}
