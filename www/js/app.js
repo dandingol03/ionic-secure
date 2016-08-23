@@ -34,6 +34,25 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       templateUrl:'views/tabs/tabs.html'
     });
 
+
+      $stateProvider.state('tabs.my',{
+        url:'/my',
+        views:{
+          'my-tab':{
+            controller:'myController',
+            templateUrl:'views/my/my.html'
+          }
+        }
+      });
+
+      $stateProvider.state('personInformation',{
+        url:'/personInformation',
+        controller:'personInformationController',
+        templateUrl:'views/personInformation/personInformation.html'
+
+      });
+
+
     $stateProvider.state('tabs.price',{
       url:'/price',
       views:{
@@ -61,6 +80,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         controller: 'mainController',
         templateUrl:'views/main/main.html'
     });
+
 
     $stateProvider.state('insurance',{
         url:'/insurance',
@@ -123,7 +143,9 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/directive/directive.html'
     });
 
-      $urlRouterProvider.otherwise('/tabs/price');
+
+      $urlRouterProvider.otherwise('/tabs/my');
+
     })
 
 
