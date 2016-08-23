@@ -1,4 +1,4 @@
-angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
+angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datepicker'])
     .config(function(baiduMapApiProvider) {
         baiduMapApiProvider.version('2.0').accessKey('2me89doy9NE2HgG7FmTXa0XZsedThXDD');
     })
@@ -7,6 +7,25 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       });
     })
+  .config(function (ionicDatePickerProvider) {
+    var datePickerObj = {
+      inputDate: new Date(),
+      setLabel: 'Set',
+      todayLabel: 'Today',
+      closeLabel: 'Close',
+      mondayFirst: false,
+      weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+      monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+      templateType: 'popup',
+      from: new Date(2012, 8, 1),
+      to: new Date(2018, 8, 1),
+      showTodayButton: true,
+      dateFormat: 'dd MMMM yyyy',
+      closeOnSelect: false,
+      disableWeekdays: [6]
+    };
+    ionicDatePickerProvider.configDatePicker(datePickerObj);
+  })
     .config(function($stateProvider,$urlRouterProvider){
 
     $stateProvider.state('tabs',{
