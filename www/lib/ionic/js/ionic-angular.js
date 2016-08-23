@@ -24,6 +24,11 @@ var IonicModule = angular.module('ionic', ['ngAnimate', 'ngSanitize', 'ui.router
   noop = angular.noop;
 
 /**
+ *
+ * @commentor dandingol03
+ * --this plugin looks like a shit
+ *
+ *
  * @ngdoc service
  * @name $ionicActionSheet
  * @module ionic

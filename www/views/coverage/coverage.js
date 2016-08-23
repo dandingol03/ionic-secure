@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('coverageController',function($scope,$state,$http){
+  .controller('coverageController',function($scope,$state,$http,$ionicActionSheet,$timeout){
 
 
     $scope.coverages=[];
@@ -57,5 +57,37 @@ angular.module('app')
         console.error(err.toString());
       });
     }
+
+    $scope.actionSheet_show = function() {
+
+      // Show the action sheet
+      var hideSheet = $ionicActionSheet.show({
+        buttons: [
+          { text: '<b>Share</b> This' },
+          { text: '<b>Share</b> This' },
+          { text: '<b>Share</b> This' },
+          { text: '<b>Share</b> This' },
+          { text: '<b>Share</b> This' },
+          { text: '<b>Share</b> This' },
+          { text: '<b>Share</b> This' },
+          { text: '<b>Share</b> This' },
+          { text: '<b>Share</b> This' },
+          { text: '<b>Share</b> This' },
+          { text: 'Move' }
+        ],
+        titleText: 'Modify your album',
+        cancelText: 'Cancel',
+        cancel: function() {
+          // add cancel code..
+        },
+        buttonClicked: function(index) {
+          return true;
+        },
+        cssClass:'center'
+      });
+
+
+
+    };
 
   });

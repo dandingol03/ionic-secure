@@ -124,7 +124,9 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap'])
         templateUrl:'views/directive/directive.html'
     });
 
+
       $urlRouterProvider.otherwise('/tabs/my');
+
     })
 
 
