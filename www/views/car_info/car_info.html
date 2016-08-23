@@ -43,26 +43,32 @@
 
             <div class="item item-input-inset">
                 <label class=" item-input" style="width: 50%">
-                    <span class="input-label">车牌号</span>
-                    <input type="text" ng-model="car.plateNum">
-                </label>
-                <label class=" item-input" style="width: 50%">
                     <span class="input-label">厂牌型号</span>
                     <input type="text" ng-model="car.model">
                 </label>
+              <label class=" item-input" style="width: 50%">
+                <span class="input-label">车牌号</span>
+                <input type="text" ng-model="car.plateNum">
+              </label>
             </div>
 
             <div class="item item-input-inset">
-                <label class=" item-input" style="width: 50%">
-                    <span class="input-label">车架号</span>
-                     <input type="text"  ng-model="car.VIN">
-                </label>
               <label class=" item-input" style="width: 50%">
                 <span class="input-label">发动机号</span>
                 <input type="text" ng-model="car.engineNum">
               </label>
+                <label class=" item-input" style="width: 50%">
+                    <span class="input-label">车架号</span>
+                     <input type="text"  ng-model="car.VIN">
+                </label>
             </div>
+      <div class="item item-input-inset">
+        <label class=" item-input">
+          <span class="input-label">发证日期</span>
+          <button ng-click="datepick()" class="button button-balanced">设置日期</button>
 
+        </label>
+      </div>
 
             <div class="item item-input-inset">
                 <label class=" item-input">
@@ -71,13 +77,7 @@
                 </label>
             </div>
 
-        <div class="item item-input-inset">
-        <label class=" item-input">
-            <span class="input-label">发证日期</span>
-            <button ng-click="datepick()" class="button button-balanced">设置日期</button>
 
-        </label>
-        </div>
         <button class="button button-block button-calm" ng-click="nextStep()">
             下一步
         </button>
