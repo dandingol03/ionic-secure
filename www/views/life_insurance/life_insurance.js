@@ -8,7 +8,7 @@ angular.module('app')
     .controller('lifeInsuranceController',function($scope,$state,$ionicLoading,$http,Insurances,$stateParams){
 
 
-        $scope.insurances=$stateParams.arr;
+        $scope.insurances=$stateParams.data;
 
 
     })

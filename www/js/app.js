@@ -93,6 +93,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
      */
     $stateProvider.state('life_insurance',{
         url:'/life_insurance/:arr',
+      params:{"data":null},
         controller: 'lifeInsuranceController',
         templateUrl:'views/life_insurance/life_insurance.html'
     });
@@ -144,7 +145,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
     });
 
 
-      $urlRouterProvider.otherwise('/tabs/my');
+      $urlRouterProvider.otherwise('/insurance');
 
     })
 
