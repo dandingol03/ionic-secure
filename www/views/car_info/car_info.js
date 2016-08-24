@@ -80,7 +80,9 @@ angular.module('app')
             var ipObj1 = {
               callback: function (val) {  //Mandatory
                 var t1 = document.getElementById('date');//根据id获取input节点
-                t1.value = new Date(val).toDateString();//把a的值在input中直接显示
+                var date=new Date(val);
+                var month=parseInt(date.getMonth())+1;
+                t1.value=date.getFullYear()+'-'+month+'-'+date.getDate();
               },
               disabledDates: [            //Optional
                 new Date(2016, 2, 16),
