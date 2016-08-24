@@ -5,16 +5,19 @@ angular.module('app')
   .controller('myController',function($scope,$state,$http){
 
 
-    $scope.items=[
-      {title:"个人信息"},
-      {title:"实名认证"},
-      {title:"我的订单"},
-      {title:"推荐二维码"},
-      {title:"我的股权"},
-      {title:"积分提现"}
-    ]
-    ;
+    $scope.infos=[];
 
+    $http({
+       method:'get',
+        url:'/proxy/node/insurance/my_pageinfo'
+    }).success(function(response) {
+      var infos=response.infos;
+      if(Object.prototype.toString.call(infos)!='[object Array]')
+        infos=JSON.parse(infos);
+        $scope.infos=infos;
+    }).error(function(err){
+      console.error(err.toString());
+    });;
 
 
   });
