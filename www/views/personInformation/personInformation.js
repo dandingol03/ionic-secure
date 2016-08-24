@@ -19,17 +19,17 @@ angular.module('app')
 
 
     $scope.change=function () {
-      if($scope.pwd.newPwd.length==$scope.pwd.confirm_pwd.length)
-      {
-        if($scope.pwd.newPwd!=$scope.pwd.confirm_pwd)
-        {
-            $scope.conflict=true;
+      if($scope.pwd.newPwd.length==$scope.pwd.confirm_pwd.length) {
+        if ($scope.pwd.newPwd != $scope.pwd.confirm_pwd) {
+          $scope.conflict = true;
+        } else {
+          $scope.conflict = false;
         }
+      }else{
+        $scope.conflict = true;
       }
-      else{
-        $scope.conflict=false;
-      }
-      $scope.conflict=false;
+
+
     }
 
 
