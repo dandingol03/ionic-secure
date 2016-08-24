@@ -144,7 +144,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
     });
 
 
-      $urlRouterProvider.otherwise('/tabs/my');
+      $urlRouterProvider.otherwise('/login');
 
     })
 
