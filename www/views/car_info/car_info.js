@@ -5,7 +5,7 @@
 
 
 angular.module('app')
-  .controller('carInfoController',function($scope,$http,$state,ionicDatePicker){
+  .controller('carInfoController',function($scope,$http,$state,ionicDatePicker,$cordovaImagePicker,$ionicActionSheet,$ionicPopover){
         $scope.car=new Object();
         $scope.nextStep=function(){
 
@@ -39,10 +39,46 @@ angular.module('app')
                 });
             })
         }
+      $scope.images_list = [];
+      // "添加附件"Event
+      $scope.addPicture = function() {
+        var type = 'gallery';
+        $ionicActionSheet.show({
+          buttons: [
+            { text: '拍照' },
+            { text: '从相册选择' }
+          ],
+          titleText: '选择照片',
+          cancelText: '取消',
+          cancel: function() {
+          },
+          buttonClicked: function(index) {
+            if(index == 0){
+              type = 'camera';
+            }else if(index == 1){
+              type = 'gallery';
+            }
+            //Camera.getPicture(type)->根据选择的“选取图片”的方式进行选取
+             Camera.getPicture(type).then(
+              //返回一个imageURI，记录了照片的路径
+              function (imageURI) {
+                $scope.me.image = imageURI;
+                //更新页面上的照片
+                $scope.img = imageURI;
+                $scope.$apply();
+              },
+              function (err) {
+              });
+            return true;
+          }
+        });
+
+      }
+
+
      $scope.datepick = function(){
             var ipObj1 = {
               callback: function (val) {  //Mandatory
-                console.log('Return value from the datepicker popup is : ' + val, new Date(val));
                 var t1 = document.getElementById('date');//根据id获取input节点
                 t1.value = new Date(val).toDateString();//把a的值在input中直接显示
               },
