@@ -1,45 +1,78 @@
-<ion-view name="personInformation-view" hide-back-button="false">
+<ion-view name="personInformation-view" hide-back-button="false" view-title="个人信息">
+
 
   <ion-header-bar class="bar-positive">
-    <h1 class="title">个人信息</h1>
+    <a class="button icon-left ion-chevron-left button-clear button-dark" href="#/tabs/my">
+      <lable>Back</lable>
+    </a>
   </ion-header-bar>
 
   <ion-content >
 
-    <div class="list card">
+    <div class="list">
 
       <div class="item item-divider">
-        <lable>重新绑定手机号:</lable>
-      </div>
-      <div class="item ">
-        <lable>新手机号:</lable>
-        <input type="txt" ng-model="newTel">
+        <lable>重新绑定手机号</lable>
       </div>
 
-      <div class="item ">
-        <lable>验证码:</lable>
-      </div>
+      <label class="item item-input">
+        <span class="input-label" style="max-width: 50px">新手机号:</span>
+        <input type="text">
+      </label>
 
-      <div class="item item-divider">
-        <lable>修改密码:</lable>
-      </div>
-      <div class="item ">
-        <lable>旧密码:</lable>
-        <input type="txt" ng-model="oldPsd" ng-minlength="6">
-      </div>
-
-      <div class="item ">
-         <lable>新密码:</lable>
-         <input type="txt" ng-model="newPsd" ng-minlength="6">
-      </div>
-      <div class="item ">
-         <lable>确认密码:</lable>
-         <input type="txt" ng-model="reNewPsd" ng-minlength="6">
-      </div>
+      <label class="item item-input">
+        <span class="input-label" style="max-width: 50px">验证码:</span>
+        <input type="password">
+      </label>
     </div>
+      <button class="button button-block button-positive">
+        <lable>提交</lable>
+      </button>
+
+      <div class="list">
+
+       <div class="item item-divider">
+        <lable>修改密码</lable>
+       </div>
+
+        <label class="item item-input">
+          <span class="input-label" style="max-width: 50px">旧密码:</span>
+          <input type="text">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label" style="max-width: 50px">新密码:</span>
+           <input type="text" ng-model="pwd.newPwd">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label" style="max-width: 50px">确认新密码:</span>
+          <input type="text" ng-model="pwd.confirm_pwd" ng-change="change()">
+          </label>
+          <br>
+          <span ng-if="conflict==true" style="color:#f00" style="width: 50%">密码不一致</span>
+        </label>
+      </div>
+
+      <button class="button button-block button-positive" >
+        <lable>提交</lable>
+      </button>
+
+
+
   </ion-content>
 
-
+  <script id="edit.html" type="text/ng-template">
+    <div class = "modal">
+      <ion-header-bar>
+        <h1 class="title" style="font-weight: bolder">密码不一致</h1>
+      </ion-header-bar>
+      <ion-content>
+        <div class="card">
+        </div>
+      </ion-content>
+    </div>
+  </script>
 
 
 </ion-view>
