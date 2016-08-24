@@ -7,7 +7,7 @@ angular.module('ionic-datepicker.provider', [])
       todayLabel: 'Today',
       closeLabel: 'Close',
       inputDate: new Date(),
-      mondayFirst: true,
+      mondayFirst: false,
       weeksList: ["S", "M", "T", "W", "T", "F", "S"],
       monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
       templateType: 'popup',
