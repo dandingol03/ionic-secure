@@ -9,39 +9,24 @@ angular.module('app')
 
     $scope.user=new Object();
 
-        $scope.change = function(){
-            console.log($scope.user.username);
-        }
-        $scope.doClear1 = function(){
-           $scope.user.username='';
-        }
-        $scope.doClear2 = function(){
-          $scope.user.password='';
-        }
-        $scope.goQuery1 = function(){
-            $state.go("query");
-        }
-
-        $scope.sign=function(){
-
-        }
 
         $scope.login = function(){
             $http({
                 method:"post",
                 params:{
+                    grant_type: 'password',
                     loginName:$scope.user.username,
                     password:$scope.user.password
                 },
-                url:"http://202.194.14.106:3000/securityCode"
+                url:"http://211.87.225.197:3000/login"
             }).success(function(response){
-                var errorMsg =  response.errorMsg;
-                if(errorMsg !== null && errorMsg !== undefined && errorMsg !== ""){
-                    alert(errorMsg);
-                }else{
-                    var result = response.result;
-                    $state.go("main");
-                }
+                var re=response.re;
+              if(re==1)
+              {
+                $state.go('tabs.coverage');
+              }else{
+
+              }
             }).error(function(err){
                 alert(err.toSource());
                 $ionicLoading.show({

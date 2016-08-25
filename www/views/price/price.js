@@ -2,9 +2,9 @@
  * Created by danding on 16/7/27.
  */
 angular.module('app')
-  .controller('priceController', function ($scope,$http,$state,$ionicModal) {
+  .controller('priceController', function ($scope,$http,$state,$ionicModal,$stateParams) {
 
-    $scope.prices=[];
+    $scope.prices=$stateParams.data;
 
     //initial modal dialog
     $ionicModal.fromTemplateUrl('edit.html', {
@@ -21,19 +21,6 @@ angular.module('app')
     $scope.modalClose=function(){
       $scope.modal.hide();
     }
-
-    $http({
-      method:"get",
-      url:"/proxy/node/insurance/project_select"
-    }).success(function(response){
-      var prices=response.prices;
-      if(Object.prototype.toString.call(prices)!='[object Array]')
-        prices=JSON.parse(prices);
-      $scope.prices=prices;
-
-    }).error(function(err){
-      console.error(err.toString());
-    });
 
 
     $scope.go_detail=function(){
