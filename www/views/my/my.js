@@ -17,7 +17,7 @@ angular.module('app')
         $scope.infos=infos;
     }).error(function(err){
       console.error(err.toString());
-    });;
+    });
 
 
   });
