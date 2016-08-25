@@ -1,0 +1,76 @@
+<ion-view view-title="确认投保" hide-back-button="true">
+
+  <ion-content class="padding">
+
+
+    <div class="list">
+
+      <div class="row item-divider" style="font-size:17px;height:50px">
+        <div style="text-align:center;width:100px">名称</div>
+        <div style="text-align:center;width: 80px;padding-left: 25px;">保额</div>
+        <div style="text-align:center;width: 80px;padding-left: 30px;padding-right: 10px;">保费</div>
+        <div style="text-align:center;width: 60px;padding-left: 15px;padding-right: 10px;">保险期间</div>
+        <div style="text-align:center;width: 60px;padding-left: 10px;">缴费期间</div>
+        <div style="text-align:center;width: 60px;padding-left: 13px;">首年保费</div>
+      </div>
+
+      <div ng-if="plans!=null">
+        <div class="row " ng-repeat="item in plans">
+          <div class="row item">
+            <div class="col col-18" style="position: relative" ng-model="item.name">
+              <label class="item" style="border-width: 0px;">
+                {{item.name}}
+              </label>
+            </div>
+
+           <div class="col col-18" style="position: relative" ng-model="item.coverage">
+              <label class="item" style="border-width: 0px;">
+                {{item.coverage}}
+              </label>
+            </div>
+
+            <div class="col col-18" style="position: relative" ng-model="item.fee">
+              <label class="item" style="border-width: 0px;">
+                {{item.fee}}
+              </label>
+            </div>
+
+            <div class="col col-18" style="position: relative">
+              <label class="item" style="border-width: 0px;">
+                {{item.insPeriod}}
+              </label>
+            </div>
+
+            <div class="col col-18" style="position: relative">
+              <label class="item" style="border-width: 0px;">
+                {{item.payPeriod}}
+              </label>
+            </div>
+
+            <div class="col col-18" style="position: relative">
+              <label class="item" style="border-width: 0px;">
+                {{item.firstFee}}
+              </label>
+            </div>
+
+          </div>
+         </div>
+        </div>
+
+
+
+      <div class="item " >
+        <lable>合计:</lable>
+        <span>{{sum}}</span>
+      </div>
+
+
+    </div>
+
+    <button class="button button-positive" style="float:right" ng-click="dosomthing()">
+      确认投保
+    </button>
+
+
+  </ion-content >
+</ion-view>
