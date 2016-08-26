@@ -53,7 +53,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       });
 
       $stateProvider.state('confirmInsurance',{
-        url:'/confirmInsurance',
+        url:'/confirmInsurance/:sum/:plans',
         controller:'confirmInsuranceController',
         templateUrl:'views/confirmInsurance/confirmInsurance.html'
 
@@ -65,6 +65,17 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         'price-tab':{
           controller:'priceController',
           templateUrl:'views/price/price.html'
+        }
+      }
+    });
+
+    /*秦东 寿险计划*/
+    $stateProvider.state('tabs.life_plan',{
+      url:'/life_plan',
+      views:{
+        'life-plan-tab':{
+          controller:'lifePlanController',
+          templateUrl:'views/life_plan/life_plan.html'
         }
       }
     });
@@ -94,13 +105,11 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/insurance/insurance.html'
     });
 
-    /**
-     * 报价列表
-     */
+
     $stateProvider.state('life_insurance',{
-        url:'/life_insurance/:arr',
-        controller: 'lifeInsuranceController',
-        templateUrl:'views/life_insurance/life_insurance.html'
+      url:'/life_insurance/:arr',
+      controller:'lifeInsuranceController',
+      templateUrl:'views/life_insurance/life_insurance.html'
     });
 
     $stateProvider.state('insurance_detail',{
@@ -149,8 +158,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/directive/directive.html'
     });
 
-      $urlRouterProvider.otherwise('/login');
-
+    $urlRouterProvider.otherwise('/tabs/life_plan');
     })
 
 

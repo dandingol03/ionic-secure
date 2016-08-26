@@ -2,36 +2,16 @@
  * Created by apple-2 on 16/8/25.
  */
 angular.module('app')
-  .controller('confirmInsuranceController', function ($scope,$http,$state,$ionicModal) {
+  .controller('confirmInsuranceController', function ($scope,$http,$state,$stateParams) {
 
-    $scope.plans=[
+    $scope.plans=$stateParams.plans;
+    if(Object.prototype.toString.call($scope.plans)=='[object String]')
+      $scope.plans = JSON.parse($scope.plans);
+    $scope.sum=$stateParams.sum;
 
-      {name:"AAAAAAA",coverage:"2000",fee:"200",insPeriod:"终身",payPeriod:"10",firstFee:"200"},
-      {name:"BBBBBBB",coverage:"2000",fee:"200",insPeriod:"终身",payPeriod:"10",firstFee:"200"},
-      {name:"CCCCCCC",coverage:"2000",fee:"200",insPeriod:"终身",payPeriod:"10",firstFee:"200"},
-    ];
-
-
-
-
-    $scope.sum="";
     $scope.dosomthing = function() {
-      $state.go();
+      //提交选中的项目
+      $state.go('life_insurance',{});
     }
-
-
-      $http({
-        method:'get',
-        url:'/proxy/node/insurance/my_pageinfo'
-      }).success(function(response) {
-        var infos=response.infos;
-        if(Object.prototype.toString.call(infos)!='[object Array]')
-          infos=JSON.parse(infos);
-        $scope.infos=infos;
-      }).error(function(err){
-        console.error(err.toString());
-      })
-
-
 
   });
