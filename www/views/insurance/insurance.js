@@ -8,9 +8,19 @@ angular.module('app')
     .controller('insuranceController',function($scope,$state,$ionicLoading,$http){
 
 
-        $scope.security_safe=new Object();
-        $scope.commercial_safe=new Object();
-        $scope.plan=new Object();
+        $scope.submit=function(){
+          $http({
+            method:"get",
+            url:"/proxy/node/lifeInsurance"
+
+          }).success(function(response){
+
+            $state.go('life_insurance', {data: response});
+          }).error(function(err){
+            console.error(err.toString());
+          });
+        };
+
 
     })
 
