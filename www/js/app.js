@@ -149,12 +149,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/directive/directive.html'
     });
 
-
-<<<<<<< HEAD
       $urlRouterProvider.otherwise('/login');
-=======
-      $urlRouterProvider.otherwise('/confirmInsurance');
->>>>>>> 9ac9e90174baa642423d45aedd877eaee409e1d2
 
     })
 

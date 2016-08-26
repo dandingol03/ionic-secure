@@ -10,26 +10,7 @@ angular.module('app')
       $scope.user={};
 
 
-    $scope.get_preference=function(){
-      $cordovaPreferences.fetch('name')
-        .success(function(value) {
-          alert("Success: " + value);
-        })
-        .error(function(error) {
-          alert("Error: " + error);
-        });
-    };
 
-    $scope.set_preference=function(){
-      $cordovaPreferences.store('name', 'danding')
-        .success(function(value) {
-          alert("Success: " + value);
-        })
-        .error(function(error) {
-          alert("Error: " + error);
-        });
-
-    }
 
       $scope.login = function(){
           $http({
