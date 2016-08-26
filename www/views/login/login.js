@@ -23,43 +23,42 @@ angular.module('app')
       username: '123456789',
       password: "1234",
     };
+
     $http({
-      method:"get",
-      url: "http://202.194.14.106:3000/securityCode?cellphone=123456789",
+      method:"POST",
+      url: "/proxy/liyou/securityCode?cellphone=123456789",
     }).success(function(response){
-       console.log('...');
+       console.log('securityCode');
     }).error(function(err){
      console.log(err);
     });
 
     $scope.login = function(){
       $http({
-                method:"post",
+                method:"POST",
                 params:{
+                  grant_type: 'password',
+                  username:$scope.user.username,
+                  password:$scope.user.password,
+                },
+                data:{
                     grant_type: 'password',
                     username:$scope.user.username,
-                    password:$scope.user.password
+                    password:$scope.user.password,
                 },
-                url:"http://202.194.14.106:3000/login",
+                url:"/proxy/liyou/login",
                headers: {
                 'Authorization': "Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW",
                 'Content-Type': 'application/x-www-form-urlencoded'
-               },
+               }
 
             }).success(function(response){
-                var re=response.re;
-              if(re==1)
-              {
+              console.log('login');
                 $state.go('tabs.coverage');
-              }else{
 
-              }
             }).error(function(err){
-                alert(err.toSource());
-                $ionicLoading.show({
-                    template:'connect the server timeout',
-                    duration:'2000'
-                });
+        console.log('error');
+
             })
 
 
