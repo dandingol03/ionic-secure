@@ -9,16 +9,34 @@ angular.module('app')
 
     $scope.user=new Object();
 
+    var inputData = {
+      grant_type: 'password',
+      username: '123456789',
+      password: "1234",
+    };
+    $http({
+      method:"get",
+      url: "http://202.194.14.106:3000/securityCode?cellphone=123456789",
+    }).success(function(response){
+       console.log('...');
+    }).error(function(err){
+     console.log(err);
+    });
 
-        $scope.login = function(){
-            $http({
+    $scope.login = function(){
+      $http({
                 method:"post",
                 params:{
                     grant_type: 'password',
-                    loginName:$scope.user.username,
+                    username:$scope.user.username,
                     password:$scope.user.password
                 },
-                url:"http://211.87.225.197:3000/login"
+                url:"http://202.194.14.106:3000/login",
+               headers: {
+                'Authorization': "Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW",
+                'Content-Type': 'application/x-www-form-urlencoded'
+               },
+
             }).success(function(response){
                 var re=response.re;
               if(re==1)

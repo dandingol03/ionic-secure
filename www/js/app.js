@@ -66,6 +66,12 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
 
       });
 
+      $stateProvider.state('confirmInsurance',{
+        url:'/confirmInsurance',
+        controller:'confirmInsuranceController',
+        templateUrl:'views/confirmInsurance/confirmInsurance.html'
+
+      });
 
     $stateProvider.state('tabs.price',{
       url:'/price/:prices',
@@ -164,7 +170,8 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
     });
 
 
-      $urlRouterProvider.otherwise('/login');
+
+      $urlRouterProvider.otherwise('/life04');
 
     })
 
