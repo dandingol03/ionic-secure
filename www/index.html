@@ -36,11 +36,71 @@
   <script src="views/directive/directive.js"></script>
   <script src="views/price/price.js"></script>
   <script src="views/price_detail/price_detail.js"></script>
+  <script src="views/life_plan/life_plan.js"></script>
   <script src="views/my/my.js"></script>
   <script src="views/personInformation/personInformation.js"></script>
 
   <script src="views/Life04/life04.js"></script>
   <script src="views/confirmInsurance/confirmInsurance.js"></script>
+  <script>
+    var onDeviceReady = function() {
+      console.log("JPushPlugin:Device ready!");
+      initiateUI();
+    };
+
+    var getRegistrationID = function() {
+      window.plugins.jPushPlugin.getRegistrationID(onGetRegistrationID);
+    };
+
+    var onGetRegistrationID = function(data) {
+      try {
+        console.log("JPushPlugin:registrationID is " + data);
+
+        if (data.length == 0) {
+          var t1 = window.setTimeout(getRegistrationID, 1000);
+        }
+      } catch (exception) {
+        console.log(exception);
+      }
+    };
+
+    var initiateUI = function() {
+      try {
+        window.plugins.jPushPlugin.init();
+        getRegistrationID();
+        window.plugins.jPushPlugin.setDebugMode(true);
+        window.plugins.jPushPlugin.setStatisticsOpen(true);
+      } catch (exception) {
+        console.log(exception);
+      }
+
+      $("#setTagWithAliasButton").click(function(ev) {
+        try {
+          var tag1 = $("#tagText1").attr("value");
+          var tag2 = $("#tagText2").attr("value");
+          var tag3 = $("#tagText3").attr("value");
+          var alias = $("#aliasText").attr("value");
+          var tags = [];
+
+          if (tag1 != "") {
+            tags.push(tag1);
+          }
+          if (tag2 != "") {
+            tags.push(tag2);
+          }
+          if (tag3 != "") {
+            tags.push(tag3);
+          }
+          window.plugins.jPushPlugin.setTagsWithAlias(tags, alias);
+        } catch (exception) {
+          console.log(exception);
+        }
+      })
+    };
+
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+  </script>
 
 </head>
 <body ng-app="app">

@@ -109,6 +109,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/insurance/insurance.html'
     });
 
+
     /**
      * 报价列表
      */
@@ -163,6 +164,12 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       controller: 'life04Controller',
       templateUrl:'views/life04/life04.html'
     });
+    $stateProvider.state('life_plan',{
+      url:'/life_plan',
+      controller:'lifePlanController',
+      templateUrl:'views/life_plan/life_plan.html'
+    });
+
     $stateProvider.state('directive',{
         url:'/directive',
         controller: 'directiveController',
@@ -171,7 +178,10 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
 
 
 
+
       $urlRouterProvider.otherwise('/life04');
+      $urlRouterProvider.otherwise('/car_info');
+
 
     })
 

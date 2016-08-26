@@ -14,14 +14,14 @@
       <div class="item scroll-content ">
         <ul class="list">
           <li class="item item-thumbnail-right item-button">
-            <img src="">
+            <img  src="{{personIdCard.imageSrc}}">
             <h2>请上传身份证照片!</h2>
-            <a class="item-button button  icon ion-plus-circled" ng-click="addPicture()"></a>
+            <a class="item-button button  icon ion-plus-circled" ng-click="addPicture('personIdCard')"></a>
           </li>
           <li class="item item-thumbnail-right item-button">
-            <img src="">
+            <img src="{{driverCard.imageSrc}}">
             <h2>请上传驾驶证照片!</h2>
-            <a class="item-button button  icon ion-plus-circled" ng-click="addPicture()"></a>
+            <a class="item-button button  icon ion-plus-circled" ng-click="addPicture('driverCard')"></a>
           </li>
         </ul>
       </div>
@@ -30,13 +30,13 @@
             <div class="item item-input-inset">
                 <label class=" item-input" style="width: 50%">
                     <span class="input-label">车主姓名</span>
-                    <input type="text" ng-model="perName">
+                    <input type="text" ng-model="car.perName" >
                 </label>
             </div>
       <div class="item item-input-inset">
         <label class=" item-input" style="width: 50%">
           <span class="input-label">身份证号码</span>
-          <input type="text" ng-model="perIdCard">
+          <input type="text" ng-model="car.perIdCard">
         </label>
       </div>
 
@@ -65,7 +65,7 @@
       <div class="item item-input-inset">
         <label class=" item-input">
           <span class="input-label">发证日期</span>
-          <input id="date" ng-click= "datepick()"  type="text" style="width: 400px" placeholder="点击设置日期！" >
+          <input id="date" ng-click= "datepick()"  ng-model="car.issueDate" type="text" style="width: 400px" placeholder="点击设置日期！" >
 
         </label>
       </div>

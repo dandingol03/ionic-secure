@@ -8,6 +8,15 @@ angular.module('app')
     .controller('loginController',function($scope,$state,$ionicLoading,$http,$cordovaProgress){
 
     $scope.user=new Object();
+    $scope.get_preference=function(){
+      $cordovaPreferences.fetch('name')
+        .success(function(value) {
+          alert("Success: " + value);
+        })
+        .error(function(error) {
+          alert("Error: " + error);
+        });
+    };
 
     var inputData = {
       grant_type: 'password',

@@ -62,6 +62,11 @@ angular.module('app')
       });
     }
 
+
+
+
+
+
     $scope.actionSheet_show = function() {
 
       // Show the action sheet
@@ -79,7 +84,7 @@ angular.module('app')
           { text: '<b>Share</b> This' },
           { text: 'Move' }
         ],
-        titleText: 'Modify your album',
+        titleText: 'select your favourite project ',
         cancelText: 'Cancel',
         cancel: function() {
           // add cancel code..
