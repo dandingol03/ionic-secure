@@ -6,8 +6,9 @@
 
   <ion-content scroll="true" lazy-scroll>
     <ion-list>
-      <ion-item ng-repeat="item in items" href="#/personInformation">
-        {{item.title}}
+      <ion-item ng-repeat="item in infos" class="item item-icon-right" href="{{item.href}}">
+        <span>{{item.title}}</span>
+        <i class="icon ion-chevron-right"></i>
       </ion-item>
     </ion-list>
   </ion-content>
