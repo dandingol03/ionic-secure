@@ -9,7 +9,7 @@ angular.module('app')
 
     $http({
        method:'get',
-        url:'/proxy/node/insurance/my_pageinfo'
+        url:'http://211.87.225.197:9030/insurance/my_pageinfo'
     }).success(function(response) {
       var infos=response.infos;
       if(Object.prototype.toString.call(infos)!='[object Array]')

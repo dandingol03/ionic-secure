@@ -1,0 +1,71 @@
+<ion-view  name="life_insurance-view" hide-back-button="false" >
+  <ion-nav-bar align-title="center" class="bar-positive">
+    <ion-nav-title>
+      <span> 车主与车辆信息</span>
+    </ion-nav-title>
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button icon ion-reply" ng-click="doSomething()" >
+      返回
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <div class="item scroll-content ">
+      <ul class="list">
+        <li class="item item-divider">
+          投保人证件信息
+        </li>
+        <li class="item item-thumbnail-right item-button">
+          <img src="">
+          <h2>请上传身份证照片!</h2>
+          <a class="item-button button  icon ion-plus-circled" ng-click="addPicture()"></a>
+        </li>
+        <li class="item item-thumbnail-right item-button">
+          <img src="">
+          <h2>请上传银行卡照片!</h2>
+          <a class="item-button button  icon ion-plus-circled" ng-click="addPicture()"></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="item scroll-content ">
+      <ul class="list">
+        <li class="item item-divider">
+          被保险人证件信息
+        </li>
+        <li class="item item-thumbnail-right item-button">
+          <img src="">
+          <h2>请上传身份证照片!</h2>
+          <a class="item-button button  icon ion-plus-circled" ng-click="addPicture()"></a>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="item scroll-content ">
+      <ul class="list">
+        <li class="item item-divider">
+          受益人证件信息
+        </li>
+        <li class="item item-thumbnail-right item-button">
+          <img src="">
+          <h2>请上传身份证照片!</h2>
+          <a class="item-button button  icon ion-plus-circled" ng-click="addPicture()"></a>
+        </li>
+        <li class="item item-thumbnail-right item-button">
+          <img src="">
+          <h2>请上传银行卡照片!</h2>
+          <a class="item-button button  icon ion-plus-circled" ng-click="addPicture()"></a>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <button class="button button-block button-calm" ng-click="nextStep()">
+      下一步
+    </button>
+
+  </ion-content>
+</ion-view>

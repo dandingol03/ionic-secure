@@ -5,44 +5,66 @@
 
 
 angular.module('app')
-  .controller('carInfoController',function($scope,$http,$state,ionicDatePicker,$cordovaImagePicker,$ionicActionSheet,$ionicPopover){
+  .controller('carInfoController',function($scope,$http,$state,ionicDatePicker,$cordovaImagePicker,$cordovaPreferences,$ionicActionSheet,$ionicLoading,$cordovaCamera){
         $scope.car=new Object();
-        $scope.nextStep=function(){
 
-            $http({
-                method:"post",
-                params:{
-                    perName:$scope.perName,
-                    perIdCard:$scope.perIdCard,
-                    plateNum:$scope.car.plateNum,
-                    Model:$scope.car.model,
-                    VIN:$scope.car.VIN,
-                    engineNum:$scope.car.engineNum,
-                    registerDate:$scope.car.registerDate,
-                    inssueDate:$scope.car.inssueDate
-                },
-                url:"http://localhost:9030/get_render_page.do"
-            }).success(function(response){
-                var errorMsg =  response.errorMsg;
-                if(errorMsg !== null && errorMsg !== undefined && errorMsg !== ""){
-                    alert(errorMsg);
-                }else{
-                    var re = response.re;
-                    var arr=response.arr;
-                    $state.go("life_insurance",{arr:arr});
-                }
-            }).error(function(err){
-                alert(err.toSource());
-                $ionicLoading.show({
-                    template:'connect the server timeout',
-                    duration:'2000'
-                });
-            })
+        $scope.nextStep=function(){
+            $scope.get_preference('type');
+            //$http({
+            //    method:"post",
+            //    params:{
+            //      carInfo:
+            //      {
+            //        perName:$scope.car.perName,
+            //        perIdCard:$scope.car.perIdCard,
+            //        plateNum:$scope.car.plateNum,
+            //        Model:$scope.car.model,
+            //        VIN:$scope.car.VIN,
+            //        engineNum:$scope.car.engineNum,
+            //        registerDate:$scope.car.registerDate,
+            //        inssueDate:$scope.car.inssueDate
+            //      }
+            //    },
+            //    url:"/proxy/node/insurance/car_info_upload.do"
+            //}).success(function(response){
+            //  var re = response.re;
+            //
+            //}).error(function(err){
+            //    $ionicLoading.show({
+            //        template:'connect the server timeout',
+            //        duration:'2000'
+            //    });
+            //})
         }
       $scope.images_list = [];
       // "添加附件"Event
-      $scope.addPicture = function() {
-        var type = 'gallery';
+    $scope.personIdCard={};
+    $scope.driverCard={};
+
+
+    $scope.get_preference=function(a){
+      $cordovaPreferences.fetch(a)
+        .success(function(value) {
+          return value;
+        })
+        .error(function(error) {
+          alert("Error: " + error);
+        });
+    }
+
+    $scope.set_preference=function(name,val){
+      $cordovaPreferences.store(name,val)
+        .success(function(value) {
+          alert("Success: " + value);
+        })
+        .error(function(error) {
+          alert("Error: " + error);
+        });
+
+    }
+
+    $scope.addPicture = function(type) {
+
         $ionicActionSheet.show({
           buttons: [
             { text: '拍照' },
@@ -54,26 +76,38 @@ angular.module('app')
           },
           buttonClicked: function(index) {
             if(index == 0){
-              type = 'camera';
+              $scope.takePhoto=function(){
+                var options = {
+                  destinationType: Camera.DestinationType.FILE_URI,
+                  sourceType: 1,
+                  saveToPhotoAlbum: true
+                };
+
+              }
             }else if(index == 1){
-              type = 'gallery';
+              var options = {
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: 0,
+              };
             }
-            //Camera.getPicture(type)->根据选择的“选取图片”的方式进行选取
-             Camera.getPicture(type).then(
-              //返回一个imageURI，记录了照片的路径
-              function (imageURI) {
-                $scope.me.image = imageURI;
-                //更新页面上的照片
-                $scope.img = imageURI;
-                $scope.$apply();
-              },
-              function (err) {
-              });
+
+            $cordovaCamera.getPicture(options).then(function(imageURI) {
+              //$scope[type].imageSrc= imageURI;
+              $scope.set_preference('type',imageURI);
+
+            }, function(err) {
+              // error
+            });
             return true;
           }
         });
 
       }
+
+
+
+
+
 
 
      $scope.datepick = function(){

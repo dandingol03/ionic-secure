@@ -11,7 +11,7 @@ angular.module('app')
 
     $http({
       method:"get",
-      url:"/proxy/node/insurance/projecct_provide"
+      url:"http://211.87.225.197:9030/project_provide"
     }).success(function(response){
         var projects=response.projects;
         if(Object.prototype.toString.call(projects)!='[object Array]')
@@ -46,12 +46,16 @@ angular.module('app')
     $scope.upload_proj=function(){
       $http({
         method:"post",
-        url:"/proxy/node/insurance/project_upload",
+        url:"http://211.87.225.197:9030/insurance/project_upload",
         params:{
           proj_list:$scope.projects_take_part
         }
       }).success(function(response){
-
+        var prices=response.prices;
+        if(prices!==undefined&&prices!==null)
+        {
+          $state.go('tabs.price',{data:prices});
+        }else{}
 
       }).error(function(err){
         console.error(err.toString());
