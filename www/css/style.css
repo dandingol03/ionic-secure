@@ -1,1 +1,35 @@
 /* Empty. Add your own CSS if you like */
+.logo_div{
+    text-align: center;
+    margin-top: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+
+.login_page{
+  background:url(../img/2.jpg)no-repeat;
+  background-size:100% 100%;
+  text-align:center;
+  margin:0
+}
+.logo{
+  display:inline-block;
+  padding-top: 70px;
+  padding-bottom:50px;
+  position:relative;
+  z-index:1000
+}
+.login_page .scroll{
+  height:100%
+}
+.logo img{
+  width: 100px;
+}
+.log_form{
+  background:rgba(0,0,0,.6);
+  padding:10px;
+  position:absolute;
+  bottom:0;
+  width:100%
+}
