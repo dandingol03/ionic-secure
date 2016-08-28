@@ -5,36 +5,36 @@
 
 
 angular.module('app')
-  .controller('carInfoController',function($scope,$http,$state,ionicDatePicker,$cordovaImagePicker,$cordovaPreferences,$ionicActionSheet,$ionicLoading,$cordovaCamera){
+  .controller('carInfoController',function($scope,locals,$http,$state,ionicDatePicker,$cordovaImagePicker,$cordovaFileTransfer,$cordovaPreferences,$ionicActionSheet,$ionicLoading,$cordovaCamera){
         $scope.car=new Object();
 
         $scope.nextStep=function(){
-            $scope.get_preference('type');
-            //$http({
-            //    method:"post",
-            //    params:{
-            //      carInfo:
-            //      {
-            //        perName:$scope.car.perName,
-            //        perIdCard:$scope.car.perIdCard,
-            //        plateNum:$scope.car.plateNum,
-            //        Model:$scope.car.model,
-            //        VIN:$scope.car.VIN,
-            //        engineNum:$scope.car.engineNum,
-            //        registerDate:$scope.car.registerDate,
-            //        inssueDate:$scope.car.inssueDate
-            //      }
-            //    },
-            //    url:"/proxy/node/insurance/car_info_upload.do"
-            //}).success(function(response){
-            //  var re = response.re;
-            //
-            //}).error(function(err){
-            //    $ionicLoading.show({
-            //        template:'connect the server timeout',
-            //        duration:'2000'
-            //    });
-            //})
+
+            $http({
+                method:"post",
+                params:{
+                  carInfo:
+                  {
+                    perName:$scope.car.perName,
+                    perIdCard:$scope.car.perIdCard,
+                    plateNum:$scope.car.plateNum,
+                    Model:$scope.car.model,
+                    VIN:$scope.car.VIN,
+                    engineNum:$scope.car.engineNum,
+                    registerDate:$scope.car.registerDate,
+                    inssueDate:$scope.car.inssueDate
+                  }
+                },
+                url:"/proxy/node/insurance/car_info_upload.do"
+            }).success(function(response){
+              var re = response.re;
+
+            }).error(function(err){
+                $ionicLoading.show({
+                    template:'connect the server timeout',
+                    duration:'2000'
+                });
+            })
         }
       $scope.images_list = [];
       // "添加附件"Event
@@ -42,26 +42,27 @@ angular.module('app')
     $scope.driverCard={};
 
 
-    $scope.get_preference=function(a){
-      $cordovaPreferences.fetch(a)
-        .success(function(value) {
-          return value;
-        })
-        .error(function(error) {
-          alert("Error: " + error);
-        });
-    }
+    //$scope.get_preference=function(a){
+    //  $cordovaPreferences.fetch(a)
+    //    .success(function(value) {
+    //      return value;
+    //    })
+    //    .error(function(error) {
+    //      alert("Error: " + error);
+    //    });
+    //}
+    //
+    //$scope.set_preference=function(name,val){
+    //  $cordovaPreferences.store(name,val)
+    //    .success(function(value) {
+    //      alert("Success: " + value);
+    //    })
+    //    .error(function(error) {
+    //      alert("Error: " + error);
+    //    });
+    //
+    //}
 
-    $scope.set_preference=function(name,val){
-      $cordovaPreferences.store(name,val)
-        .success(function(value) {
-          alert("Success: " + value);
-        })
-        .error(function(error) {
-          alert("Error: " + error);
-        });
-
-    }
 
     $scope.addPicture = function(type) {
 
@@ -73,6 +74,7 @@ angular.module('app')
           titleText: '选择照片',
           cancelText: '取消',
           cancel: function() {
+            return true;
           },
           buttonClicked: function(index) {
             if(index == 0){
@@ -92,8 +94,10 @@ angular.module('app')
             }
 
             $cordovaCamera.getPicture(options).then(function(imageURI) {
-              //$scope[type].imageSrc= imageURI;
-              $scope.set_preference('type',imageURI);
+                $scope[type].imageSrc= imageURI;
+
+
+
 
             }, function(err) {
               // error
@@ -103,7 +107,30 @@ angular.module('app')
         });
 
       }
+    $scope.getAdress=function(val){
+      //document.getElementById('my').src=locals.get(val,'');
 
+    }
+    //$scope.Image = window.localStorage? localStorage.getItem(val): Cookie.read(val);
+//图片上传upImage（图片路径）
+//    var upImage = function (imageURI) {
+//      document.addEventListener('deviceready', function () {
+//        var url = "????";
+//        var options = {};
+//        $cordovaFileTransfer.upload(url, imageURI, options)
+//          .then(function (result) {
+//            alert(JSON.stringify(result.response));
+//            alert("success");
+//            alert(result.message);
+//          }, function (err) {
+//            alert(JSON.stringify(err));
+//            alert(err.message);
+//            alert("fail");
+//          }, function (progress) {
+//            // constant progress updates
+//          });
+//
+//      }, false);
 
 
 
@@ -143,5 +170,6 @@ angular.module('app')
 
           };
     })
+
 
 

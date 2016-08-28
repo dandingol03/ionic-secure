@@ -11,43 +11,17 @@
       </button>
   </ion-nav-buttons>
 
-  <ion-content class="padding">
-
-
-<table class="table1">
-  <thead>
-  <tr>
-    <th></th>
-    <th scope="col" abbr="Starter">名称</th>
-    <th scope="col" abbr="Medium">保额</th>
-    <th scope="col" abbr="Business">保险期间</th>
-    <th scope="col" abbr="Duluxe">缴费期间</th>
-    <th scope="col" >首年保费</th>
-    <th scope="col" >详细</th>
-    <th scope="col">点选</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr ng-repeat="lifePlan in lifePlans">
-    <th scope="row">{{$index+1}}</th>
-    <td>{{lifePlan.name}}</td>
-    <td>{{lifePlan.insuranceCost}}</td>
-    <td>{{lifePlan.insuranceTime}}</td>
-    <td>{{lifePlan.paymentTime}}</td>
-    <td>{{lifePlan.firstCost}}</td>
-    <td><a href="">详情</a> </td>
-    <td  class="checkbox">
-      <input type="checkbox">
-    </td>
-  </tr>
-  </tbody>
-</table>
-  </ion-content>
-  <div class="bar bar-footer bar-positive">
-    <div class="button-bar">
-      <a class="button   icon ion-edit" ng-click="">修改</a>
-      <a class="button  icon ion-android-checkmark-circle" ng-click="">提交</a>
+  <ion-content class="scroll-content ionic-scroll has-header">
+    <div class="scroll">
+      <div class="padding-5">
+        <div class="" >
+          
+        </div>
+      </div>
     </div>
-  </div>
+  </ion-content>
+
+
+
 
 </ion-view>
