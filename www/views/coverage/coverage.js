@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('coverageController',function($scope,$state,$http,$ionicActionSheet,$timeout){
+  .controller('coverageController',function($scope,$state,$http,$ionicActionSheet,$ionicHistory){
 
 
     $scope.coverages=[];
@@ -9,9 +9,13 @@ angular.module('app')
 
     $scope.projects_take_part={};
 
+    $scope.go_back=function(){
+      window.history.back();
+    }
+
     $http({
       method:"get",
-      url:"/proxy/node/insurance/projecct_provide"
+      url:"/proxy/node/insurance/project_provide"
     }).success(function(response){
         var projects=response.projects;
         if(Object.prototype.toString.call(projects)!='[object Array]')
@@ -22,14 +26,14 @@ angular.module('app')
         $scope.coverages=projects;
 
     }).error(function(err){
-      console.error(err.toString());
+      if(err!==undefined&&err!==null)
+        console.error(err.toString());
     });
 
 
     $scope.project_select=function(proj) {
       if(proj.selected==true)//勾选项目
       {
-
         var fee=null;
         if(proj.selectedFee!==undefined&&proj.selectedFee!==null)
             fee=proj.selectedFee;
@@ -51,7 +55,11 @@ angular.module('app')
           proj_list:$scope.projects_take_part
         }
       }).success(function(response){
-
+        var prices=response.prices;
+        if(prices!==undefined&&prices!==null)
+        {
+          $state.go('tabs.price',{data:prices});
+        }else{}
 
       }).error(function(err){
         console.error(err.toString());

@@ -2,11 +2,21 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
     .config(function(baiduMapApiProvider) {
         baiduMapApiProvider.version('2.0').accessKey('2me89doy9NE2HgG7FmTXa0XZsedThXDD');
     })
-    .run(function($ionicPlatform) {
-      $ionicPlatform.ready(function() {
+
+    .run(function($ionicPlatform,$location,$rootScope,$ionicHistory,$state) {
+
+    $rootScope.myGoBack = function() {
+      //$rootScope.$ionicGoBack();
+      var backView = $ionicHistory.backView();
+      backView.go();
+    };
+
+    $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       });
-    })
+
+  })
+
   .config(function (ionicDatePickerProvider) {
     var datePickerObj = {
       inputDate: new Date(),
@@ -26,7 +36,23 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
     };
     ionicDatePickerProvider.configDatePicker(datePickerObj);
   })
-    .config(function($stateProvider,$urlRouterProvider){
+
+    .config(function($stateProvider,$urlRouterProvider,$ionicConfigProvider){
+
+    $ionicConfigProvider.platform.ios.tabs.style('standard');
+    $ionicConfigProvider.platform.ios.tabs.position('bottom');
+    $ionicConfigProvider.platform.android.tabs.style('standard');
+    $ionicConfigProvider.platform.android.tabs.position('standard');
+
+    $ionicConfigProvider.platform.ios.navBar.alignTitle('center');
+    $ionicConfigProvider.platform.android.navBar.alignTitle('left');
+
+    $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');
+    $ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-android-arrow-back');
+
+    $ionicConfigProvider.platform.ios.views.transition('ios');
+    $ionicConfigProvider.platform.android.views.transition('android');
+
 
     $stateProvider.state('tabs',{
       url:'/tabs',
@@ -45,6 +71,38 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         }
       });
 
+      $stateProvider.state('tabs.dashboard',{
+        url:'/dashboard',
+        views:{
+          'dashboard-tab':{
+            controller:'dashboardController',
+            templateUrl:'views/dashboard/dashboard.html'
+          }
+        }
+      });
+
+    /**
+     *寿险险列表
+     */
+      $stateProvider.state('coverage',{
+        url:'/coverage',
+        controller:'coverageController',
+        templateUrl:'views/coverage/coverage_backup.html'
+      });
+
+    /**
+     * 寿险列表详情
+     */
+    $stateProvider.state('motor_insurance_detail',{
+        url:'/motor_insurance_detail:motor',
+        controller:'motorDetailController',
+        templateUrl:'views/motor_insurance_detail/motor_insurance_detail.html'
+    });
+
+
+
+
+
       $stateProvider.state('personInformation',{
         url:'/personInformation',
         controller:'personInformationController',
@@ -60,7 +118,8 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       });
 
     $stateProvider.state('tabs.price',{
-      url:'/price',
+      url:'/price/:prices',
+      params:{"data":null},
       views:{
         'price-tab':{
           controller:'priceController',
@@ -106,12 +165,6 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
     });
 
 
-    $stateProvider.state('life_insurance',{
-      url:'/life_insurance/:arr',
-      controller:'lifeInsuranceController',
-      templateUrl:'views/life_insurance/life_insurance.html'
-    });
-
     $stateProvider.state('insurance_detail',{
         url:'/insurance_detail/:company_name',
         controller: 'lifeInsuranceDetailController',
@@ -130,16 +183,6 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/location/location.html'
     });
 
-    $stateProvider.state('tabs.coverage',{
-      url:'/coverage',
-      views:{
-        'coverage-tab':{
-          controller:'coverageController',
-          templateUrl:'views/coverage/coverage.html'
-        }
-      }
-    });
-
     $stateProvider.state('map',{
         url:'/map',
         controller: 'mapController',
@@ -152,14 +195,29 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/car_info/car_info.html'
     });
 
+    $stateProvider.state('life04',{
+      url:'/life04',
+      controller: 'life04Controller',
+      templateUrl:'views/life04/life04.html'
+    });
+
+    $stateProvider.state('life_plan',{
+      url:'/life_plan',
+      controller:'lifePlanController',
+      templateUrl:'views/life_plan/life_plan.html'
+    });
+
+
     $stateProvider.state('directive',{
         url:'/directive',
         controller: 'directiveController',
         templateUrl:'views/directive/directive.html'
     });
 
-    $urlRouterProvider.otherwise('/tabs/life_plan');
+    $urlRouterProvider.otherwise('/tabs/dashboard');
+
     })
+
 
 
 

@@ -16,7 +16,8 @@ angular.module('app')
         infos=JSON.parse(infos);
         $scope.infos=infos;
     }).error(function(err){
-      console.error(err.toString());
+      if(err!==undefined&&err!==null)
+        console.error(err.toString());
     });
 
 
