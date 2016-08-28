@@ -1,76 +1,64 @@
 <ion-view view-title="确认投保" hide-back-button="true">
 
-  <ion-content class="padding">
 
+  <ion-content class="padding" scroll="false">
 
-    <div class="list">
+    <div class="row">
+      <ion-slide-box does-continue="false" show-pager="true" >
+        <ion-slide ng-repeat="item in plans" >
 
-      <div class="row item-divider" style="font-size:17px;height:50px">
-        <div style="text-align:center;width:100px">名称</div>
-        <div style="text-align:center;width: 80px;padding-left: 25px;">保额</div>
-        <div style="text-align:center;width: 80px;padding-left: 30px;padding-right: 10px;">保费</div>
-        <div style="text-align:center;width: 60px;padding-left: 15px;padding-right: 10px;">保险期间</div>
-        <div style="text-align:center;width: 60px;padding-left: 10px;">缴费期间</div>
-        <div style="text-align:center;width: 60px;padding-left: 13px;">首年保费</div>
-      </div>
-
-      <div ng-if="plans!=null">
-        <div class="row " ng-repeat="item in plans">
-          <div class="row item">
-            <div class="col col-18" style="position: relative" ng-model="item.name">
-              <label class="item" style="border-width: 0px;">
-                {{item.name}}
-              </label>
+          <div class="prop_over">
+            <h3>{{item.name}}</h3>
+            <div class="list" style="margin-bottom:40px;padding:2px;">
+              <ion-item >
+                <div class="row">
+                  <div class="col"><p style="font-size: 16px;"><i class="ion-record" style="padding-right: 10px;font-size: 80%"></i>保额:</p></div>
+                  <div class="col"><p style="font-size: 16px;">{{item.coverage}}</p></div>
+                </div>
+              </ion-item>
+              <ion-item >
+                <div class="row">
+                  <div class="col"><p style="font-size: 16px;"><i class="ion-record" style="padding-right: 10px;font-size: 80%"></i>保费:</p></div>
+                  <div class="col"><p style="font-size: 16px;">{{item.fee}}</p></div>
+                </div>
+              </ion-item>
+              <ion-item >
+                <div class="row">
+                  <div class="col"><p style="font-size: 16px;"><i class="ion-record" style="padding-right: 10px;font-size: 80%"></i>保险期间:</p></div>
+                  <div class="col"><p style="font-size: 16px;">{{item.insPeriod}}</p></div>
+                </div>
+              </ion-item>
+              <ion-item >
+                <div class="row">
+                  <div class="col"><p style="font-size: 16px;"><i class="ion-record" style="padding-right: 10px;font-size: 80%"></i>缴费期间:</p></div>
+                  <div class="col"><p style="font-size: 16px;">{{item.payPeriod}}</p></div>
+                </div>
+              </ion-item>
+              <ion-item >
+                <div class="row">
+                  <div class="col"><p style="font-size: 16px;"><i class="ion-record" style="padding-right: 10px;font-size: 80%"></i>首年保费:</p></div>
+                  <div class="col"><p style="font-size: 16px;">{{item.firstFee}}</p></div>
+                </div>
+              </ion-item>
             </div>
-
-           <div class="col col-18" style="position: relative" ng-model="item.coverage">
-              <label class="item" style="border-width: 0px;">
-                {{item.coverage}}
-              </label>
-            </div>
-
-            <div class="col col-18" style="position: relative" ng-model="item.fee">
-              <label class="item" style="border-width: 0px;">
-                {{item.fee}}
-              </label>
-            </div>
-
-            <div class="col col-18" style="position: relative">
-              <label class="item" style="border-width: 0px;">
-                {{item.insPeriod}}
-              </label>
-            </div>
-
-            <div class="col col-18" style="position: relative">
-              <label class="item" style="border-width: 0px;">
-                {{item.payPeriod}}
-              </label>
-            </div>
-
-            <div class="col col-18" style="position: relative">
-              <label class="item" style="border-width: 0px;">
-                {{item.firstFee}}
-              </label>
-            </div>
-
           </div>
-         </div>
-        </div>
 
+        </ion-slide>
 
-
-      <div class="item " >
-        <lable>合计:</lable>
-        <span>{{sum}}</span>
-      </div>
-
-
+      </ion-slide-box>
     </div>
 
-    <button class="button button-positive" style="float:right" ng-click="dosomthing()">
-      确认投保
+    <div class="row" style="background-color:whitesmoke;">
+      <span style="padding: 10px;font-size: large;">
+        合计:
+      </span>
+      <span>{{sum}}</span>
+    </div>
+
+    <button class="button button-block button-positive">
+     确认投保
     </button>
 
-
   </ion-content >
+
 </ion-view>

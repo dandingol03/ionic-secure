@@ -73,6 +73,14 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
 
       });
 
+        $stateProvider.state('confirmIns',{
+            url:'/confirmIns',
+            controller:'confirmInsController',
+            templateUrl:'views/confirmIns/confirmIns.html'
+
+        });
+
+
     $stateProvider.state('tabs.price',{
       url:'/price/:prices',
       params:{"data":null},
@@ -95,6 +103,19 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         controller: 'loginController',
         templateUrl:'views/login/login.html'
     });
+
+      $stateProvider.state('loginn',{
+        url:'/loginn',
+        controller: 'loginnController',
+        templateUrl:'views/loginn/loginn.html'
+      });
+        $stateProvider.state('loginnn',{
+            url:'/loginnn',
+            controller: 'loginnnController',
+            templateUrl:'views/loginnn/loginnn.html'
+        });
+
+
 
     $stateProvider.state('main',{
         url:'/main',
@@ -177,10 +198,13 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
     });
 
 
+      $urlRouterProvider.otherwise('/loginn' );
+
 
 
       $urlRouterProvider.otherwise('/life04');
       $urlRouterProvider.otherwise('/car_info');
+
 
 
     })
