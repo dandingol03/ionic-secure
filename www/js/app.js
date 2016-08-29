@@ -3,13 +3,38 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         baiduMapApiProvider.version('2.0').accessKey('2me89doy9NE2HgG7FmTXa0XZsedThXDD');
     })
 
-    .run(function($ionicPlatform,$location,$rootScope,$ionicHistory,$state) {
+    .run(function($ionicPlatform,$location,$rootScope,$ionicHistory,$state,$ionicModal,$timeout) {
 
     $rootScope.myGoBack = function() {
       //$rootScope.$ionicGoBack();
       var backView = $ionicHistory.backView();
       backView.go();
     };
+
+    /*************************************welcome_msg.html******************/
+    $ionicModal.fromTemplateUrl('views/modal/welcome.html',function(modal){
+      $rootScope.welcome=modal;
+    }, {
+      scope: $rootScope,
+      animation: 'slide-in-up'
+    });
+
+    $rootScope.openwelcome= function(){
+      $timeout(function(){
+        $rootScope.welcome.show();
+      },100);
+    };
+
+    $rootScope.closewelcome= function() {
+      $rootScope.welcome.hide();
+    };
+    $rootScope.$on('$destroy', function() {
+      $rootScope.welcome.remove();
+    });
+    $rootScope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    /*************************************welcome_msg.html******************/
 
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -98,9 +123,6 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         controller:'motorDetailController',
         templateUrl:'views/motor_insurance_detail/motor_insurance_detail.html'
     });
-
-
-
 
 
       $stateProvider.state('personInformation',{
@@ -226,9 +248,6 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
 
     })
 
-
-
-
     .factory('BaiduMapService', function($q, baiduMapApi) {
         return {
             getLocalCity: function() {
@@ -259,7 +278,6 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
             { company: 'CNY', date: '2015-07-01', detail: 'it is a big deal'}
         ];
     })
-
 
     .controller('LeftMenuController',function($scope){
 
