@@ -110,7 +110,7 @@
 .det_content {
   width: 85%;
   margin: 0 auto;
-  height: 70%;
+  height: 80%;
   top: 10%;
   background: #fff;
 }
@@ -317,6 +317,7 @@ table.table1{
 .table1 tbody td input{
   display: run-in;
 }
+
 
 .detail_modal.modal {
   top: 60px;
@@ -642,6 +643,7 @@ table.table1{
 .table1 tbody td input{
   display: run-in;
 }
+
 
 .wel_modal.modal {
   background: #ff5757;
