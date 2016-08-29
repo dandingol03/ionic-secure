@@ -159,19 +159,6 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/login/login.html'
     });
 
-      $stateProvider.state('loginn',{
-        url:'/loginn',
-        controller: 'loginnController',
-        templateUrl:'views/loginn/loginn.html'
-      });
-        $stateProvider.state('loginnn',{
-            url:'/loginnn',
-            controller: 'loginnnController',
-            templateUrl:'views/loginnn/loginnn.html'
-        });
-
-
-
     $stateProvider.state('main',{
         url:'/main',
         controller: 'mainController',
