@@ -10,22 +10,15 @@ angular.module('app')
       {name:'新华保险公司',selected:''}
     ];
 
-    $rootScope.car_insurance={type:'',company:{},coverage:[],fee:'',spectum:'',selected:''};
-    $rootScope.company={name:'',selected:''}
+    $scope.selected=[];
 
 
 
+    $scope.car_insurance= {};
 
-
-
-
-
-
-
-
-
-
-
+    $scope.apply=function () {
+      $rootScope. car_insurance=$scope.car_insurance;
+    }
 
     $scope.goto=function(url) {
       $location.path(url);
@@ -72,9 +65,7 @@ angular.module('app')
       var projects=response.projects;
       if(Object.prototype.toString.call(projects)!='[object Array]')
         projects=JSON.parse(projects);
-      projects.map(function(project,i) {
-        project.selectedFee=project.fee[0];
-      });
+
       $scope.coverages=projects;
 
     }).error(function(err){
@@ -82,21 +73,16 @@ angular.module('app')
         console.error(err.toString());
     });
 
+    $scope.fee_change=function () {
+        var coverages=$scope.coverages;
+        console.log('...');
+    }
 
+
+    //flag==true代表选中的
     $scope.project_select=function(proj) {
-      if(proj.selected==true)//勾选项目
-      {
-        var fee=null;
-        if(proj.selectedFee!==undefined&&proj.selectedFee!==null)
-          fee=proj.selectedFee;
-        else
-          fee=proj.fee;
-        $scope.projects_take_part[proj.name]={fee:fee};
-      }else//踢除项目
-      {
-        delete $scope.projects_take_part[proj.name];
-      }
-
+      var coverages=$scope.coverages;
+      console.log('...');
     }
 
     $scope.upload_proj=function(){
