@@ -13,38 +13,9 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         backView.go();
       }
 
-    .run(function($ionicPlatform,$location,$rootScope,$ionicHistory,$state,$ionicModal,$timeout) {
+   //s .run(function($ionicPlatform,$location,$rootScope,$ionicHistory,$state,$ionicModal,$timeout) {
 
 
-
-
-
-      $ionicPlatform.ready(function() {
-
-    /*************************************welcome_msg.html******************/
-    $ionicModal.fromTemplateUrl('views/modal/welcome.html',function(modal){
-      $rootScope.welcome=modal;
-    }, {
-      scope: $rootScope,
-      animation: 'slide-in-up'
-    });
-
-    $rootScope.openwelcome= function(){
-      $timeout(function(){
-        $rootScope.welcome.show();
-      },100);
-    };
-
-    $rootScope.closewelcome= function() {
-      $rootScope.welcome.hide();
-    };
-    $rootScope.$on('$destroy', function() {
-      $rootScope.welcome.remove();
-    });
-    $rootScope.$on('modal.hidden', function() {
-      // Execute action
-    });
-    /*************************************welcome_msg.html******************/
 
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
