@@ -104,17 +104,15 @@ angular.module('app')
             $cordovaCamera.getPicture(options).then(function(imageURI) {
                 $scope[type].imageSrc= imageURI;
 
-
-
-
             }, function(err) {
               // error
             });
             return true;
           }
         });
-
       }
+
+
     $scope.getAdress=function(val){
       //document.getElementById('my').src=locals.get(val,'');
 
@@ -170,11 +168,7 @@ angular.module('app')
               closeOnSelect: false,       //Optional
               templateType: 'popup'     //Optional
             };
-
-
               ionicDatePicker.openDatePicker(ipObj1);
-
-
 
           };
 
