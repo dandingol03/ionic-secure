@@ -1,0 +1,10 @@
+{
+  "name": "ionic-secure",
+  "app_id": "com.ionicframework.starter",
+   "proxies": [
+          {
+            "path":"/proxy/node",
+            "proxyUrl":"http://211.87.225.197:9030/"
+          }
+        ]
+}
