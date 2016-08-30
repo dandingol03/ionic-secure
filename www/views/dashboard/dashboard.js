@@ -1,9 +1,7 @@
 angular.module('app')
-<<<<<<< HEAD
-  .controller('dashboardController',function($scope,$state,$http, $location,$ionicModal,$rootScope){
-=======
+
   .controller('dashboardController',function($scope,$state,$http, $location,$rootScope,$ionicModal,$timeout,$cordovaCamera,ionicDatePicker){
->>>>>>> dc017352cfccc8b4d6a76a8ddc6a76df4ef4c17b
+
 
     $scope.goto=function(url){
       $location.path(url);
@@ -48,19 +46,14 @@ angular.module('app')
       $scope.bind_car_modal = modal;
     });
 
-    $scope.openModal= function(){
+    $scope.openCarModal= function(){
       $scope.bind_car_modal.show();
     };
 
-    $scope.closeModal= function() {
+    $scope.closeCarModal= function() {
       $scope.bind_car_modal.hide();
     };
-    $scope.$on('$destroy', function() {
-      $scope.bind_car_modal.remove();
-    });
-    $scope.$on('modal.hidden', function() {
-      // Execute action
-    });
+
     /*** bind car modal ***/
 
 
@@ -78,7 +71,7 @@ angular.module('app')
 
     $scope.bind_car=function(){
       $rootScope.car=$scope.car;
-
+      $scope.closeCarModal();
     }
 
     $scope.addPicture = function(type) {
@@ -121,7 +114,6 @@ angular.module('app')
       });
     }
 
-<<<<<<< HEAD
     $scope.life_insurance=
     {
       applicant:{},
@@ -149,14 +141,13 @@ angular.module('app')
       $scope.coverage_modal.hide();
     };
     $scope.$on('$destroy', function() {
+      $scope.bind_car_modal.remove();
       $scope.coverage_modal.remove();
     });
     $scope.$on('modal.hidden', function() {
       // Execute action
     });
     /** dym modal end **/
-=======
->>>>>>> dc017352cfccc8b4d6a76a8ddc6a76df4ef4c17b
 
 
   });
