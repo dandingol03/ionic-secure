@@ -3,19 +3,27 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         baiduMapApiProvider.version('2.0').accessKey('2me89doy9NE2HgG7FmTXa0XZsedThXDD');
     })
 
-    .run(function($ionicPlatform,$location,$rootScope,$ionicHistory,$state) {
 
-    $rootScope.myGoBack = function() {
-      //$rootScope.$ionicGoBack();
-      var backView = $ionicHistory.backView();
-      backView.go();
-    };
+    .run(function($ionicPlatform,$location,$rootScope,$ionicHistory,$state,$ionicModal) {
+
+
+      $rootScope.myGoBack = function() {
+        //$rootScope.$ionicGoBack();
+        var backView = $ionicHistory.backView();
+        backView.go();
+      }
+
+   //s .run(function($ionicPlatform,$location,$rootScope,$ionicHistory,$state,$ionicModal,$timeout) {
+
+
 
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       });
 
-  })
+    })
+
+
 
   .config(function (ionicDatePickerProvider) {
     var datePickerObj = {
@@ -82,13 +90,23 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       });
 
     /**
-     *寿险险列表
+     *车险险列表
      */
+      $stateProvider.state('motor_insurance',{
+        url:'/motor_insurance',
+        controller:'motorInsuranceController',
+        templateUrl:'views/motor_insurance/motor_insurance.html'
+      });
+
+      /**
+       *寿险险列表
+       */
       $stateProvider.state('coverage',{
         url:'/coverage',
         controller:'coverageController',
         templateUrl:'views/coverage/coverage_backup.html'
       });
+
 
     /**
      * 寿险列表详情
@@ -101,6 +119,14 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
 
 
 
+        /**
+         * 我的订单
+         */
+        $stateProvider.state('myOrder',{
+            url:'/myOrder',
+            controller:'myOrderController',
+            templateUrl:'views/myOrder/myOrder.html'
+        })
 
 
       $stateProvider.state('personInformation',{
@@ -158,19 +184,6 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         controller: 'loginController',
         templateUrl:'views/login/login.html'
     });
-
-      $stateProvider.state('loginn',{
-        url:'/loginn',
-        controller: 'loginnController',
-        templateUrl:'views/loginn/loginn.html'
-      });
-        $stateProvider.state('loginnn',{
-            url:'/loginnn',
-            controller: 'loginnnController',
-            templateUrl:'views/loginnn/loginnn.html'
-        });
-
-
 
     $stateProvider.state('main',{
         url:'/main',
@@ -235,12 +248,9 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/directive/directive.html'
     });
 
-    $urlRouterProvider.otherwise('/tabs/dashboard');
+    $urlRouterProvider.otherwise('/myOrder' );
 
     })
-
-
-
 
     .factory('BaiduMapService', function($q, baiduMapApi) {
         return {
@@ -272,7 +282,6 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
             { company: 'CNY', date: '2015-07-01', detail: 'it is a big deal'}
         ];
     })
-
 
     .controller('LeftMenuController',function($scope){
 

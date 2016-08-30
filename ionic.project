@@ -4,7 +4,9 @@
    "proxies": [
           {
             "path":"/proxy/node",
+
             "proxyUrl":"http://211.87.225.197:9030/"
+
           }
         ]
 }
