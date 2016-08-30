@@ -1,4 +1,4 @@
-angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datepicker'])
+angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datepicker','ionic-timepicker'])
     .config(function(baiduMapApiProvider) {
         baiduMapApiProvider.version('2.0').accessKey('2me89doy9NE2HgG7FmTXa0XZsedThXDD');
     })
