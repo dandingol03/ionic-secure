@@ -98,6 +98,20 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/motor_insurance/motor_insurance.html'
       });
 
+
+      /**
+       *车险方案列表
+       */
+      $stateProvider.state('motor_plan',{
+        url:'/motor_plan',
+        controller:'motorPlanController',
+        templateUrl:'views/motor_plan/motor_plan.html'
+      });
+
+
+
+
+
       /**
        *寿险险列表
        */
@@ -248,7 +262,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/directive/directive.html'
     });
 
-    $urlRouterProvider.otherwise('/myOrder' );
+    $urlRouterProvider.otherwise('/tabs/dashboard' );
 
     })
 

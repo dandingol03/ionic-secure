@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('motorInsuranceController',function($scope,$state,$http,$ionicActionSheet,$ionicHistory,$ionicModal){
+  .controller('motorInsuranceController',function($scope,$state,$http,$ionicActionSheet,$ionicHistory,$ionicModal,$location){
 
 
     $scope.coverages=[];
@@ -9,6 +9,11 @@ angular.module('app')
       {name:'平安保险公司'},
       {name:'新华保险公司'}
     ];
+
+    $scope.goto=function(url) {
+      $location.path(url);
+    }
+
 
     /** dym modal **/
     $ionicModal.fromTemplateUrl('views/motor_insurance/insurance_modal.html',function(modal){
@@ -150,4 +155,4 @@ angular.module('app')
 
     };
 
-  });
+  })

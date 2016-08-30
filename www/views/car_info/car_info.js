@@ -8,6 +8,14 @@ angular.module('app')
   .controller('carInfoController',function($scope,locals,$http,$state,ionicDatePicker,$cordovaImagePicker,$cordovaFileTransfer,$cordovaPreferences,$ionicActionSheet,$ionicLoading,$cordovaCamera){
         $scope.car=new Object();
 
+    $scope.goto=function(url){
+      $location.path(url);
+    }
+
+
+
+
+
         $scope.nextStep=function(){
 
             $http({

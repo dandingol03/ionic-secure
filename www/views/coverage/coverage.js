@@ -13,6 +13,9 @@ angular.module('app')
       window.history.back();
     }
 
+
+
+
     $http({
       method:"get",
       url:"/proxy/node/insurance/project_provide"
