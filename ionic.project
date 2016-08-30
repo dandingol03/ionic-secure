@@ -5,7 +5,7 @@
           {
             "path":"/proxy/node",
 
-            "proxyUrl":"http://211.87.225.197:9030/"
+            "proxyUrl":"http://192.168.1.110:9030/"
 
           }
         ]
