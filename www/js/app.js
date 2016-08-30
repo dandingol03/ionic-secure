@@ -157,13 +157,6 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
 
       });
 
-        $stateProvider.state('confirmIns',{
-            url:'/confirmIns',
-            controller:'confirmInsController',
-            templateUrl:'views/confirmIns/confirmIns.html'
-
-        });
-
 
     $stateProvider.state('tabs.price',{
       url:'/price/:prices',

@@ -19,17 +19,17 @@
             <div class="row" ng-repeat="order in orders" style="border:1px solid #eee;">
                 <div class="col col-12" style="position: relative;border: 1px solid #eee;border-left:0px;">
                     <div style="position: absolute;top:30%">
-                        <ion-checkbox style="margin-top: 30px;border: 0;padding-right:6px" ></ion-checkbox>
+                        <ion-checkbox style="margin-top: 30px;border: 0;padding-right:0px" ></ion-checkbox>
                     </div>
                 </div>
                 <div class="col col-18" style="text-align: center;position: relative;    border: 1px solid #eee;">
-                    <div style="position: absolute;top:45%">
+                    <div style="position: absolute;top:45%;left:30%">
                         {{order.type}}
                     </div>
                 </div>
                 <div class="col col-60" style="    border: 1px solid #eee;">
-                    <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
-                        <div ng-repeat="scheme in order.schemes" ng-if="order.type=='车险'">
+                    <div class="item item-text-wrap " style="border: 0;">
+                        <div ng-repeat="scheme in order.schemes" ng-if="order.type=='车险'" style="width:100%">
                             <h2 class="product-title" style="width:33%;display: inline-block">
                                 {{scheme.name}}
                             </h2>
