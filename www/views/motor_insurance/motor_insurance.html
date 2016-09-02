@@ -36,7 +36,7 @@
             <div class="col col-33">
               <label class="item item-input item-select" style="border-width: 0px;height:50px;"
                      ng-if="coverage.selectable">
-                <select style="max-width:100%;padding-left:0px;right:auto" ng-model="car_insurance.coverage" ng-options="fee for fee in coverage.fee">
+                <select ng-change="fee_change()" style="max-width:100%;padding-left:0px;right:auto" ng-model="coverage.fee" ng-options="fee for fee in coverage.fees">
                 </select>
               </label>
               <label class="item item-input" style="border-width: 0px;height:50px"
@@ -45,7 +45,7 @@
               </label>
             </div>
             <div class="col col-17" style="position: relative">
-              <ion-checkbox ng-model="car_insurance.selected" ng-change="project_select(coverage)" style="border-width: 0px;position: absolute;top:25%">
+              <ion-checkbox ng-model="coverage.flag" ng-change="project_select(coverage)" style="border-width: 0px;position: absolute;top:25%">
             </ion-checkbox>
             </div>
           </div>
@@ -54,8 +54,8 @@
 
 
     </ion-scroll>
-    <div class="bar bar-footer bar-balanced" >
-      <div class="title" ng-click="openModal()">提交信息</div>
+    <div class="bar bar-footer bar-balanced" ng-click="apply()" >
+      <div class="title">提交信息</div>
     </div>
   </ion-content>
 
