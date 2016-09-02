@@ -121,6 +121,7 @@ angular.module('app')
     };
 
     $scope.apply=function () {
+      $scope.life_insurance.state='pricing';//订单状态是报价中
       $rootScope. life_insurance=$scope.life_insurance;
       $scope.closeModal();
     }

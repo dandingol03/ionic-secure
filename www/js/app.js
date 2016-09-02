@@ -16,12 +16,16 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
    //s .run(function($ionicPlatform,$location,$rootScope,$ionicHistory,$state,$ionicModal,$timeout) {
 
 
-
-    $ionicPlatform.ready(function() {
+      $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       });
 
     })
+
+
+
+
+
 
 
 
@@ -90,7 +94,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       });
 
     /**
-     *车险险列表
+     *车险险种列表
      */
       $stateProvider.state('motor_insurance',{
         url:'/motor_insurance',
@@ -100,16 +104,22 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
 
 
       /**
-       *车险方案列表
+       *车险报价方案列表
        */
       $stateProvider.state('motor_plan',{
-        url:'/motor_plan',
+        url:'/motor_plan/:selected',
         controller:'motorPlanController',
         templateUrl:'views/motor_plan/motor_plan.html'
       });
 
-
-
+      /**
+       *车险报价方案详情
+       */
+      $stateProvider.state('motor_plan_detail',{
+        url:'/motor_plan_detail/:plan',
+        controller:'motorPlanDetailController',
+        templateUrl:'views/motor_plan/motor_plan_detail.html'
+      });
 
 
       /**
@@ -125,12 +135,11 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
     /**
      * 寿险列表详情
      */
-    $stateProvider.state('motor_insurance_detail',{
-        url:'/motor_insurance_detail:motor',
-        controller:'motorDetailController',
-        templateUrl:'views/motor_insurance_detail/motor_insurance_detail.html'
+    $stateProvider.state('life_insurance_detail',{
+        url:'/life_insurance_detail:motor',
+        controller:'lifeDetailController',
+        templateUrl:'views/life_insurance_detail/life_insurance_detail.html'
     });
-
 
 
         /**
@@ -255,7 +264,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/directive/directive.html'
     });
 
-    $urlRouterProvider.otherwise('/tabs/dashboard' );
+    $urlRouterProvider.otherwise('/dashboard');
 
     })
 

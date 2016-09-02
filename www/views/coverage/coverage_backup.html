@@ -1,4 +1,4 @@
-<ion-view view-title="寿险列表">
+<ion-view view-title="寿险已有产品列表">
   <ion-nav-bar class="bar-stable" align-title="center" >
     <ion-nav-buttons side="left">
       <button class="button button-icon button-clear bar_arr" ng-click="go_back()">
@@ -16,7 +16,7 @@
 
       <div class="list">
 
-        <div class="row" >
+        <div class="row" ng-repeat="item in life_insurances" ng-model="life_insurance.flag">
          <div class="col col-10">
            <div>
              <ion-checkbox style="margin-top: 30px;border: 0;" ></ion-checkbox>
@@ -25,10 +25,10 @@
           <div class="col col-90">
             <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
               <img src="img/1.jpg"/>
-              <a ui-sref="motor_insurance_detail" style="text-decoration: none">
-                <h2 class="product-title">新华寿险</h2>
-                <p class="list-price">保额: <i class="compare_at_price">600.000$</i></p>
-                <p class="list-price">保费: <i class="compare_at_price">12000.000$</i></p>
+              <a ui-sref="life_insurance_detail" style="text-decoration: none">
+                <h2 class="product-title">{{item.name}}</h2>
+                <p class="list-price">保额: <i class="compare_at_price">{{item.coverage}}</i></p>
+                <p class="list-price">保费: <i class="compare_at_price">{{item.fee}}</i></p>
                <i class="icon-right ion-chevron-right"></i>
               </a>
             </div>
@@ -36,103 +36,9 @@
         </div>
 
 
-        <div class="row" >
-          <div class="col col-10">
-            <div>
-              <ion-checkbox style="margin-top: 30px;border: 0;" ></ion-checkbox>
-            </div>
-          </div>
-          <div class="col col-90">
-           <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
-             <img src="img/2.jpg"/>
-             <a ui-sref="motor_insurance_detail" style="text-decoration: none">
-               <h2 class="product-title">平安寿险</h2>
-               <p class="list-price">保额: <i class="compare_at_price">600.000$</i></p>
-               <p class="list-price">保费: <i class="compare_at_price">12000.000$</i></p>
-             </a>
-           </div>
-          </div>
-        </div>
-
-
-
-        <div class="row" >
-          <div class="col col-10">
-            <div>
-              <ion-checkbox style="margin-top: 30px;border: 0;" ></ion-checkbox>
-            </div>
-          </div>
-          <div class="col col-90">
-           <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
-            <img src="img/3.jpg"/>
-            <a ui-sref="motor_insurance_detail" style="text-decoration: none">
-             <h2 class="product-title">平安寿险</h2>
-             <p class="list-price">保额: <i class="compare_at_price">600.000$</i></p>
-             <p class="list-price">保费: <i class="compare_at_price">12000.000$</i></p>
-            </a>
-           </div>
-          </div>
-        </div>
-
-
-        <div class="row" >
-          <div class="col col-10">
-            <div>
-              <ion-checkbox style="margin-top: 30px;border: 0;" ></ion-checkbox>
-            </div>
-          </div>
-          <div class="col col-90">
-           <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
-            <img src="img/2.jpg"/>
-             <a ui-sref="motor_insurance_detail" style="text-decoration: none">
-              <h2 class="product-title">新华寿险</h2>
-              <p class="list-price">保额: <i class="compare_at_price">600.000$</i></p>
-              <p class="list-price">保费: <i class="compare_at_price">12000.000$</i></p>
-             </a>
-           </div>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col col-10">
-            <div>
-              <ion-checkbox style="margin-top: 30px;border: 0;" ></ion-checkbox>
-            </div>
-          </div>
-          <div class="col col-90">
-           <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
-            <img src="img/3.jpg"/>
-            <a ui-sref="motor_insurance_detail" style="text-decoration: none">
-             <h2 class="product-title">平安寿险</h2>
-             <p class="list-price">保额: <i class="compare_at_price">600.000$</i></p>
-             <p class="list-price">保费: <i class="compare_at_price">12000.000$</i></p>
-            </a>
-          </div>
-          </div>
-        </div>
-
-
-        <div class="row" >
-          <div class="col col-10">
-            <div>
-              <ion-checkbox style="margin-top: 30px;border: 0;" ></ion-checkbox>
-            </div>
-          </div>
-          <div class="col col-90">
-           <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
-            <img src="img/2.jpg"/>
-            <a ui-sref="motor_insurance_detail" style="text-decoration: none">
-             <h2 class="product-title">太平洋寿险</h2>
-             <p class="list-price">保额: <i class="compare_at_price">600.000$</i></p>
-             <p class="list-price">保费: <i class="compare_at_price">12000.000$</i></p>
-            </a>
-           </div>
-            </div>
-         </div>
        </div>
 
-    <a ui-sref="myOrder" class="button button-block button-positive comm_btn" ng-click="goto()">
+    <a ui-sref="myOrder" class="button button-block button-positive comm_btn" ng-click="saveState()">
      提交购买意向
     </a>
   </ion-content>

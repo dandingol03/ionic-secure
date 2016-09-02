@@ -1,5 +1,5 @@
 
-<ion-view >
+<ion-view view-title="车险报价方案列表">
 
   <ion-nav-bar class="bar-stable" align-title="center" >
     <ion-nav-buttons side="left">
@@ -7,55 +7,41 @@
         <i class="ion-chevron-left"></i>
       </button>
     </ion-nav-buttons>
-
     <ion-nav-buttons side="right">
-      <button class="button button-icon button-clear" ng-click="goto('/#/car_info')">
-        <i class="ion-plus"></i>
+      <button class="button button-icon button-clear" ng-click="goto('/#/tabs/dashboard')">
+        <i class="ion-ios-search-strong"></i>
       </button>
     </ion-nav-buttons>
 
   </ion-nav-bar>
 
-
   <ion-content class="padding">
-    <div class="row">
-      <div style="text-align:center;width:50%">保险项目</div>
-      <div style="text-align:center;width:30%">保额</div>
-      <div style="text-align:center;width: 20%">点选</div>
-    </div>
-    <ion-scroll zooming="true" direction="y" style="width: 100%; height: 370px">
-      <div  ng-if="coverages!=null">
-        <div ng-repeat="coverage in coverages">
-          <div class="row">
-            <div class="col col-50">
-              <label class="item" style="border-width: 0px;">
-                {{coverage.name}}
-              </label>
-            </div>
-            <div class="col col-33">
-              <label class="item item-input item-select" style="border-width: 0px;height:50px;"
-                     ng-if="coverage.selectable">
-                <select style="max-width:100%;padding-left:0px;right:auto" ng-model="coverage.selectedFee" ng-options="fee for fee in coverage.fee">
-                </select>
-              </label>
-              <label class="item item-input" style="border-width: 0px;height:50px"
-                     ng-if="!coverage.selectable">
-                {{coverage.fee}}
-              </label>
-            </div>
-            <div class="col col-17" style="position: relative">
-              <ion-checkbox ng-model="coverage.selected" ng-change="project_select(coverage)" style="border-width: 0px;position: absolute;top:25%">
-              </ion-checkbox>
-            </div>
+    <div class="list">
+
+      <div class="row" ng-repeat="item in car_ins_plans" ng-model="car_insurance.flag">
+        <div class="col col-10">
+          <div>
+            <ion-checkbox style="margin-top: 30px;border: 0;" ></ion-checkbox>
+          </div>
+        </div>
+        <div class="col col-90">
+          <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
+            <img src="img/1.jpg"/>
+            <a ui-sref="motor_plan_detail" style="text-decoration: none">
+              <h2 class="product-title">车险公司A报价方案</h2>
+
+              <p class="list-price">总额:<i class="compare_at_price">{{item.sum}}</i></p>
+
+              <i class="icon-right ion-chevron-right"></i>
+            </a>
           </div>
         </div>
       </div>
-
-
-    </ion-scroll>
-    <div class="bar bar-footer bar-balanced" >
-      <div class="title" ng-click="openModal()">提交信息</div>
     </div>
+
+    <a ui-sref="myOrder" class="button button-block button-positive comm_btn" ng-click="saveState()">
+      购买
+    </a>
   </ion-content>
 
 </ion-view>

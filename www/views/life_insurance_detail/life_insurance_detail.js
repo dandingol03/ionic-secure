@@ -1,7 +1,12 @@
+/**
+ * Created by apple-2 on 16/9/1.
+ */
 angular.module('app')
-  .controller('motorDetailController',function($scope,$rootScope,$state,$http, $location,$ionicModal,$ionicActionSheet,$cordovaCamera,$cordovaImagePicker){
+  .controller('lifeDetailController',function($scope,$rootScope,$state,$http, $location,$ionicModal,$ionicActionSheet,$cordovaCamera,$cordovaImagePicker){
 
     $scope.title='太平洋寿险';
+
+    $scope.life_insurance={};
 
     $scope.items= [
       {id:"1",property:"名称",num:"太平洋寿险"},
@@ -121,8 +126,18 @@ angular.module('app')
     }
 
 
+    $scope.changeState=function(){
+      $scope.life_insurance.state='modified';//订单状态为正在编辑
+      $rootScope.life_insurance.state= $scope.life_insurance.state;
+    }
+
+
+
     $scope.checkCarInfo=function(){
+
+      $scope.life_insurance.state='finished';//订单状态为已生成
       $scope.opendetail_modal();
+      $rootScope.life_insurance.state= $scope.life_insurance.state;
     }
 
     $scope.go_back=function(){

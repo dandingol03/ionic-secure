@@ -2,30 +2,42 @@ angular.module('app')
   .controller('coverageController',function($scope,$state,$http,$ionicActionSheet,$ionicHistory,$ionicModal){
 
 
-    $scope.coverages=[];
 
-    $scope.projects={};
-    $scope.projects.selected=[];
+    $scope.life_insuranses=[];
+    $scope.life_insuranse={};
 
-    $scope.projects_take_part={};
+
 
     $scope.go_back=function(){
       window.history.back();
     }
 
 
+    $scope.saveState=function(){
+
+        if($scope.life_insurances!=null) {
+          var life_insurances = $scope.life_insurances;
+          var insurances=[];
+          life_insurances.map(function (life_insurance, i) {
+          if(life_insurance.flag==true){
+            insurances.push(life_insurance);
+          }
+          });
+          $rootScope.life_insurances=$scope.insurances;
+        }
+
+    };
+
 
     $http({
       method:"get",
-      url:"/proxy/node/insurance/project_provide"
+      url:"/proxy/node/insurance/get_lifeinsurance_list"
     }).success(function(response){
-        var projects=response.projects;
-        if(Object.prototype.toString.call(projects)!='[object Array]')
-          projects=JSON.parse(projects);
-          projects.map(function(project,i) {
-              project.selectedFee=project.fee[0];
-          });
-        $scope.coverages=projects;
+        var life_insurances=response.life_insurances;
+        if(Object.prototype.toString.call(life_insurances)!='[object Array]')
+          life_insurances=JSON.parse(life_insurances);
+
+        $scope.life_insurances=life_insurances;
 
     }).error(function(err){
       if(err!==undefined&&err!==null)

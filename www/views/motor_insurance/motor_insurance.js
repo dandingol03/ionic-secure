@@ -2,52 +2,38 @@ angular.module('app')
   .controller('motorInsuranceController',function($scope,$state,$http,$ionicActionSheet,$ionicHistory,$ionicModal,$location,$rootScope){
 
 
-    $scope.coverages=[];
-
-    $scope.companys=[
-      {name:'太平洋保险公司',selected:''},
-      {name:'平安保险公司',selected:''},
-      {name:'新华保险公司',selected:''}
-    ];
-
-    $scope.selected=[];
+    $scope.coverages=[];//车险险种项目
+    $scope.coverage={}
+    $scope.selected=[];//被选中的险种
 
 
 
-    $scope.car_insurance= {};
+    $scope.car_insurance= {};//一条车险订单
 
-    $scope.apply=function () {
+    $scope.apply=function () {//选好险种提交时做的动作
+
+      $scope.car_insurance.state='pricing';//状态是报价中
+
       $rootScope. car_insurance=$scope.car_insurance;
+
+
+      $scope.coverages.map(function (coverages, i) {
+        if($scope.coverage.flag==true){
+          $scope.selected.push(coverage);
+        }
+      });
+
+      //TODO:push selected to back-end
+      //TODO:receive the shemes from back-end
+
+
+      $state.go('motor_plan',{plan:[]});//跳到车险方案列表页面,并传递选中的险种和相应保额作为参数。
+
     }
 
     $scope.goto=function(url) {
       $location.path(url);
     }
-
-
-    /** dym modal **/
-    $ionicModal.fromTemplateUrl('views/motor_insurance/insurance_modal.html',function(modal){
-      $scope.insurance_modal=modal;
-    }, {
-      scope: $scope,
-      animation: 'slide-in-up'
-    });
-
-    $scope.openModal= function(){
-      $scope.insurance_modal.show();
-    };
-
-    $scope.closeModal= function() {
-      $scope.insurance_modal.hide();
-    };
-    $scope.$on('$destroy', function() {
-      $scope.insurance_modal.remove();
-    });
-    $scope.$on('modal.hidden', function() {
-      // Execute action
-    });
-    /** dym modal end **/
-
 
     $scope.projects={};
     $scope.projects.selected=[];
@@ -66,7 +52,7 @@ angular.module('app')
       if(Object.prototype.toString.call(projects)!='[object Array]')
         projects=JSON.parse(projects);
 
-      $scope.coverages=projects;
+      $scope.coverages=projects;//从测试服务器取到险种列表,付给coverages数组。
 
     }).error(function(err){
       if(err!==undefined&&err!==null)
@@ -83,6 +69,12 @@ angular.module('app')
     $scope.project_select=function(proj) {
       var coverages=$scope.coverages;
       console.log('...');
+
+
+
+
+
+
     }
 
     $scope.upload_proj=function(){
@@ -133,28 +125,6 @@ angular.module('app')
         cssClass:'center'
       });
 
-/*
-      $ionicModal.fromTemplateUrl('views/motor_insurance/insurance_modal.html',{
-        scope:  $scope,
-        animation: 'slide-in-up'
-      }).then(function(modal) {
-         $scope.insurance_modal = modal;
-      });
-
-      $scope.openModal= function(){
-        $scope.insurance_modal.show();
-      };
-
-      $scope.closeModal= function() {
-        $scope.insurance_modal.hide();
-      };
-      $scope.$on('$destroy', function() {
-        $scope.insurance_modal.remove();
-      });
-      $scope.$on('modal.hidden', function() {
-        // Execute action
-      });
-*/
 
     };
 
