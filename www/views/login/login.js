@@ -131,5 +131,48 @@ angular.module('app')
                   })
         }
 
+    //文件下载
+    $scope.download=function(){
+      var url='http://192.168.0.199:9030/get/photo/home.jpg';
+      var targetPath=cordova.file.documentsDirectory + "home.jpg";
+      var trustHosts = true;
+      var options = {};
+      $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+        .then(function(result) {
+          alert('success');
+        }, function(err) {
+          // Error
+          alert('error');
+        }, function (progress) {
+          $timeout(function () {
+            $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+          });
+        });
+    }
+
+    //文件下载
+    $scope.download=function(){
+      var url='http://192.168.0.199:9030/get/photo/home.jpg';
+      var targetPath=cordova.file.externalRootDirectory + "/home.jpg";
+      var trustHosts = true;
+      var options = {};
+      $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+        .then(function(result) {
+          alert('success');
+        }, function(err) {
+          // Error
+          var str='';
+          for(var field in err)
+          {
+            str+=field+':'+err[field];
+          }
+          alert('error=====\r\n'+str);
+        }, function (progress) {
+          $timeout(function () {
+            $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+          });
+        });
+    }
+
     })
 

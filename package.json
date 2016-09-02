@@ -22,7 +22,9 @@
       "id": "org.pbernasconi.progressindicator"
     },
     "cordova-plugin-whitelist",
-    "cordova-plugin-camera"
+    "cordova-plugin-camera",
+    "cordova-plugin-file",
+    "cordova-plugin-file-transfer"
   ],
   "cordovaPlatforms": [
     "android"
