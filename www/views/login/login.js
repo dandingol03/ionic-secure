@@ -103,7 +103,33 @@ angular.module('app')
     };
 
 
+    $scope.login = function(){
+      $http({
+                method:"POST",
+                params:{
+                  grant_type: 'password',
+                  username:$scope.user.username,
+                  password:$scope.user.password,
+                },
+                data:{
+                    grant_type: 'password',
+                    username:$scope.user.username,
+                    password:$scope.user.password,
+                },
+                url:"/proxy/liyou/login",
+               headers: {
+                'Authorization': "Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW",
+                'Content-Type': 'application/x-www-form-urlencoded'
+               }
 
+            }).success(function(response){
+              console.log('login');
+                $state.go('tabs.coverage');
 
-    });
+            }).error(function(err){
+        console.log('error');
+                  })
+        }
+
+    })
 
