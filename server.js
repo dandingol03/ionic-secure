@@ -7,6 +7,7 @@ var proxy = httpProxy.createProxyServer({});
 
 var ulr = require('url');
 
+
 var fs=require('fs');
 var colors=require('colors');
 
@@ -21,6 +22,7 @@ app.post('*',function(req,res,next) {
     next();
 });
 
+app.set('views', path.join(__dirname, 'views'));
 app.use(static(__dirname + '/public'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,4 +40,3 @@ app.get('/get_render_page.do',function(req,res) {
 });
 
 app.listen(9030);
-
