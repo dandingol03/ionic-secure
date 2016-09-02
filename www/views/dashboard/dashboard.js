@@ -1,5 +1,7 @@
 angular.module('app')
+
   .controller('dashboardController',function($scope,$state,$http, $location,$rootScope,$ionicModal,$timeout,$cordovaCamera,ionicDatePicker){
+
 
     $scope.goto=function(url){
       $location.path(url);
@@ -44,19 +46,14 @@ angular.module('app')
       $scope.bind_car_modal = modal;
     });
 
-    $scope.openModal= function(){
+    $scope.openCarModal= function(){
       $scope.bind_car_modal.show();
     };
 
-    $scope.closeModal= function() {
+    $scope.closeCarModal= function() {
       $scope.bind_car_modal.hide();
     };
-    $scope.$on('$destroy', function() {
-      $scope.bind_car_modal.remove();
-    });
-    $scope.$on('modal.hidden', function() {
-      // Execute action
-    });
+
     /*** bind car modal ***/
 
 
@@ -74,7 +71,7 @@ angular.module('app')
 
     $scope.bind_car=function(){
       $rootScope.car=$scope.car;
-
+      $scope.closeCarModal();
     }
 
     $scope.addPicture = function(type) {
@@ -117,6 +114,40 @@ angular.module('app')
       });
     }
 
+    $scope.life_insurance=
+    {
+      applicant:{},
+      insuredPerson:{}
+    };
+
+    $scope.apply=function () {
+      $rootScope. life_insurance=$scope.life_insurance;
+      $scope.closeModal();
+    }
+
+    /** dym modal **/
+    $ionicModal.fromTemplateUrl('views/dashboard/coverage_modal.html',function(modal){
+      $scope.coverage_modal=modal;
+    }, {
+      scope: $scope,
+      animation: 'slide-in-up'
+    });
+
+    $scope.openModal= function(){
+      $scope.coverage_modal.show();
+    };
+
+    $scope.closeModal= function() {
+      $scope.coverage_modal.hide();
+    };
+    $scope.$on('$destroy', function() {
+      $scope.bind_car_modal.remove();
+      $scope.coverage_modal.remove();
+    });
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    /** dym modal end **/
 
 
   });

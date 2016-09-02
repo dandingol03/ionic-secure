@@ -1,14 +1,31 @@
 angular.module('app')
-  .controller('motorInsuranceController',function($scope,$state,$http,$ionicActionSheet,$ionicHistory,$ionicModal,$location){
+  .controller('motorInsuranceController',function($scope,$state,$http,$ionicActionSheet,$ionicHistory,$ionicModal,$location,$rootScope){
 
 
     $scope.coverages=[];
 
     $scope.companys=[
-      {name:'太平洋保险公司'},
-      {name:'平安保险公司'},
-      {name:'新华保险公司'}
+      {name:'太平洋保险公司',selected:''},
+      {name:'平安保险公司',selected:''},
+      {name:'新华保险公司',selected:''}
     ];
+
+    $rootScope.car_insurance={type:'',company:{},coverage:[],fee:'',spectum:'',selected:''};
+    $rootScope.company={name:'',selected:''}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     $scope.goto=function(url) {
       $location.path(url);

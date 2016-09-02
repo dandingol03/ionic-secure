@@ -89,8 +89,7 @@ angular.module('app')
 
             }).error(function(err){
         console.log('error');
-
-            })
+                  })
         }
 
     })

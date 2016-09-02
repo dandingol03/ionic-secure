@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('coverageController',function($scope,$state,$http,$ionicActionSheet,$ionicHistory){
+  .controller('coverageController',function($scope,$state,$http,$ionicActionSheet,$ionicHistory,$ionicModal){
 
 
     $scope.coverages=[];
@@ -12,7 +12,6 @@ angular.module('app')
     $scope.go_back=function(){
       window.history.back();
     }
-
 
 
 

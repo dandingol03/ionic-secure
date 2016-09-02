@@ -14,7 +14,7 @@
           <div ng-repeat="company in companys">
             <div class="row">
               <div class="col col-20" style="position: relative">
-                <ion-checkbox style="border-width: 0px;position: absolute;top:25%">
+                <ion-checkbox style="border-width: 0px;position: absolute;top:25%" ng-model="car_insurance.company.selected" ng-change="project_select(coverage)">
                 </ion-checkbox>
               </div>
               <div class="col col-80">
