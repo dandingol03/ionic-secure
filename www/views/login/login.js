@@ -3,7 +3,8 @@
  */
 
 angular.module('app')
-    .controller('loginController',function($scope,$state,$ionicLoading,$http,$cordovaProgress,$rootScope,$cordovaFileTransfer){
+    .controller('loginController',function($scope,$state,$ionicLoading,$http,$cordovaProgress,$rootScope,$cordovaFileTransfer
+    ,$cordovaCamera,$ionicActionSheet){
 
       $scope.login = function(){
 
@@ -168,11 +169,70 @@ angular.module('app')
           }
           alert('error=====\r\n'+str);
         }, function (progress) {
-          $timeout(function () {
-            $scope.downloadProgress = (progress.loaded / progress.total) * 100;
-          });
+
         });
     }
+
+    //文件上传
+    $scope.upload=function(){
+      var server='http://192.168.0.199:9030/upload/photo/image.jpg';
+      var options = {};
+      options.fileKey = "file";
+      $cordovaFileTransfer.upload(server, $scope.photo, options)
+        .then(function(result) {
+          // Success!
+          alert('upload success');
+        }, function(err) {
+          // Error
+          alert('encounter error');
+        }, function (progress) {
+          // constant progress updates
+        });
+    }
+
+    //添加照片
+
+    $scope.addPicture = function(type) {
+
+      $ionicActionSheet.show({
+        buttons: [
+          { text: '拍照' },
+          { text: '从相册选择' }
+        ],
+        titleText: '选择照片',
+        cancelText: '取消',
+        cancel: function() {
+          return true;
+        },
+        buttonClicked: function(index) {
+          if(index == 0){
+
+              var options = {
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: 1,
+                saveToPhotoAlbum: true
+              };
+
+
+          }else if(index == 1){
+            var options = {
+              destinationType: Camera.DestinationType.FILE_URI,
+              sourceType: 0
+            };
+          }
+
+          $cordovaCamera.getPicture(options).then(function(imageURI) {
+            $scope.photo= imageURI;
+            alert('url of photo =\r\n' + imageURI);
+          }, function(err) {
+            // error
+            alert('errpr=' + err);
+          });
+          return true;
+        }
+      });
+    }
+
 
     })
 
