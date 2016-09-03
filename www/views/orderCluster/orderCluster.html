@@ -14,26 +14,88 @@
   </ion-nav-bar>
 
   <ion-content>
-
-      <div style="width:100%;display: block;padding:5px 10px;">
-        <div style="min-height: 40px;border:1px solid #eee" class="menus">
-          <a style="width:25%;float: left;padding:10px 10px 8px 10px;background: #fff;text-align: center;border-right:1px solid #eee"
-             ng-class="{true: 'active', false: 'inactive'}[tab.activated]"
-             ng-click="tab_change($index)"
-             ng-repeat="tab in tabs">
-            {{tab.name}}
-          </a>
+    <div class="list" style="padding:10px">
+      <div style="min-height: 40px;text-align: center">
+        <div style="display: inline-block;min-width:20%;padding:10px 10px 8px 10px;background: #fff;text-align: center;border:1px solid #eee"
+            ng-class="{true: 'active', false: 'inactive'}[tab.activated]"
+            ng-click="tab_change($index)"
+            ng-repeat="tab in tabs">
+          {{tab.name}}
         </div>
       </div>
+    </div>
+
+    <!-- make this automatic -->
     <div class="list padding">
 
       <div class="item item-divider">
-        Pricing orders
+        {{tabs[tabIndex].name}}
       </div>
 
-      <a class="item" href="#">
-        butterfinger
-      </a>
+
+        <div class="item">
+          <div class="row" ng-repeat="order in tabs[tabIndex].orders">
+            <div class="col col-13" style="position: relative;border: 1px solid #eee;">
+              <div style="position: absolute;top:30%">
+                <ion-checkbox style="margin-top: 30px;border: 0;padding-right:0px" ></ion-checkbox>
+              </div>
+            </div>
+            <div class="col col-18" style="text-align: center;position: relative;    border: 1px solid #eee;">
+              <div style="position: absolute;top:45%;left:30%">
+                {{order.type}}
+              </div>
+            </div>
+            <div class="col col-50" style="    border: 1px solid #eee;">
+              <div class="item item-text-wrap " style="border: 0;">
+                <div ng-repeat="scheme in order.schemes" ng-if="order.type=='车险'" style="width:100%">
+                  <h2 class="product-title" style="width:33%;display: inline-block">
+                    {{scheme.name}}
+                  </h2>
+                  <p class="list-price" style="width:33%;display: inline-block">
+                    <i class="compare_at_price">{{scheme.coverage}}</i>
+                  </p>
+
+                </div>
+
+                <div ng-if="order.type=='寿险'">
+                  <h2>主险:</h2>
+                  <h4 class="product-title" style="width:33%;display: inline-block">
+                    {{order.main.name}}
+                  </h4>
+                  <p class="list-price" style="width:33%;display: inline-block">
+                    <i class="compare_at_price">{{order.main.coverage}}</i>
+                  </p>
+
+                  <h2 style="margin-top: 20px">附加险:</h2>
+                  <div ng-repeat="addition in order.additions">
+                    <h2 class="product-title" style="width:33%;display: inline-block">
+                      {{addition.name}}
+                    </h2>
+                    <p class="list-price" style="width:33%;display: inline-block">
+                      <i class="compare_at_price">{{addition.fee}}</i>
+                    </p>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col col-15" style="position: relative;border:1px solid #eee;">
+              <div style="box-sizing: border-box;padding: 10px;padding-top: 20px;position:absolute;top:30%">
+
+                <a ui-sref="motor_insurance_detail" style="text-decoration: none">
+                  <lable>编辑</lable>
+                </a>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
 
     </div>
 
