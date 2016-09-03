@@ -13,7 +13,8 @@ angular.module('app')
           {name:'R1',coverage:300,fee:500,spectum:1},]
         },
         {
-          type:'寿险',main:{name:'india洋',coverage:300,fee:200},additions:[
+          // {name:'新华保险',coverage:1205,fee:3000,'缴费期间':'3年','保额期间':'3年','首年保费':400000},
+          type:'寿险',main:{name:'新华保险',coverage:1205,fee:3000,'缴费期间':'3年','保额期间':'3年','首年保费':400000},additions:[
           {name:'addition1',fee:300},
           {name:'addition2',fee:800}]
         },
@@ -36,4 +37,35 @@ angular.module('app')
     $scope.go_back=function(){
       window.history.back();
     };
+
+    $scope.edit=function(type,order){
+      switch(type){
+        case '寿险':
+          $state.go('life_insurance_detail',{order:JSON.stringify(order)});
+              break;
+        case '车险':
+          $state.go();
+              break;
+        default:
+          break;
+
+      }
+      _insurance_detail
+    };
+
+
+
+
+
+
+
+
+
+
+    $scope.buy=function(){
+      //最终购买,即支付时,要区分寿险和车险,并更改订单状态为已完成:finished
+      };
+
+
+
   });

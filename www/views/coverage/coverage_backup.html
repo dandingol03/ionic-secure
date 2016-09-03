@@ -25,12 +25,12 @@
           <div class="col col-90">
             <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
               <img src="img/1.jpg"/>
-              <a ui-sref="life_insurance_detail" style="text-decoration: none">
-                <h2 class="product-title">{{item.name}}</h2>
-                <p class="list-price">保额: <i class="compare_at_price">{{item.coverage}}</i></p>
-                <p class="list-price">保费: <i class="compare_at_price">{{item.fee}}</i></p>
+              <div ng-click="detail_ref(item)"  style="text-decoration: none">
+                <h2 class="product-title">{{item.main.name}}</h2>
+                <p class="list-price">保额: <i class="compare_at_price">{{item.main.coverage}}</i></p>
+                <p class="list-price">保费: <i class="compare_at_price">{{item.main.fee}}</i></p>
                <i class="icon-right ion-chevron-right"></i>
-              </a>
+              </div>
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@
 
        </div>
 
-    <a ui-sref="myOrder" class="button button-block button-positive comm_btn" ng-click="saveState()">
+    <a ui-sref="orderCluster" class="button button-block button-positive comm_btn" ng-click="saveState()">
      提交购买意向
     </a>
   </ion-content>

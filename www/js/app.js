@@ -131,12 +131,17 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/coverage/coverage_backup.html'
       });
 
+      $stateProvider.state('life_insurance',{
+        url:'/life_insurance',
+        controller:'coverageController',
+        templateUrl:'views/coverage/coverage_backup.html'
+      });
 
     /**
      * 寿险列表详情
      */
     $stateProvider.state('life_insurance_detail',{
-        url:'/life_insurance_detail:motor',
+        url:'/life_insurance_detail/:insurance',
         controller:'lifeDetailController',
         templateUrl:'views/life_insurance_detail/life_insurance_detail.html'
     });
@@ -221,11 +226,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
     });
 
 
-    $stateProvider.state('insurance_detail',{
-        url:'/insurance_detail/:company_name',
-        controller: 'lifeInsuranceDetailController',
-        templateUrl:'views/life_insurance/detail/detail.html'
-    });
+
 
     $stateProvider.state('service',{
         url:'/service',
@@ -270,7 +271,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/directive/directive.html'
     });
 
-    $urlRouterProvider.otherwise('/orderCluster');
+    $urlRouterProvider.otherwise('/tabs/dashboard');
 
     })
 

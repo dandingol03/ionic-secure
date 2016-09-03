@@ -82,39 +82,8 @@ angular.module('app')
 
 
 
-
-
-
-    $scope.actionSheet_show = function() {
-
-      // Show the action sheet
-      var hideSheet = $ionicActionSheet.show({
-        buttons: [
-          { text: '<b>Share</b> This' },
-          { text: '<b>Share</b> This' },
-          { text: '<b>Share</b> This' },
-          { text: '<b>Share</b> This' },
-          { text: '<b>Share</b> This' },
-          { text: '<b>Share</b> This' },
-          { text: '<b>Share</b> This' },
-          { text: '<b>Share</b> This' },
-          { text: '<b>Share</b> This' },
-          { text: '<b>Share</b> This' },
-          { text: 'Move' }
-        ],
-        titleText: 'select your favourite project ',
-        cancelText: 'Cancel',
-        cancel: function() {
-          // add cancel code..
-        },
-        buttonClicked: function(index) {
-          return true;
-        },
-        cssClass:'center'
-      });
-
-
-
-    };
+    $scope.detail_ref=function (insurance) {
+        $state.go('life_insurance_detail',{insurance:JSON.stringify(insurance)});
+    }
 
   });

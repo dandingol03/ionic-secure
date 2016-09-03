@@ -17,15 +17,17 @@ angular.module('app')
 
     $scope.saveState=function(){
 
-      if($scope.life_insurances!=null) {
-        var life_insurances = $scope.life_insurances;
+      if($scope.motor_insurances!=null) {
+        var motor_insurances = $scope.motor_insurances;
         var insurances=[];
-        life_insurances.map(function (life_insurance, i) {
-          if(life_insurance.flag==true){
-            insurances.push(life_insurance);
+        motor_insurances.map(function (motor_insurance, i) {
+          if(motor_insurance.flag==true){
+            motor_insurance.state='paying';//点击购买车险方案后,订单状态变为待支付。
+            insurances.push(motor_insurance);
           }
         });
-        $rootScope.life_insurances=$scope.insurances;
+        $rootScope.motor_insurances=$scope.insurances;
+
       }
 
     };

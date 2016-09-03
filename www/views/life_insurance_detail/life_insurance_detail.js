@@ -2,20 +2,37 @@
  * Created by apple-2 on 16/9/1.
  */
 angular.module('app')
-  .controller('lifeDetailController',function($scope,$rootScope,$state,$http, $location,$ionicModal,$ionicActionSheet,$cordovaCamera,$cordovaImagePicker){
+  .controller('lifeDetailController',function($scope,$rootScope,$state,$http, $location,$ionicModal,$ionicActionSheet,$cordovaCamera,$cordovaImagePicker,$stateParams){
 
     $scope.title='太平洋寿险';
 
-    $scope.life_insurance={};
 
-    $scope.items= [
-      {id:"1",property:"名称",num:"太平洋寿险"},
-      {id:"2",property:"保额",num:"400$"},
-      {id:"3",property:"保费",num:"500$"},
-      {id:"4",property:"保险期间",num:"保至70周岁"},
-      {id:"5",property:"缴费期间",num:"2周年"},
-      {id:"6",property:"首年保费",num:"30000$"}
-    ];
+    $scope.item=$stateParams.insurance;
+    if(Object.prototype.toString.call($scope.item)=='[object String]')
+        $scope.item=JSON.parse($scope.item);
+
+    // if(Object.prototype.toString.call($scope.item)=='[object Object]')
+    // {
+    //   var items=[];
+    //   for(var field in $scope.item)
+    //   {
+    //     if(field!=='$$hashKey')
+    //       items.push({property:field,num:$scope.item[field]});
+    //   }
+    //   $scope.items=items;
+    // }
+
+
+
+
+    // $scope.items= [
+    //   {id:"1",property:"名称",num:"太平洋寿险"},
+    //   {id:"2",property:"保额",num:"400$"},
+    //   {id:"3",property:"保费",num:"500$"},
+    //   {id:"4",property:"保险期间",num:"保至70周岁"},
+    //   {id:"5",property:"缴费期间",num:"2周年"},
+    //   {id:"6",property:"首年保费",num:"30000$"}
+    // ];
 
     $scope.cart=[
       {id:1,count:0,img:"img/res001.png",title:"Cream Cheese..."},
@@ -43,12 +60,12 @@ angular.module('app')
       // Execute action
     });
 
-    $scope.increment=function(count,index){
-
+    $scope.increment=function(index){
+        $scope.iterm.addition[index].count++;
     };
 
-    $scope.decrement=function(count,index) {
-
+    $scope.decrement=function(index) {
+        $scope.iterm.addition[index].count--;
     };
 
     $scope.confirm_lifeInsurance=function(){

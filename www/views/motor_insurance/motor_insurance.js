@@ -12,7 +12,7 @@ angular.module('app')
 
     $scope.apply=function () {//选好险种提交时做的动作
 
-      $scope.car_insurance.state='pricing';//状态是报价中
+      $scope.car_insurance.state='pricing';//状态是估价中订单
 
       $rootScope. car_insurance=$scope.car_insurance;
 
