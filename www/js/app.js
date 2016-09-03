@@ -97,7 +97,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
      * 车险险种列表
      */
       $stateProvider.state('motor_insurance',{
-        url:'/motor_insurance',
+        url:'/motor_insurance/:insurances',
         controller:'motorInsuranceController',
         templateUrl:'views/motor_insurance/motor_insurance.html'
       });

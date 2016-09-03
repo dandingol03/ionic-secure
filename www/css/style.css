@@ -656,6 +656,17 @@ table.table1{
   margin: 0 auto;
 }
 
+.edit_insurance.modal.motor_insurance{
+  background: #ff5757;
+  height: 260px;
+  min-height: 160px;
+  top: 70px;
+  width: 95%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
 .welcome_msg {
   padding: 20px;
   text-align: center;
