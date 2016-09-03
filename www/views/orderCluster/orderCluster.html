@@ -26,15 +26,15 @@
     </div>
 
     <!-- make this automatic -->
-    <div class="list padding">
+    <div class="list padding" >
 
       <div class="item item-divider">
         {{tabs[tabIndex].name}}
       </div>
 
 
-        <div class="item">
-          <div class="row" ng-repeat="order in tabs[tabIndex].orders">
+        <div class="item ">
+          <div class="row order-item" ng-repeat="order in tabs[tabIndex].orders" >
             <div class="col col-13" style="position: relative;border: 1px solid #eee;">
               <div style="position: absolute;top:30%">
                 <ion-checkbox style="margin-top: 30px;border: 0;padding-right:0px" ></ion-checkbox>
