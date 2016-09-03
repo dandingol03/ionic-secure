@@ -94,7 +94,8 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       });
 
     /**
-     *车险险种列表
+     *
+     * 车险险种列表
      */
       $stateProvider.state('motor_insurance',{
         url:'/motor_insurance',
@@ -264,7 +265,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/directive/directive.html'
     });
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/tabs/dashboard');
 
     })
 
