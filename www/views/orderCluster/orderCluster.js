@@ -30,9 +30,52 @@ angular.module('app')
 
     $scope.tabIndex=0;
 
+    /**
+     * 不同状态订单切换的回换
+     */
     $scope.tab_change=function(i){
       $scope.tabIndex=i;
     }
+
+
+    $scope.detail_ref=function(type,order){
+      switch(type)
+      {
+        case '车险':
+          $scope.openModal();
+          $scope.confirm=function(){
+            $state.go('motor_plan_detail',order);
+          }
+              break;
+        case '寿险':
+
+              break;
+        default:
+              break;
+      }
+    }
+
+    /*** init motor_insurance_select modal ***/
+    $scope.motor_steps=['specials','schemes'];
+    $scope.motor={};
+    $scope.motor.step=$scope.motor_steps[0];
+    $ionicModal.fromTemplateUrl('views/modal/edit_motor_insurance.html',{
+      scope:  $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+
+    $scope.openModal= function(){
+      $scope.modal.show();
+    };
+
+    $scope.modalClose= function() {
+      $scope.modal.hide();
+    };
+
+    /*** init motor_insurance_select modal ***/
+
 
     $scope.go_back=function(){
       window.history.back();

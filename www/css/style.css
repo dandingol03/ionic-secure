@@ -656,6 +656,17 @@ table.table1{
   margin: 0 auto;
 }
 
+.edit_insurance.modal.motor_insurance{
+  background: #ff5757;
+  height: 260px;
+  min-height: 160px;
+  top: 70px;
+  width: 95%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
 .welcome_msg {
   padding: 20px;
   text-align: center;
@@ -726,4 +737,21 @@ table.table1{
   padding-bottom: 20px;
 }
 
+.order-item.ng-enter{
+  -webkit-animation: fadeInLeft 1s;
+  animation: fadeInLeft 1s;
+}
 
+.order-item.ng-enter-stagger{
+  -webkit-animation-delay:200ms;
+  animation-delay:200ms;
+
+  /* override to make sure it's not inherited from other styles */
+  -webkit-animation-duration:0;
+  animation-duration:0;
+}
+
+.order-list.ng-enter{
+  -webkit-animation: fadeInLeft 1s;
+  animation: fadeInLeft 1s;
+}

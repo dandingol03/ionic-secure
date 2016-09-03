@@ -26,15 +26,15 @@
     </div>
 
     <!-- make this automatic -->
-    <div class="list padding">
+    <div class="list padding" >
 
       <div class="item item-divider">
         {{tabs[tabIndex].name}}
       </div>
 
 
-        <div class="item">
-          <div class="row" ng-repeat="order in tabs[tabIndex].orders">
+        <div class="item ">
+          <div class="row order-item" ng-repeat="order in tabs[tabIndex].orders" >
             <div class="col col-13" style="position: relative;border: 1px solid #eee;">
               <div style="position: absolute;top:30%">
                 <ion-checkbox style="margin-top: 30px;border: 0;padding-right:0px" ></ion-checkbox>
@@ -85,7 +85,11 @@
             <div class="col col-15" style="position: relative;border:1px solid #eee;">
               <div style="box-sizing: border-box;padding: 10px;padding-top: 20px;position:absolute;top:30%">
 
+
                 <div style="text-decoration: none" ng-click="edit(order.type,order)">
+
+                <div ng-click="detail_ref(order.type)" style="text-decoration: none">
+
                   <lable>编辑</lable>
                 </div>
 
@@ -103,7 +107,7 @@
     <div class="bar bar-footer bar-balanced" ng-click="buy()" >
       <div class="title">购买</div>
     </div>
-
+   </div>
 
   </ion-content>
 </ion-view>
