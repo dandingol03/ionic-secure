@@ -266,6 +266,9 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
 
     $urlRouterProvider.otherwise('/tabs/dashboard');
 
+    $urlRouterProvider.otherwise('/login');
+
+
     })
 
     .factory('BaiduMapService', function($q, baiduMapApi) {
@@ -287,7 +290,51 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
                 });
             }
         };
-    })
+  })
+
+  .factory('dn_FileTransfer',function($cordovaFileTransfer){
+      var Ob={
+        download:function(url,dest,filename,callback){
+          if(dest[0]!='/')
+            dest='/'+dest;
+          $cordovaFileTransfer.download(url, cordova.file.externalRootDirectory+dest, options, trustHosts)
+            .then(function(result) {
+              if(callback!==undefined&&callback!==null)
+                callback('success',result);
+            }, function(err) {
+              // Error
+              var str='';
+              for(var field in err)
+              {
+                str+=field+':'+err[field];
+              }
+              if(callback!==undefined&&callback!==null)
+                callback('error', str);
+            }, function (progress) {
+            });
+        },
+        upload:function(url,dest,callback){
+          var options = {};
+          options.fileKey = "file";
+          $cordovaFileTransfer.upload(url, dest, options)
+            .then(function(result) {
+              if(callback!==undefined&&callback!==null)
+                callback('success', result);
+            }, function(err) {
+              var str='';
+              for(var field in err)
+              {
+                str+=field+':'+err[field];
+              }
+              if(callback!==undefined&&callback!==null)
+                callback('error', str);
+            }, function (progress) {
+              // constant progress updates
+            });
+        }
+      };
+      return Ob;
+  })
 
 
     .factory('Insurances', function () {
