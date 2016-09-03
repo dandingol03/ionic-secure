@@ -15,9 +15,9 @@
 
   <ion-content>
 
-      <div style="width:100%;display: block">
-        <div style="padding: 5px 10px;min-height: 50px;">
-          <a style="width:25%;float: left;padding:10px;background: #eee;text-align: center"
+      <div style="width:100%;display: block;padding:5px 10px;">
+        <div style="min-height: 40px;border:1px solid #eee" class="menus">
+          <a style="width:25%;float: left;padding:10px 10px 8px 10px;background: #fff;text-align: center;border-right:1px solid #eee"
              ng-class="{true: 'active', false: 'inactive'}[tab.activated]"
              ng-click="tab_change($index)"
              ng-repeat="tab in tabs">
@@ -28,14 +28,12 @@
     <div class="list padding">
 
       <div class="item item-divider">
-        Candy Bars
+        Pricing orders
       </div>
 
       <a class="item" href="#">
-        Butterfinger
+        butterfinger
       </a>
-
-      ...
 
     </div>
 
