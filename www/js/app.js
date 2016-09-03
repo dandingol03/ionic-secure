@@ -266,7 +266,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
 
     $urlRouterProvider.otherwise('/tabs/dashboard');
 
-    $urlRouterProvider.otherwise('/login');
+
 
 
     })
