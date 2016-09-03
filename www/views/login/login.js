@@ -3,22 +3,23 @@
  */
 
 angular.module('app')
+
     .controller('loginController',function($scope,$state,$ionicLoading,$http,$cordovaProgress,$rootScope,$cordovaFileTransfer
     ,$cordovaCamera,$ionicActionSheet){
 
-      $scope.login = function(){
+      $scope.login = function() {
 
         $http({
-          method:"GET",
+          method: "GET",
           url: "http://127.0.0.1:3000/securityCode?cellphone=123456789",
-        }).success(function(response){
+        }).success(function (response) {
           console.log('...');
           console.log('...');
           console.log('...');
 
 
           $http({
-            method:"POST",
+            method: "POST",
             url: "/proxy/node/login",
             headers: {
               'Access-Control-Allow-Origin': "*",
@@ -26,11 +27,11 @@ angular.module('app')
               'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: 'grant_type=password&username=123456789&password=1234'
-          }).success(function(response){
+          }).success(function (response) {
 
             console.log('securityCode');
 
-          }).error(function(err){
+          }).error(function (err) {
 
             console.log(err);
 
@@ -38,52 +39,50 @@ angular.module('app')
 
           console.log('...');
 
-        }).error(function(err){
+        }).error(function (err) {
           console.log(err);
         });
-          // $http({
-          //     method:"post",
-          //     params:{
-          //         loginName:$scope.user.username,
-          //         password:$scope.user.password
-          //     },
-          //     url:"/proxy/node/login"
-          // }).success(function(response){
-          //   $rootScope.carInfo=response.carInfo;
-          //   if($rootScope.carInfo.img!==undefined&&$rootScope.carInfo.img!==null)
-          //   {
-          //     var img=$rootScope.carInfo.img;
-          //     if(img.driverImg!==undefined&&img.driverImg!==null)
-          //     {
-          //       $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
-          //         .then(function(result) {
-          //           // Success!
-          //         }, function(err) {
-          //           // Error
-          //         });
-          //     }
-          //
-          //   }
-          //
-          //
-          //   var re = response.re;
-          //   if(re==1)
-          //   {
-          //     $state.go('tabs.coverage');
-          //   }else{}
-          //
-          // }).error(function(err){
-          //     alert(err.toString());
-          //     $ionicLoading.show({
-          //         template:'connect the server timeout',
-          //         duration:'2000'
-          //     });
-          // });
-
-
-
+        // $http({
+        //     method:"post",
+        //     params:{
+        //         loginName:$scope.user.username,
+        //         password:$scope.user.password
+        //     },
+        //     url:"/proxy/node/login"
+        // }).success(function(response){
+        //   $rootScope.carInfo=response.carInfo;
+        //   if($rootScope.carInfo.img!==undefined&&$rootScope.carInfo.img!==null)
+        //   {
+        //     var img=$rootScope.carInfo.img;
+        //     if(img.driverImg!==undefined&&img.driverImg!==null)
+        //     {
+        //       $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+        //         .then(function(result) {
+        //           // Success!
+        //         }, function(err) {
+        //           // Error
+        //         });
+        //     }
+        //
+        //   }
+        //
+        //
+        //   var re = response.re;
+        //   if(re==1)
+        //   {
+        //     $state.go('tabs.coverage');
+        //   }else{}
+        //
+        // }).error(function(err){
+        //     alert(err.toString());
+        //     $ionicLoading.show({
+        //         template:'connect the server timeout',
+        //         duration:'2000'
+        //     });
+        // });
 
       }
+
 
     $scope.user=new Object();
     $scope.get_preference=function(){
@@ -96,42 +95,67 @@ angular.module('app')
         });
     };
 
-
     var inputData = {
       grant_type: 'password',
       username: '123456789',
       password: "1234",
     };
 
-
     $scope.login = function(){
+
       $http({
-                method:"POST",
-                params:{
-                  grant_type: 'password',
-                  username:$scope.user.username,
-                  password:$scope.user.password,
-                },
-                data:{
-                    grant_type: 'password',
-                    username:$scope.user.username,
-                    password:$scope.user.password,
-                },
-                url:"/proxy/liyou/login",
-               headers: {
-                'Authorization': "Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW",
-                'Content-Type': 'application/x-www-form-urlencoded'
-               }
+          method:"POST",
+          data:"grant_type=password&password=" + $scope.user.password + "&username=" + $scope.user.username,
+          url:"/login",
+          headers: {
+            'Authorization': "Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW",
+            'Content-Type': 'application/x-www-form-urlencoded'
+            }
 
-            }).success(function(response){
-              console.log('login');
-                $state.go('tabs.coverage');
+      }).success(function(response){
+        //console.log('login');
+        //$state.go('tabs.coverage');
 
-            }).error(function(err){
+      }).error(function(err){
         console.log('error');
-                  })
-        }
+                  });
 
+        // //get photo
+        // $http({
+        //     method:"GET",
+        //    // data:"grant_type=password&password=" + $scope.user.password + "&username=" + $scope.user.username,
+        //     url:"/proxy/node/get/photo/home.jpg"
+        // }).success(function(response){
+        //     var targetPath = cordova.file.documentsDirectory + "home.jpg";
+        //     var url = "/get/photo/home.jpg";
+        //
+        //
+        // console.log('login');
+        //
+        //
+        // }).error(function(err){
+        //     console.log('error');
+        // })
+
+        alert('goto');
+        var url='http://192.168.1.110:9030/get/photo/home.jpg';
+        var targetPath=cordova.file.externalRootDirectory+'home.jpg';
+        $cordovaFileTransfer.download(url, targetPath, {}, true)
+            .then(function(result) {
+                alert('home图片');
+                // Success!
+            }, function(err) {
+                var str='';
+                for(var field in err)
+                    str+=err[field]+'\n';
+                alert('error='+str);
+                // Error
+            }, function (progress) {
+            });
+
+
+
+     }
     //文件下载
     $scope.download=function(){
       var url='http://192.168.0.199:9030/get/photo/home.jpg';
@@ -232,7 +256,6 @@ angular.module('app')
         }
       });
     }
-
 
     })
 

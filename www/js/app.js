@@ -72,8 +72,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       templateUrl:'views/tabs/tabs.html'
     });
 
-
-      $stateProvider.state('tabs.my',{
+    $stateProvider.state('tabs.my',{
         url:'/my',
         views:{
           'my-tab':{
@@ -143,14 +142,20 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
     });
 
 
-        /**
-         * 我的订单
-         */
-        $stateProvider.state('myOrder',{
-            url:'/myOrder',
-            controller:'myOrderController',
-            templateUrl:'views/myOrder/myOrder.html'
-        })
+    /**
+     * 我的订单
+     */
+    $stateProvider.state('myOrder',{
+        url:'/myOrder',
+        controller:'myOrderController',
+        templateUrl:'views/myOrder/myOrder.html'
+    });
+
+    $stateProvider.state('orderCluster',{
+      url:'/orderCluster',
+      controller:'orderClusterController',
+      templateUrl:'views/orderCluster/orderCluster.html'
+    });
 
 
       $stateProvider.state('personInformation',{
@@ -265,7 +270,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/directive/directive.html'
     });
 
-    $urlRouterProvider.otherwise('/tabs/dashboard');
+    $urlRouterProvider.otherwise('/orderCluster');
 
     })
 

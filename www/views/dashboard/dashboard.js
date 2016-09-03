@@ -121,34 +121,10 @@ angular.module('app')
     };
 
     $scope.apply=function () {
-      $scope.life_insurance.state='pricing';//订单状态是报价中
-      $rootScope. life_insurance=$scope.life_insurance;
+      $scope.life_insurance.state = 'pricing';//订单状态是报价中
+      $rootScope.life_insurance = $scope.life_insurance;
       $scope.closeModal();
     }
-
-    /** dym modal **/
-    $ionicModal.fromTemplateUrl('views/dashboard/coverage_modal.html',function(modal){
-      $scope.coverage_modal=modal;
-    }, {
-      scope: $scope,
-      animation: 'slide-in-up'
-    });
-
-    $scope.openModal= function(){
-      $scope.coverage_modal.show();
-    };
-
-    $scope.closeModal= function() {
-      $scope.coverage_modal.hide();
-    };
-    $scope.$on('$destroy', function() {
-      $scope.bind_car_modal.remove();
-      $scope.coverage_modal.remove();
-    });
-    $scope.$on('modal.hidden', function() {
-      // Execute action
-    });
-    /** dym modal end **/
 
 
   });

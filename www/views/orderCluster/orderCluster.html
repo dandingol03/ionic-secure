@@ -1,0 +1,43 @@
+<ion-view view-title="我的订单">
+  <ion-nav-bar class="bar-stable" align-title="center" >
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear bar_arr" ng-click="go_back()">
+        <i class="ion-chevron-left"></i>
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear" ng-click="goto('/#/tabs/dashboard')">
+        <i class="ion-ios-search-strong"></i>
+      </button>
+    </ion-nav-buttons>
+
+  </ion-nav-bar>
+
+  <ion-content>
+
+      <div style="width:100%;display: block">
+        <div style="padding: 5px 10px;min-height: 50px;">
+          <a style="width:25%;float: left;padding:10px;background: #eee;text-align: center"
+             ng-class="{true: 'active', false: 'inactive'}[tab.activated]"
+             ng-click="tab_change($index)"
+             ng-repeat="tab in tabs">
+            {{tab.name}}
+          </a>
+        </div>
+      </div>
+    <div class="list padding">
+
+      <div class="item item-divider">
+        Candy Bars
+      </div>
+
+      <a class="item" href="#">
+        Butterfinger
+      </a>
+
+      ...
+
+    </div>
+
+  </ion-content>
+</ion-view>
