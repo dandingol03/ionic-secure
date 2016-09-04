@@ -24,7 +24,7 @@
          </div>
           <div class="col col-90">
             <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
-              <img src="img/1.jpg"/>
+              <img ng-src="{{item.img!=undefined&&item.img!=null?('img/'+item.img):'img/1.jpg'}}"/>
               <a ui-sref="life_insurance_detail" style="text-decoration: none">
                 <h2 class="product-title">{{item.name}}</h2>
                 <p class="list-price">保额: <i class="compare_at_price">{{item.coverage}}</i></p>
