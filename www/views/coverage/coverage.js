@@ -7,11 +7,9 @@ angular.module('app')
     $scope.life_insuranse={};
 
 
-
     $scope.go_back=function(){
       window.history.back();
     }
-
 
     $scope.saveState=function(){
       if($scope.life_insurances!=null) {
@@ -27,7 +25,6 @@ angular.module('app')
       }
 
     };
-
 
     $http({
       method:"get",

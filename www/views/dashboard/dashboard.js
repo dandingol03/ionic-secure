@@ -140,10 +140,51 @@ angular.module('app')
       insuredPerson:{}
     };
 
+    $scope.car={};
+
     $scope.apply=function () {
       $scope.life_insurance.state = 'pricing';//订单状态是报价中
       $rootScope.life_insurance = $scope.life_insurance;
       $scope.closeModal();
+    }
+
+
+    //寿险列表获取
+    $http({
+      method:"get",
+      url:"/proxy/node/insurance/get_lifeinsurance_list"
+    }).success(function(response){
+      var life_insurances=response.life_insurances;
+      if(Object.prototype.toString.call(life_insurances)!='[object Array]')
+        life_insurances=JSON.parse(life_insurances);
+
+      $scope.life_insurances=life_insurances;
+
+      $scope.tabs=[
+        {type:'车险'},
+        {type:'寿险',insurances:$scope.life_insurances},
+        {type:'维修'},
+        {type:'车驾管服务'}
+      ];
+    }).error(function(err){
+      if(err!==undefined&&err!==null)
+        console.error(err.toString());
+    });
+
+
+    $scope.tabIndex=1;
+    $scope.life_insuranse={};
+    $scope.detail_ref=function(insurance){
+      switch($scope.tabIndex)
+      {
+        case 0:
+              break;
+        case 1:
+          $state.go('life_insurance_detail',{insurance:JSON.stringify(insurance)});
+              break;
+        default:
+              break;
+      }
     }
 
 

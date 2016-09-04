@@ -4,13 +4,14 @@
 angular.module('app')
   .controller('lifeDetailController',function($scope,$rootScope,$state,$http, $location,$ionicModal,$ionicActionSheet,$cordovaCamera,$cordovaImagePicker,$stateParams){
 
-    $scope.title='太平洋寿险';
+
 
 
     $scope.item=$stateParams.insurance;
     if(Object.prototype.toString.call($scope.item)=='[object String]')
         $scope.item=JSON.parse($scope.item);
 
+    $scope.title=$scope.item.main.name;
     // if(Object.prototype.toString.call($scope.item)=='[object Object]')
     // {
     //   var items=[];
@@ -60,13 +61,32 @@ angular.module('app')
       // Execute action
     });
 
+    /**
+     *
+     * this is where we handle 附加险操作
+     */
     $scope.increment=function(index){
-        $scope.iterm.addition[index].count++;
+        $scope.item.additions[index].count++;
+        $scope.item.additions[index].gurantee_fee+=$scope.item.additions[index].singleton;
+        $scope.total+=$scope.item.additions[index].singleton;
     };
 
     $scope.decrement=function(index) {
-        $scope.iterm.addition[index].count--;
+        $scope.item.additions[index].count--;
+        $scope.item.additions[index].gurantee_fee-=$scope.item.additions[index].singleton;
+        $scope.total-=$scope.item.additions[index].singleton;
     };
+
+    $scope.total_compute=function(){
+      var total=0;
+      total+=parseInt($scope.item.main['保费']);
+      $scope.item.additions.map(function(addition){
+        total+=parseInt(addition.gurantee_fee);
+      });
+      $scope.total=total;
+    }
+
+    $scope.total_compute();
 
     $scope.confirm_lifeInsurance=function(){
 

@@ -1,29 +1,101 @@
-<ion-view view-title="主界面">
+<ion-view view-title="您的饿了么订单已经下单">
   <ion-content>
-    <div class="banner">
-      <img src="img/banner.png"/>
-    </div>
-    <div class="grid">
-      <div class="row f_row">
-        <div class="col" ui-sref="coverage" ng-click="openModal()">
+    <ion-slide-box does-continue="false" show-pager="true" >
+      <ion-slide>
+        <div class="banner">
+          <img src="img/kongzi.jpg"/>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="banner">
+          <img src="img/flowers_banner.jpg"/>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+    <!--<div class="grid">-->
+      <!--<div class="row f_row">-->
+        <!--<div class="col" ui-sref="coverage" ng-click="openModal()">-->
+          <!--<img src="img/001.png" class="animated zoomIn"/>-->
+          <!--<p class="animated swing">寿险</p>-->
+        <!--</div>-->
+        <!--<div class="col" ui-sref="motor_insurance" ng-click="openCarModal()">-->
+          <!--<img src="img/002.png" class="animated zoomIn"/>-->
+          <!--<p class="animated swing">车险</p>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row sec_row">-->
+        <!--<div class="col" ng-click="goto('/coverage')">-->
+          <!--<img src="img/003.png" class="animated zoomIn"/>-->
+          <!--<p class="animated swing">Contact Us</p>-->
+        <!--</div>-->
+        <!--<div class="col" ng-click="goto('/coverage')">-->
+          <!--<img src="img/004.png" class="animated zoomIn"/>-->
+          <!--<p class="animated swing">About Us</p>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="row">
+      <div class="col tabs_col car_insurance">
+        <div style="text-align: center">
           <img src="img/001.png" class="animated zoomIn"/>
-          <p class="animated swing">寿险</p>
         </div>
-        <div class="col" ui-sref="motor_insurance" ng-click="openCarModal()">
-          <img src="img/002.png" class="animated zoomIn"/>
-          <p class="animated swing">车险</p>
+        <div class="label">
+          <span>车险</span>
         </div>
       </div>
-      <div class="row sec_row">
-        <div class="col" ng-click="goto('/coverage')">
-          <img src="img/003.png" class="animated zoomIn"/>
-          <p class="animated swing">Contact Us</p>
+      <div class="col tabs_col life_insurance">
+        <div style="text-align: center">
+          <img src="img/002.png" class="animated zoomIn"/>
         </div>
-        <div class="col" ng-click="goto('/coverage')">
+        <div class="label">
+          <span>寿险</span>
+        </div>
+      </div>
+      <div class="col tabs_col maintain">
+        <div style="text-align: center">
+          <img src="img/003.png" class="animated zoomIn"/>
+        </div>
+        <div class="label">
+          维修
+        </div>
+      </div>
+      <div class="col tabs_col drive_service">
+        <div style="text-align: center">
           <img src="img/004.png" class="animated zoomIn"/>
-          <p class="animated swing">About Us</p>
+        </div>
+        <div class="label">
+          车驾管服务
         </div>
       </div>
     </div>
+
+    <ion-scroll style="height: 60%;">
+
+      <div class="row" ng-repeat="item in tabs[tabIndex].insurances" ng-model="life_insurance.flag">
+        <div class="col col-90">
+          <div class="item item-text-wrap item-thumbnail-left"
+               ng-click="detail_ref(item)"
+               style="border: 0;">
+
+            <img ng-src="{{item.main.img!=undefined&&item.main.img!=null?('img/'+item.main.img):'img/1.jpg'}}"/>
+            <div style="text-decoration: none">
+              <h2 class="product-title">{{item.main.name}}</h2>
+              <p class="list-price">
+                {{item.main.description}}
+              </p>
+              <p class="list-price">合计: <i class="compare_at_price">{{item.price}}</i></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-scroll>
+
+
+
+
+
+
+
   </ion-content>
 </ion-view>
