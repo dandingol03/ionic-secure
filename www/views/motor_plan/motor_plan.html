@@ -27,13 +27,13 @@
         <div class="col col-90">
           <div class="item item-text-wrap item-thumbnail-left" style="border: 0;">
             <img src="img/1.jpg"/>
-            <a ui-sref="motor_plan_detail" style="text-decoration: none">
-              <h2 class="product-title">车险公司A报价方案</h2>
+            <div  ng-click="detail_ref(item)"     ui-sref="motor_plan_detail" style="text-decoration: none">
+              <h2 class="product-title">{{item.companyName}}</h2>
 
               <p class="list-price">总额:<i class="compare_at_price">{{item.sum}}</i></p>
 
               <i class="icon-right ion-chevron-right"></i>
-            </a>
+            </div>
           </div>
         </div>
       </div>

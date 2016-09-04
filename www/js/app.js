@@ -13,6 +13,33 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         backView.go();
       }
 
+
+      //订单全局
+      $rootScope.orders=[
+        {name:'待支付订单',activated:false,orders:
+          [
+            {
+              type:'车险',schemes:[
+              {name:'brazil',coverage:300,fee:500,spectum:2},
+              {name:'honda',coverage:300,fee:500,spectum:1},
+              {name:'R1',coverage:300,fee:500,spectum:1},]
+            },
+            {
+              // {name:'新华保险',coverage:1205,fee:3000,'缴费期间':'3年','保额期间':'3年','首年保费':400000},
+              type:'寿险',main:{name:'新华保险',coverage:1205,fee:3000,'缴费期间':'3年','保额期间':'3年','首年保费':400000},additions:[
+              {name:'addition1',fee:300},
+              {name:'addition2',fee:800}]
+            },
+            {
+              type:'寿险',main:{name:'india洋',coverage:300,fee:200},additions:[
+              {name:'addition1',fee:300},
+              {name:'addition2',fee:800}]
+            }
+          ]},
+        {name:'已完成订单',activated:false,orders:[]},
+        {name:'估价中订单',activated:false,orders:[]}
+      ];
+
    //s .run(function($ionicPlatform,$location,$rootScope,$ionicHistory,$state,$ionicModal,$timeout) {
 
 
@@ -107,7 +134,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
        *车险报价方案列表
        */
       $stateProvider.state('motor_plan',{
-        url:'/motor_plan/:selected',
+        url:'/motor_plan/:plan',
         controller:'motorPlanController',
         templateUrl:'views/motor_plan/motor_plan.html'
       });
@@ -161,6 +188,8 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       controller:'orderClusterController',
       templateUrl:'views/orderCluster/orderCluster.html'
     });
+
+
 
 
       $stateProvider.state('personInformation',{
@@ -224,8 +253,6 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         controller: 'insuranceController',
         templateUrl:'views/insurance/insurance.html'
     });
-
-
 
 
     $stateProvider.state('service',{

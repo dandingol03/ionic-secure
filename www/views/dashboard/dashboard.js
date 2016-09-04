@@ -57,6 +57,26 @@ angular.module('app')
     /*** bind car modal ***/
 
 
+    /*** bind life modal ***/
+    $ionicModal.fromTemplateUrl('views/modal/coverage_modal.html',{
+      scope:  $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.coverage_modal = modal;
+    });
+
+    $scope.openModal= function(){
+      $scope.coverage_modal.show();
+    };
+
+    $scope.closeModal= function() {
+      $scope.coverage_modal.hide();
+    };
+
+    /*** bind life modal ***/
+
+
+
 
     $scope.check_carInfo=function(){
       if($rootScope.car!==undefined&&$rootScope.car!==null)

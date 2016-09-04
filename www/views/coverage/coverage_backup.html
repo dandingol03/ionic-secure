@@ -19,7 +19,7 @@
         <div class="row" ng-repeat="item in life_insurances" ng-model="life_insurance.flag">
          <div class="col col-10">
            <div>
-             <ion-checkbox style="margin-top: 30px;border: 0;" ></ion-checkbox>
+             <ion-checkbox style="margin-top: 30px;border: 0;" ng-model="item.flag" ng-change="item_select(item)"></ion-checkbox>
            </div>
          </div>
           <div class="col col-90">

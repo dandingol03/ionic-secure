@@ -38,13 +38,25 @@ angular.module('app')
     }
 
 
-    $scope.detail_ref=function(type,order){
+    $scope.detail_ref=function(type,order,i){
       switch(type)
       {
         case '车险':
           $scope.openModal();
           $scope.confirm=function(){
-            $state.go('motor_plan_detail',order);
+            switch($scope.motor.step)
+            {
+              case 'specials':
+                $scope.modalClose();
+                $rootScope.orders[$scope.tabIndex].orders.splice(i,1);
+                $state.go('motor_insurance');
+                break;
+              case 'schemes':
+                $scope.modalClose();
+                $state.go('motor_plan',{order:order});
+                break;
+            }
+
           }
               break;
         case '寿险':
@@ -80,26 +92,6 @@ angular.module('app')
     $scope.go_back=function(){
       window.history.back();
     };
-
-    $scope.edit=function(type,order){
-      switch(type){
-        case '寿险':
-          $state.go('life_insurance_detail',{order:JSON.stringify(order)});
-              break;
-        case '车险':
-          $state.go();
-              break;
-        default:
-          break;
-
-      }
-      _insurance_detail
-    };
-
-
-
-
-
 
 
 

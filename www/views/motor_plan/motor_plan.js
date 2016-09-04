@@ -6,14 +6,22 @@ angular.module('app')
 
     $scope.car_ins_plan={};
     $scope.car_ins_plans=[//应该从服务器取
-      {companyName:'A',sum:'2000',type:[{name:'交强险',price:'1000'},{name:'车辆损失险',price:'500'},{name:'第三者责任险',price:'500'}]},
-      {companyName:'B',sum:'5000',type:[{name:'交强险',price:'1000'},{name:'车辆损失险',price:'2500'},{name:'第三者责任险',price:'1500'}]},
-      {companyName:'C',sum:'3000',type:[{name:'交强险',price:'1000'},{name:'车辆损失险',price:'1000'},{name:'第三者责任险',price:'1000'}]}
+      {companyName:'公司A',sum:2000,types:[{name:'交强险',price:1000,fee:10},{name:'车辆损失险',price:500,fee:20},{name:'第三者责任险',price:500,fee:10}]},
+      {companyName:'公司B',sum:2000,types:[{name:'车身划痕损失险',price:1000,fee:10},{name:'车辆损失险',price:500,fee:20},{name:'第三者责任险',price:500,fee:10}]},
+      {companyName:'公司C',sum:2000,types:[{name:'不计免赔',price:1000,fee:10},{name:'车辆损失险',price:500,fee:20},{name:'第三者责任险',price:500,fee:10}]}
     ];
 
     $scope.go_back=function(){
       window.history.back();
     }
+
+    $scope.detail_ref=function(plan){
+      $state.go('motor_plan_detail',{plan:JSON.stringify(plan)});
+
+    }
+
+
+
 
     $scope.saveState=function(){
 
