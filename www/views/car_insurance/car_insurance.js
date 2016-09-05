@@ -1,13 +1,24 @@
 angular.module('app')
 
   .controller('carInsuranceController',function($scope,$state,$http, $location,
-                                             $rootScope,$ionicActionSheet){
+                                             $rootScope,$ionicActionSheet,$ionicModal){
 
-    $scope.tabIndex=0;
+    $scope.tabIndex=1;
 
     $scope.tab_change=function(i) {
-      $scope.tabIndex=i;
+      $scope.tabIndex=1;
     };
+
+
+    $scope.car_ins_plan={};
+    $scope.car_ins_plans=[//应该从服务器取
+      {companyName:'公司A',sum:2000,fee:1000,types:[{name:'交强险',price:1000,fee:10},{name:'车辆损失险',price:500,fee:20},{name:'第三者责任险',price:500,fee:10}]},
+      {companyName:'公司B',sum:2000,fee:1000,types:[{name:'车身划痕损失险',price:1000,fee:10},{name:'车辆损失险',price:500,fee:20},{name:'第三者责任险',price:500,fee:10}]},
+      {companyName:'公司C',sum:2000,fee:1000,types:[{name:'不计免赔',price:1000,fee:10},{name:'车辆损失险',price:500,fee:20},{name:'第三者责任险',price:500,fee:10}]}
+    ];
+
+
+
 
 
 
@@ -30,8 +41,6 @@ angular.module('app')
       if(err!==undefined&&err!==null)
         console.error(err.toString());
     });
-
-
 
 
 
@@ -116,4 +125,22 @@ angular.module('app')
     };
 
 
+
+
+
+
+/**************方案详情模态框*************************/
+    $ionicModal.fromTemplateUrl('/views/modal/car_detail_modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.car_detail_modal = modal;
+    });
+    $scope.openModal = function() {
+      $scope.car_detail_modal.show();
+    };
+    $scope.closeModal = function() {
+      $scope.car_detail_modal.hide();
+    };
   });
+/**************方案详情模态框*************************/
