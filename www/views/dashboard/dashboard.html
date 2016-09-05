@@ -1,4 +1,4 @@
-<ion-view view-title="您的饿了么订单已经下单">
+<ion-view view-title="主页">
   <ion-content>
     <ion-slide-box does-continue="false" show-pager="true" >
       <ion-slide>
@@ -35,7 +35,7 @@
       <!--</div>-->
     <!--</div>-->
     <div class="row">
-      <div class="col tabs_col car_insurance">
+      <div class="col tabs_col car_insurance" ng-click="tab_change(0)">
         <div style="text-align: center">
           <img src="img/001.png" class="animated zoomIn"/>
         </div>
@@ -43,7 +43,7 @@
           <span>车险</span>
         </div>
       </div>
-      <div class="col tabs_col life_insurance">
+      <div class="col tabs_col life_insurance" ng-click="tab_change(1)">
         <div style="text-align: center">
           <img src="img/002.png" class="animated zoomIn"/>
         </div>
@@ -71,7 +71,8 @@
 
     <ion-scroll style="height: 60%;">
 
-      <div class="row" ng-repeat="item in tabs[tabIndex].insurances" ng-model="life_insurance.flag">
+      <!-- 寿险 -->
+      <div class="row" ng-if="tabIndex==1" ng-repeat="item in tabs[tabIndex].insurances" ng-model="life_insurance.flag">
         <div class="col col-90">
           <div class="item item-text-wrap item-thumbnail-left"
                ng-click="detail_ref(item)"
@@ -89,13 +90,45 @@
           </div>
         </div>
       </div>
+
+      <!-- 车险 -->
+      <div class="row" ng-if="tabIndex==0" ng-repeat="item in tabs[tabIndex].insurances"
+           style="border:1px solid #eee;padding:2px;margin-bottom:4px">
+        <div class="col-80">
+          <label class="item" style="border:0px;display: inline-block;width: 60%">
+            {{item.name}}
+          </label>
+          <label class="item" style="border:0px;display: inline-block"
+                 ng-click="price_select(item,item.prices)">
+            保额:
+          <span ng-if="item.price!=undefined&&item.price!=null">
+            {{item.price}}
+          </span>
+            <i class="ion-ios-arrow-down" ng-if="item.prices!==undefined&&item.prices!==null"></i>
+          </label>
+        </div>
+        <!--<div class="col-20">-->
+        <!--<ion-radio ng-value="item.value"-->
+        <!--ng-model="data.clientSide"-->
+        <!--style="border:0px">-->
+
+        <!--勾选-->
+        <!--</ion-radio>-->
+        <!--</div>-->
+        <div class="col-20" style="position: relative">
+          <li class="item item-checkbox" style="border: 0px;position: absolute;top:25%">
+            <label class="checkbox">
+              <input type="checkbox" checked="">
+            </label>
+          </li>
+        </div>
+      </div>
+      <div class="bar bar-balanced" ng-click="specials_apply()" >
+        <div class="title">提交信息</div>
+      </div>
     </ion-scroll>
 
 
-
-
-
-
-
   </ion-content>
+
 </ion-view>

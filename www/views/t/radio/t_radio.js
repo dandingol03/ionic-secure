@@ -3,7 +3,7 @@ angular.module('app')
   .controller('tRadioController',function($scope,$ionicActionSheet,$http){
 
 
-    //get 车险列表
+    //get 车险险种列表
     $http({
       method:"get",
       url:"/proxy/node/insurance/project_provide"
@@ -46,9 +46,8 @@ angular.module('app')
         });
       }
       else
-      {
-
-      }
-
+      {}
     }
+
+
   });

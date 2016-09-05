@@ -306,7 +306,7 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
 
 
 
-    $urlRouterProvider.otherwise('/tRadio');
+    $urlRouterProvider.otherwise('/tabs/dashboard');
 
     })
 

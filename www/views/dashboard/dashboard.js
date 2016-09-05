@@ -1,6 +1,9 @@
 angular.module('app')
 
-  .controller('dashboardController',function($scope,$state,$http, $location,$rootScope,$ionicModal,$timeout,$cordovaCamera,ionicDatePicker){
+  .controller('dashboardController',function($scope,$state,$http, $location,
+                                             $rootScope,$ionicModal,$timeout,
+                                             $cordovaCamera,ionicDatePicker,
+                                             $ionicActionSheet){
 
 
     $scope.goto=function(url){
@@ -149,6 +152,13 @@ angular.module('app')
     }
 
 
+    //车险险种选择
+    $scope.specials_apply=function(){
+
+    }
+
+
+
     //寿险列表获取
     $http({
       method:"get",
@@ -160,19 +170,39 @@ angular.module('app')
 
       $scope.life_insurances=life_insurances;
 
-      $scope.tabs=[
-        {type:'车险'},
-        {type:'寿险',insurances:$scope.life_insurances},
-        {type:'维修'},
-        {type:'车驾管服务'}
-      ];
+      //get 车险险种列表
+      $http({
+        method:"get",
+        url:"/proxy/node/insurance/project_provide"
+      }).success(function(response){
+        var projects=response.projects;
+        if(Object.prototype.toString.call(projects)!='[object Array]')
+          projects=JSON.parse(projects);
+        $scope.motor_specials=projects;
+        $scope.tabs=[
+          {type:'车险',insurances:$scope.motor_specials},
+          {type:'寿险',insurances:$scope.life_insurances},
+          {type:'维修'},
+          {type:'车驾管服务'}
+        ];
+
+      }).error(function(err){
+        if(err!==undefined&&err!==null)
+          console.error(err.toString());
+      });
+
     }).error(function(err){
       if(err!==undefined&&err!==null)
         console.error(err.toString());
     });
 
 
-    $scope.tabIndex=1;
+
+
+    $scope.tabIndex=0
+    $scope.tab_change=function(i){
+      $scope.tabIndex=i;
+    };
     $scope.life_insuranse={};
     $scope.detail_ref=function(insurance){
       switch($scope.tabIndex)
@@ -185,6 +215,29 @@ angular.module('app')
         default:
               break;
       }
+    }
+
+    //车险保额选择
+    $scope.price_select=function(item,prices) {
+      if (prices !== undefined && prices !== null &&prices.length > 0)
+      {
+        var buttons=[];
+        prices.map(function(price,i) {
+          buttons.push({text: price});
+        });
+        $ionicActionSheet.show({
+          buttons:buttons,
+          titleText: '选择你的保额',
+          cancelText: 'Cancel',
+          buttonClicked: function(index) {
+            item.price = prices[index];
+            return true;
+          },
+          cssClass:'motor_insurance_actionsheet'
+        });
+      }
+      else
+      {}
     }
 
 
