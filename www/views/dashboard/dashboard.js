@@ -156,14 +156,18 @@ angular.module('app')
     //车险险种选择
     $scope.specials_apply=function(){
       var specials=[];
-      specials.map(function (special, i) {
+      $scope.motor_specials.map(function (special, i) {
         if(special.checked==true)
           specials.push(special);
       });
       if(specials.length==0)
         alert("请选择一项险种");
       else{
-
+        //TODO:inject into $rootScope
+        $rootScope.specials=specials;
+        for(var i=0;i<specials.length;i++){
+        delete $rootScope.specials[i].$$hashKey;
+        }
       }
     }
 
