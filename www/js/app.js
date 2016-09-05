@@ -298,7 +298,15 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
         templateUrl:'views/directive/directive.html'
     });
 
-    $urlRouterProvider.otherwise('/tabs/dashboard');
+    $stateProvider.state('tRadio',{
+      url:'/tRadio',
+      controller:'tRadioController',
+      templateUrl:'views/t/radio/t_radio.html'
+    });
+
+
+
+    $urlRouterProvider.otherwise('/tRadio');
 
     })
 
