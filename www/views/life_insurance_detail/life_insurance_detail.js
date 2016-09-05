@@ -166,6 +166,9 @@ angular.module('app')
     $scope.changeState=function(){
       $scope.life_insurance.state='modified';//订单状态为正在编辑
       $rootScope.life_insurance.state= $scope.life_insurance.state;
+      $rootScope.orders.map(function(item,i){
+        if($rootScope.orders.type){}
+      })
     }
 
 

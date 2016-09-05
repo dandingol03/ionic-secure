@@ -14,6 +14,8 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       }
 
 
+
+
       //订单全局
       $rootScope.orders=[
         {name:'待支付订单',activated:false,orders:
