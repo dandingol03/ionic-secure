@@ -780,3 +780,7 @@ table.table1{
 .list.life_insurance_detail .addition{
   border:0px;
 }
+
+.ion-chevron-right.service{
+  font-size:1.2em;
+}

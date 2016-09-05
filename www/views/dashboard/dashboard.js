@@ -196,7 +196,15 @@ angular.module('app')
           {type:'车险',insurances:$scope.motor_specials},
           {type:'寿险',insurances:$scope.life_insurances},
           {type:'维修'},
-          {type:'车驾管服务'}
+          {type:'车驾管服务',
+            services:[
+              {name:'代办车辆年审',href:''},
+              {name:'代办驾驶证年审',href:''},
+              {name:'取送车',href:''},
+              {name:'接送机',href:''},
+              {name:'违章查询',href:''}
+            ]
+          }
         ];
 
       }).error(function(err){
