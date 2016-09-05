@@ -304,7 +304,11 @@ angular.module('app',['ionic','ui.router','ngCordova','ngBaiduMap', 'ionic-datep
       templateUrl:'views/t/radio/t_radio.html'
     });
 
-
+    $stateProvider.state('car_insurance',{
+      url:'/car_insurance',
+      controller:'carInsuranceController',
+      templateUrl:'views/car_insurance/car_insurance.html'
+    });
 
     $urlRouterProvider.otherwise('/tabs/dashboard');
 

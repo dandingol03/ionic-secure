@@ -10,6 +10,7 @@ angular.module('app')
       $location.path(url);
     };
 
+    //use factory to improve
     $scope.datepick = function(){
       var ipObj1 = {
         callback: function (val) {  //Mandatory
@@ -255,6 +256,12 @@ angular.module('app')
       }
       else
       {}
+    }
+
+    //绑定车主信息
+    $scope.bind_car=function(){
+      $rootScope.carInfo=$scope.carInfo;
+      $state.go('car_insurance');
     }
 
 

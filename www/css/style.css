@@ -784,3 +784,32 @@ table.table1{
 .ion-chevron-right.service{
   font-size:1.2em;
 }
+
+.home-tab.ng-enter{
+  -webkit-animation: fadeInRight .5s;
+  animation: fadeInRight .5s;
+}
+
+.specials.checkbox input:before,
+.specials.checkbox .checkbox-icon:before {
+   border-color: transparent;
+}
+
+.car_insurance.tab{
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right:10%;
+  position: relative;
+}
+.car_insurance.tab.selected{
+  border-bottom: 1px solid #0000ff;
+}
+
+.car_insurance.tab.selected .highLight{
+  height: 2px;
+  position: absolute;
+  bottom: 12%;
+  width: 100%;
+  background: #BCBCCC;
+}
+
