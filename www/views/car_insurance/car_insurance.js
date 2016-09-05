@@ -3,7 +3,7 @@ angular.module('app')
   .controller('carInsuranceController',function($scope,$state,$http, $location,
                                              $rootScope,$ionicActionSheet,$ionicModal){
 
-    $scope.tabIndex=1;
+    $scope.tabIndex=0;
 
     $scope.tab_change=function(i) {
       $scope.tabIndex=1;

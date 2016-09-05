@@ -69,11 +69,11 @@ angular.module('app')
       $scope.coverage_modal = modal;
     });
 
-    $scope.openModal= function(){
+    $scope.open_lifeModal= function(){
       $scope.coverage_modal.show();
     };
 
-    $scope.closeModal= function() {
+    $scope.open_lifeModal= function() {
       $scope.coverage_modal.hide();
     };
 
