@@ -76,29 +76,48 @@
 
     <ion-scroll style="height: 60%;">
 
+
+
+
+
       <!-- 寿险 -->
-      <div class="row home-tab" ng-if="tabIndex==1"
+
+      <div class="list" ng-if="tabIndex==1">
+
+
+        <div class="item item-divider">
+          <button class="button button-stable" ng-click="open_lifeModal()" style="padding-left:10%;padding-right:10%;width:45%; margin-right:10%;background-color:#b6d2cf;">
+            订制寿险方案
+          </button>
+        </div>
+
+
+        <div class="item item-divider">
+          已有产品列表
+        </div>
+
+         <div class="row home-tab" ng-if="tabIndex==1"
            ng-repeat="item in tabs[tabIndex].insurances"
            ng-model="life_insurance.flag"
             >
-        <div class="col col-90">
-          <div class="item item-text-wrap item-thumbnail-left"
+            <div class="col col-90">
+              <div class="item item-text-wrap item-thumbnail-left"
                ng-click="detail_ref(item)"
                style="border: 0;">
 
-            <img ng-src="{{item.main.img!=undefined&&item.main.img!=null?('img/'+item.main.img):'img/1.jpg'}}"/>
-            <div style="text-decoration: none">
-              <h2 class="product-title">{{item.main.name}}</h2>
-              <p class="list-price">
-                {{item.main.description}}
-              </p>
-              <p class="list-price">合计: <i class="compare_at_price">{{item.price}}</i></p>
+                <img ng-src="{{item.main.img!=undefined&&item.main.img!=null?('img/'+item.main.img):'img/1.jpg'}}"/>
+                <div style="text-decoration: none">
+                  <h2 class="product-title">{{item.main.name}}</h2>
+                  <p class="list-price">
+                    {{item.main.description}}
+                  </p>
+                  <p class="list-price">合计: <i class="compare_at_price">{{item.price}}</i></p>
 
+                 </div>
+              </div>
             </div>
           </div>
-        </div>
       </div>
-
 
 
       <!-- 车险 -->

@@ -80,7 +80,49 @@
 
     <!-- 车险方案 -->
     <div ng-if="tabIndex==1">
+     <div class="list">
+       <div class="item" style="border:0px;padding-left:26px;padding-right:26px;"  ng-repeat="plan in car_ins_plans">
 
+         <div class="card" style="margin-top:8%;">
+           <div class="row">
+             <img ng-src="{{item.main.img!=undefined&&item.main.img!=null?('img/'+item.main.img):'img/card.jpg'}}"/>
+           </div>
+           <div>
+             <h2 style="padding:3%;margin-top:2%;margin-left:3%;font-size:larger;width:100%;">
+               {{plan.companyName}}
+             </h2>
+             <div>
+               <div style="display:inline-block;padding:3%;padding-top:0;">
+                 <lable>保额:</lable>
+                 <lable>{{plan.sum}}</lable>
+               </div>
+               <div style="display:inline-block;padding:3%;padding-top:0;">
+                 <lable>保费:</lable>
+                 <lable>{{plan.fee}}</lable>
+               </div>
+               <div style="display:inline-block;padding:3%;padding-top:0;">
+                 <lable>保费:</lable>
+                 <lable>{{plan.fee}}</lable>
+               </div>
+             </div>
+
+           </div>
+           <div style="padding:10px;">
+             <button class="button button-stable" style="padding-left:10%;padding-right:10%;width:45%; margin-right:10%;">
+               投保
+             </button>
+             <button class="button button-stable" style="padding-left:10%;padding-right:10%;width:45%;" ng-click="openModal()">
+               详情
+             </button>
+
+           </div>
+
+
+         </div>
+
+
+       </div>
+     </div>
 
     </div>
 
