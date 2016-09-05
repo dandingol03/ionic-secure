@@ -72,7 +72,9 @@
     <ion-scroll style="height: 60%;">
 
       <!-- 寿险 -->
-      <div class="row" ng-if="tabIndex==1" ng-repeat="item in tabs[tabIndex].insurances" ng-model="life_insurance.flag">
+      <div class="row" ng-if="tabIndex==1"
+           ng-repeat="item in tabs[tabIndex].insurances"
+           ng-model="life_insurance.flag">
         <div class="col col-90">
           <div class="item item-text-wrap item-thumbnail-left"
                ng-click="detail_ref(item)"
@@ -92,8 +94,9 @@
       </div>
 
       <!-- 车险 -->
-      <div class="row" ng-if="tabIndex==0" ng-repeat="item in tabs[tabIndex].insurances"
-           style="border:1px solid #eee;padding:2px;margin-bottom:4px">
+      <div class="row" ng-if="tabIndex==0"
+           ng-repeat="item in tabs[tabIndex].insurances"
+           style="border:1px solid #eee;padding:5px;margin-bottom:4px">
         <div class="col-80">
           <label class="item" style="border:0px;display: inline-block;width: 60%">
             {{item.name}}
@@ -118,7 +121,7 @@
         <div class="col-20" style="position: relative">
           <li class="item item-checkbox" style="border: 0px;position: absolute;top:25%">
             <label class="checkbox">
-              <input type="checkbox" checked="">
+              <input type="checkbox" ng-model="item.checked">
             </label>
           </li>
         </div>
