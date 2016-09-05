@@ -52,6 +52,7 @@ angular.module('app')
 
     $scope.openCarModal= function(){
       $scope.bind_car_modal.show();
+
     };
 
     $scope.closeCarModal= function() {
@@ -73,7 +74,7 @@ angular.module('app')
       $scope.coverage_modal.show();
     };
 
-    $scope.open_lifeModal= function() {
+    $scope.close_lifeModal= function() {
       $scope.coverage_modal.hide();
     };
 
@@ -149,7 +150,7 @@ angular.module('app')
     $scope.apply=function () {
       $scope.life_insurance.state = 'pricing';//订单状态是报价中
       $rootScope.life_insurance = $scope.life_insurance;
-      $scope.closeModal();
+      $scope.close_lifeModal();
     }
 
 

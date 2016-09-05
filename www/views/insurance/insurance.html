@@ -1,5 +1,17 @@
 <ion-view view-title="insurance-view" >
+  <ion-nav-bar class="bar-stable" align-title="center" >
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear bar_arr" ng-click="go_back()">
+        <i class="ion-chevron-left"></i>
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear" ng-click="goto('/#/tabs/dashboard')">
+        <i class="ion-ios-search-strong"></i>
+      </button>
+    </ion-nav-buttons>
 
+  </ion-nav-bar>
 
   <ion-content class="padding">
 
@@ -112,7 +124,7 @@
       </div>
     </div>
 
-    <button class="button button-full button-positive" style="margin-top: 100px"  ng-click="submit()">
+    <button class="button button-full button-positive" style="margin-top: 100px"  ng-click="goto('/tabs/dashboard')">
       提交寿险
     </button>
   </ion-content>
