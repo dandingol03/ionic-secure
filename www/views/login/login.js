@@ -7,81 +7,81 @@ angular.module('app')
     .controller('loginController',function($scope,$state,$ionicLoading,$http,$cordovaProgress,$rootScope,$cordovaFileTransfer
     ,$cordovaCamera,$ionicActionSheet){
 
-      $scope.login = function() {
-
-        $http({
-          method: "GET",
-          url: "http://127.0.0.1:3000/securityCode?cellphone=123456789",
-        }).success(function (response) {
-          console.log('...');
-          console.log('...');
-          console.log('...');
-
-
-          $http({
-            method: "POST",
-            url: "/proxy/node/login",
-            headers: {
-              'Access-Control-Allow-Origin': "*",
-              'Authorization': "Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW",
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: 'grant_type=password&username=123456789&password=1234'
-          }).success(function (response) {
-
-            console.log('securityCode');
-
-          }).error(function (err) {
-
-            console.log(err);
-
-          });
-
-          console.log('...');
-
-        }).error(function (err) {
-          console.log(err);
-        });
-        // $http({
-        //     method:"post",
-        //     params:{
-        //         loginName:$scope.user.username,
-        //         password:$scope.user.password
-        //     },
-        //     url:"/proxy/node/login"
-        // }).success(function(response){
-        //   $rootScope.carInfo=response.carInfo;
-        //   if($rootScope.carInfo.img!==undefined&&$rootScope.carInfo.img!==null)
-        //   {
-        //     var img=$rootScope.carInfo.img;
-        //     if(img.driverImg!==undefined&&img.driverImg!==null)
-        //     {
-        //       $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
-        //         .then(function(result) {
-        //           // Success!
-        //         }, function(err) {
-        //           // Error
-        //         });
-        //     }
-        //
-        //   }
-        //
-        //
-        //   var re = response.re;
-        //   if(re==1)
-        //   {
-        //     $state.go('tabs.coverage');
-        //   }else{}
-        //
-        // }).error(function(err){
-        //     alert(err.toString());
-        //     $ionicLoading.show({
-        //         template:'connect the server timeout',
-        //         duration:'2000'
-        //     });
-        // });
-
-      }
+      //$scope.login = function() {
+      //
+      //  $http({
+      //    method: "GET",
+      //    url: "http://127.0.0.1:3000/securityCode?cellphone=123456789",
+      //  }).success(function (response) {
+      //    console.log('...');
+      //    console.log('...');
+      //    console.log('...');
+      //
+      //
+      //    $http({
+      //      method: "POST",
+      //      url: "/proxy/node/login",
+      //      headers: {
+      //        'Access-Control-Allow-Origin': "*",
+      //        'Authorization': "Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW",
+      //        'Content-Type': 'application/x-www-form-urlencoded'
+      //      },
+      //      body: 'grant_type=password&username=123456789&password=1234'
+      //    }).success(function (response) {
+      //
+      //      console.log('securityCode');
+      //
+      //    }).error(function (err) {
+      //
+      //      console.log(err);
+      //
+      //    });
+      //
+      //    console.log('...');
+      //
+      //  }).error(function (err) {
+      //    console.log(err);
+      //  });
+      //  // $http({
+      //  //     method:"post",
+      //  //     params:{
+      //  //         loginName:$scope.user.username,
+      //  //         password:$scope.user.password
+      //  //     },
+      //  //     url:"/proxy/node/login"
+      //  // }).success(function(response){
+      //  //   $rootScope.carInfo=response.carInfo;
+      //  //   if($rootScope.carInfo.img!==undefined&&$rootScope.carInfo.img!==null)
+      //  //   {
+      //  //     var img=$rootScope.carInfo.img;
+      //  //     if(img.driverImg!==undefined&&img.driverImg!==null)
+      //  //     {
+      //  //       $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+      //  //         .then(function(result) {
+      //  //           // Success!
+      //  //         }, function(err) {
+      //  //           // Error
+      //  //         });
+      //  //     }
+      //  //
+      //  //   }
+      //  //
+      //  //
+      //  //   var re = response.re;
+      //  //   if(re==1)
+      //  //   {
+      //  //     $state.go('tabs.coverage');
+      //  //   }else{}
+      //  //
+      //  // }).error(function(err){
+      //  //     alert(err.toString());
+      //  //     $ionicLoading.show({
+      //  //         template:'connect the server timeout',
+      //  //         duration:'2000'
+      //  //     });
+      //  // });
+      //
+      //}
 
 
     $scope.user=new Object();
